@@ -30,6 +30,95 @@ class User extends Authenticatable
         return $this->hasMany(Review::class);
     }
 
+    public function getName()
+    {
+        return $this->attributes['name'];
+    }
+
+    public function setName($name)
+    {
+        $this->attributes['name'] = $name;
+    }
+
+    public function getLastName()
+    {
+        return $this->attributes['lastName'];
+    }
+
+    public function setLastName($lastName)
+    {
+        $this->attributes['lastName'] = $lastName;
+    }
+
+    public function getAddress()
+    {
+        return $this->attributes['address'];
+    }
+
+    public function setAddress($address)
+    {
+        $this->attributes['address'] = $address;
+    }
+
+    public function getEmail()
+    {
+        return $this->attributes['email'];
+    }
+
+    public function setEmail($email)
+    {
+        $this->attributes['email'] = $email;
+    }
+
+    public function getUsername()
+    {
+        return $this->attributes['username'];
+    }
+
+    public function setUsername($username)
+    {
+        $this->attributes['username'] = $username;
+    }
+
+    public function getPassword()
+    {
+        return $this->attributes['password'];
+    }
+
+    public function setPassword($password)
+    {
+        $this->attributes['password'] = $password;
+    }
+
+    public function getRol()
+    {
+        return $this->attributes['rol'];
+    }
+
+    public function setRol($rol)
+    {
+        $this->attributes['rol'] = $rol;
+    }
+
+    public function getState()
+    {
+        return $this->attributes['state'];
+    }
+
+    public function setState($state)
+    {
+        $this->attributes['state'] = $state;
+    }
+
+    public function getBalance()
+    {
+        return $this->attributes['balance'];
+    }
+
+    public function setBalance($balance)
+    {
+        $this->attributes['balance'] = $balance;
+    }
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -52,4 +141,6 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+
 }

@@ -22,4 +22,44 @@ class Item extends Model
     {
         return $this->belongsTo(Product::class);
     }
+
+    public function getPrice()
+    {
+        return $this->attributes['price'];
+    }
+
+    public function setPrice($price)
+    {
+        $this->attributes['price'] = $price;
+    }
+
+    public function getQuantity()
+    {
+        return $this->attributes['quantity'];
+    }
+
+    public function setQuantity($quantity)
+    {
+        $this->attributes['quantity'] = $quantity;
+    }
+
+    public function getOrderId()
+    {
+        return $this->attributes['order_id'];
+    }
+
+    public function setOrderId($order_id)
+    {
+        $this->attributes['order_id'] = $order_id;
+    }
+
+    public function getProductId()
+    {
+        return $this->attributes['product_id'];
+    }
+
+    public function setProductId($product_id)
+    {
+        $this->attributes['product_id'] = $product_id;
+    }
 }
