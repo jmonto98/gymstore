@@ -20,10 +20,10 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ms-auto">
-          <a class="nav-link active" href="">Home</a>
-          <a class="nav-link active" href="">Orders</a>
-          <a class="nav-link active" href="">Create Order</a>
-          <a class="nav-link active" href="">Fishes</a>
+          <a class="nav-link active" href="">Login</a>
+          <a class="nav-link active" href="">Products</a>
+          <a class="nav-link active" href="">About</a>
+          <a class="nav-link active" href="">Contact Us</a>
         </div>
       </div>
     </div>
