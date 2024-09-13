@@ -119,6 +119,7 @@ class User extends Authenticatable
     {
         $this->attributes['balance'] = $balance;
     }
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -141,6 +142,4 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-
-
 }
