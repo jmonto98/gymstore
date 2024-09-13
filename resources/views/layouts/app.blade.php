@@ -46,7 +46,7 @@
       <small>
         Copyright - <a class="text-reset fw-bold text-decoration-none" target="_blank"
           href="https://www.linkedin.com/in/jjmontoy7/">
-          John Montoya
+          Gym Store
         </a>
       </small>
     </div>
