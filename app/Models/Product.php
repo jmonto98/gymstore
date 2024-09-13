@@ -13,6 +13,17 @@ class Product extends Model
         'name', 'price', 'stock', 'image', 'sumReviews', 'totalReviews', 'category_id',
     ];
 
+    public static function validate($request)
+    {
+        $request->validate([
+            "name" => "required|max:255",
+            "price" => "required|numeric|gt:0",
+            "stock" => "required|numeric|gt:0",
+            'image' => 'image',
+            "category_id" => "required",
+        ]);
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class);
@@ -33,73 +44,68 @@ class Product extends Model
         return $this->hasMany(Item::class);
     }
 
-    public function getName()
+    public function getName(): string
     {
         return $this->attributes['name'];
     }
 
-    public function setName($name)
+    public function setName(string $name): void
     {
         $this->attributes['name'] = $name;
     }
 
-    public function getPrice()
+    public function getPrice(): int
     {
         return $this->attributes['price'];
     }
 
-    public function setPrice($price)
+    public function setPrice(int $price): void
     {
         $this->attributes['price'] = $price;
     }
 
-    public function getStock()
+    public function getStock(): int
     {
         return $this->attributes['stock'];
     }
 
-    public function setStock($stock)
+    public function setStock(int $stock): void
     {
         $this->attributes['stock'] = $stock;
     }
 
-    public function getImage()
+    public function getImage(): string
     {
         return $this->attributes['image'];
     }
 
-    public function setImage($image)
+    public function setImage(string $image): void
     {
         $this->attributes['image'] = $image;
     }
 
-    public function getSumReviews()
+    public function getSumReviews(): int
     {
         return $this->attributes['sumReviews'];
     }
 
-    public function setSumReviews($sumReviews)
+    public function setSumReviews(int $sumReviews): void
     {
         $this->attributes['sumReviews'] = $sumReviews;
     }
 
-    public function getTotalReviews()
+    public function getTotalReviews(): int
     {
         return $this->attributes['totalReviews'];
     }
 
-    public function setTotalReviews($totalReviews)
+    public function setTotalReviews(int $totalReviews): void
     {
         $this->attributes['totalReviews'] = $totalReviews;
     }
 
-    public function getCategoryId()
+    public function getCategoryId(): int
     {
         return $this->attributes['category_id'];
-    }
-
-    public function setCategoryId($category_id)
-    {
-        $this->attributes['category_id'] = $category_id;
     }
 }

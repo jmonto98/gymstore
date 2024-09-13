@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Validation\Rules\In;
 
 class Review extends Model
 {
@@ -12,6 +13,17 @@ class Review extends Model
     protected $fillable = [
         'rating', 'comment', 'approved', 'user_id', 'product_id',
     ];
+
+    public static function validate($request)
+    {
+        $request->validate([
+            "rating" => "required|numeric|gt:0",
+            "comment" => "required|max:255",
+            "approved" => "required|bool",
+            'user_id' => 'required',
+            "product_id" => "required",
+        ]);
+    }
 
     public function user()
     {
@@ -23,53 +35,44 @@ class Review extends Model
         return $this->belongsTo(Product::class);
     }
 
-    public function getRating()
+    public function getRating(): int
     {
         return $this->attributes['rating'];
     }
 
-    public function setRating($rating)
+    public function setRating(int $rating): void
     {
         $this->attributes['rating'] = $rating;
     }
 
-    public function getComment()
+    public function getComment(): string
     {
         return $this->attributes['comment'];
     }
 
-    public function setComment($comment)
+    public function setComment(string $comment): void
     {
         $this->attributes['comment'] = $comment;
     }
 
-    public function getApproved()
+    public function getApproved(): bool
     {
         return $this->attributes['approved'];
     }
 
-    public function setApproved($approved)
+    public function setApproved(bool $approved): void
     {
         $this->attributes['approved'] = $approved;
     }
 
-    public function getUserId()
+    public function getUserId(): int
     {
         return $this->attributes['user_id'];
     }
 
-    public function setUserId($user_id)
-    {
-        $this->attributes['user_id'] = $user_id;
-    }
-
-    public function getProductId()
+    public function getProductId(): int
     {
         return $this->attributes['product_id'];
     }
 
-    public function setProductId($product_id)
-    {
-        $this->attributes['product_id'] = $product_id;
-    }
 }

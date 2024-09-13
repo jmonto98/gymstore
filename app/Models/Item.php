@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Item extends Model
 {
     use HasFactory;
@@ -12,6 +13,16 @@ class Item extends Model
     protected $fillable = [
         'price', 'quantity', 'order_id', 'product_id',
     ];
+
+    public static function validate($request)
+    {
+        $request->validate([
+            "price" => "required|numeric|gt:0",
+            "quantity" => "required|numeric|gt:0",
+            "order_id" => "required",
+            "product_id" => "required",
+        ]);
+    }
 
     public function order()
     {
@@ -23,43 +34,34 @@ class Item extends Model
         return $this->belongsTo(Product::class);
     }
 
-    public function getPrice()
+    public function getPrice(): int
     {
         return $this->attributes['price'];
     }
 
-    public function setPrice($price)
+    public function setPrice(int $price): void
     {
         $this->attributes['price'] = $price;
     }
 
-    public function getQuantity()
+    public function getQuantity(): int
     {
         return $this->attributes['quantity'];
     }
 
-    public function setQuantity($quantity)
+    public function setQuantity(int $quantity): void
     {
         $this->attributes['quantity'] = $quantity;
     }
 
-    public function getOrderId()
+    public function getOrderId(): int
     {
         return $this->attributes['order_id'];
     }
 
-    public function setOrderId($order_id)
-    {
-        $this->attributes['order_id'] = $order_id;
-    }
-
-    public function getProductId()
+    public function getProductId(): int
     {
         return $this->attributes['product_id'];
     }
 
-    public function setProductId($product_id)
-    {
-        $this->attributes['product_id'] = $product_id;
-    }
 }

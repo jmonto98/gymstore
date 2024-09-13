@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
+use DateTime;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Date;
+use Illuminate\Validation\Rules\In;
 
 class Order extends Model
 {
@@ -13,6 +16,17 @@ class Order extends Model
         'orderDate', 'status', 'totalOrder', 'cusPayment', 'user_id',
     ];
 
+    public static function validate($request)
+    {
+        $request->validate([
+            "orderDate" => "required|date",
+            "status" => "required|",
+            "totalOrder" => "required|numeric|gt:0",
+            "cusPayment" => "required|string",
+            "user_id" => "required",
+        ]);
+    }
+    
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -23,53 +37,48 @@ class Order extends Model
         return $this->hasMany(Item::class);
     }
 
-    public function getOrderDate()
+    public function getOrderDate(): date
     {
         return $this->attributes['orderDate'];
     }
 
-    public function setOrderDate($orderDate)
+    public function setOrderDate(date $orderDate): void
     {
         $this->attributes['orderDate'] = $orderDate;
     }
 
-    public function getStatus()
+    public function getStatus(): string
     {
         return $this->attributes['status'];
     }
 
-    public function setStatus($status)
+    public function setStatus(string $status): void
     {
         $this->attributes['status'] = $status;
     }
 
-    public function getTotalOrder()
+    public function getTotalOrder(): int
     {
         return $this->attributes['totalOrder'];
     }
 
-    public function setTotalOrder($totalOrder)
+    public function setTotalOrder(int $totalOrder): void
     {
         $this->attributes['totalOrder'] = $totalOrder;
     }
 
-    public function getCusPayment()
+    public function getCusPayment(): string
     {
         return $this->attributes['cusPayment'];
     }
 
-    public function setCusPayment($cusPayment)
+    public function setCusPayment(string $cusPayment): void
     {
         $this->attributes['cusPayment'] = $cusPayment;
     }
 
-    public function getUserId()
+    public function getUserId(): int
     {
         return $this->attributes['user_id'];
-    }
-
-    public function setUserId($user_id)
-    {
-        $this->attributes['user_id'] = $user_id;
     }
 }
