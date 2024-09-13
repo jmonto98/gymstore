@@ -10,7 +10,7 @@ class UseMode extends Model
     use HasFactory;
 
     protected $fillable = [
-        'videoUrl', 'product_id'
+        'videoUrl', 'product_id',
     ];
 
     public function product()
