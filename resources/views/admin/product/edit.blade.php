@@ -49,6 +49,13 @@
                         @endforeach
                     </select>
                 </div>
+                <div class="mb-3">
+                    <label for="state" class="form-label">State:</label>
+                    <select id="state" name="state" class="form-select" required>
+                        <option value="active" {{ old('state') == 'active' ? 'selected' : '' }}>Active</option>
+                        <option value="inactive" {{ old('state') == 'inactive' ? 'selected' : '' }}>Inactive</option>
+                    </select>
+                </div>
             </div>
 
             <div class="row mb-3">

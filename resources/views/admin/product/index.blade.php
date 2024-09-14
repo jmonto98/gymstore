@@ -1,6 +1,7 @@
-<!-- resources/views/admin/products/index.blade.php -->
 @extends('layouts.admin')
+
 @section('title', 'Product Management')
+
 @section('content')
 <div class="container py-4">
     @if(session('success'))
@@ -54,6 +55,13 @@
                     </select>
                 </div>
                 <div class="mb-3">
+                    <label for="state" class="form-label">State:</label>
+                    <select id="state" name="state" class="form-select" required>
+                        <option value="active" {{ old('state') == 'active' ? 'selected' : '' }}>Active</option>
+                        <option value="inactive" {{ old('state') == 'inactive' ? 'selected' : '' }}>Inactive</option>
+                    </select>
+                </div>
+                <div class="mb-3">
                     <label for="image" class="form-label">Image:</label>
                     <input class="form-control" type="file" id="image" name="image">
                 </div>
@@ -76,32 +84,24 @@
                         <th scope="col">Name</th>
                         <th scope="col">Price</th>
                         <th scope="col">Stock</th>
+                        <th scope="col">State</th>
                         <th scope="col">Edit</th>
-                        <th scope="col">Delete</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($products as $product)
                         <tr>
-                            <td>{{ $product->getId() }}</td>
-                            <td>{{ $product->getName() }}</td>
-                            <td>{{ $product->getPrice() }}</td>
-                            <td>{{ $product->getStock() }}</td>
+                            <td>{{ $product->id }}</td>
+                            <td>{{ $product->name }}</td>
+                            <td>{{ $product->price }}</td>
+                            <td>{{ $product->stock }}</td>
+                            <td>{{ $product->state == 'active' ? 'Active' : 'Inactive' }}</td>
                             <td>
-                                <a class="btn btn-primary"
-                                    href="{{ route('admin.product.edit', ['id' => $product->getId()]) }}">
+                                <a class="btn btn-primary" href="{{ route('admin.product.edit', ['id' => $product->id]) }}">
                                     <i class="bi-pencil"></i>
                                 </a>
                             </td>
                             <td>
-                                <form action="{{ route('admin.product.delete', $product->getId()) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-danger">
-                                        <i class="bi-trash"></i>
-                                    </button>
-                                </form>
-                            </td>
                         </tr>
                     @endforeach
                 </tbody>

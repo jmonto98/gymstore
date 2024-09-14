@@ -25,7 +25,7 @@
                             <a class="nav-link text-white" href="{{ route('admin.home.index') }}">Admin - Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="{{ route('admin.product.create') }}">Admin -Products</a>
+                            <a class="nav-link text-white" href="{{ route('admin.product.index') }}">Admin -Products</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="{{ route('category.home.index') }}">Admin -Categories</a>

@@ -66,7 +66,7 @@
                                 </a>
                             </td>
                             <td>
-                                <form action="{{ route('category.destroy', $category->getId()) }}" method="POST">
+                                <form action="{{ route('category.delete', $category->getId()) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger">

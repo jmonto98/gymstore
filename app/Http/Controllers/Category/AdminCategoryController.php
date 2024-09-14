@@ -28,7 +28,7 @@ class AdminCategoryController extends Controller
         return redirect()->route('category.home.index')->with('success', 'Category was successfully created');
     }
 
-    public function destroy(int $id): RedirectResponse
+    public function delete(int $id): RedirectResponse
     {
         $category = Category::findOrFail($id);
         $category->delete();

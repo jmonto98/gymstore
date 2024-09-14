@@ -10,7 +10,7 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'price', 'stock', 'image', 'sumReviews', 'totalReviews', 'category_id',
+        'name', 'price', 'stock', 'image', 'sumReviews', 'totalReviews', 'category_id', 'state',
     ];
 
     public static function validate($request)
@@ -22,6 +22,7 @@ class Product extends Model
             'stock' => 'required|numeric|gt:0',
             'image' => 'nullable|image',
             'category_id' => 'required|exists:categories,id',
+            'state' => 'required|string',
         ]);
     }
 
@@ -113,5 +114,15 @@ class Product extends Model
     public function getCategoryId(): int
     {
         return $this->attributes['category_id'];
+    }
+
+    public function getState(): string
+    {
+        return $this->attributes['state'];
+    }
+
+    public function setState(string $state): void
+    {
+        $this->attributes['state'] = $state;
     }
 }
