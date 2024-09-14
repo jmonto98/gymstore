@@ -10,7 +10,7 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'price', 'stock', 'image', 'sumReviews', 'totalReviews', 'category_id','state',
+        'name', 'price', 'stock', 'image', 'sumReviews', 'totalReviews', 'category_id', 'state',
     ];
 
     public static function validate($request)

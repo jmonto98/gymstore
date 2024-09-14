@@ -22,28 +22,19 @@ class AdminProductController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-        // Validar los datos del formulario
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'price' => 'required|numeric',
-            'stock' => 'required|integer',
-            'category_id' => 'required|exists:categories,id',
-            'state' => 'required|in:active,inactive',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
-
+        Product::validate($request);
         $newProduct = new Product;
         $newProduct->name = $request->input('name');
         $newProduct->price = $request->input('price');
         $newProduct->stock = $request->input('stock');
         $newProduct->category_id = $request->input('category_id');
         $newProduct->state = $request->input('state');
-        $newProduct->image = 'default_image.png'; // Imagen por defecto
+        $newProduct->image = 'default_image.png';
 
         $newProduct->save();
 
         if ($request->hasFile('image')) {
-            $imageName = 'images/' . $newProduct->id . '.' . $request->file('image')->extension();
+            $imageName = 'images/'.$newProduct->id.'.'.$request->file('image')->extension();
             Storage::disk('public')->put($imageName, file_get_contents($request->file('image')->getRealPath()));
             $newProduct->image = $imageName;
             $newProduct->save();
@@ -81,16 +72,8 @@ class AdminProductController extends Controller
 
     public function update(Request $request, $id): RedirectResponse
     {
-        // Validar los datos del formulario
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'price' => 'required|numeric',
-            'stock' => 'required|integer',
-            'category_id' => 'required|exists:categories,id',
-            'state' => 'required|in:active,inactive',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
 
+        Product::validate($request);
         $product = Product::findOrFail($id);
         $product->name = $request->input('name');
         $product->price = $request->input('price');
@@ -99,12 +82,11 @@ class AdminProductController extends Controller
         $product->state = $request->input('state');
 
         if ($request->hasFile('image')) {
-            // Eliminar imagen existente si existe
             if ($product->image && Storage::disk('public')->exists($product->image)) {
                 Storage::disk('public')->delete($product->image);
             }
 
-            $imageName = 'images/' . $product->id . '.' . $request->file('image')->extension();
+            $imageName = 'images/'.$product->id.'.'.$request->file('image')->extension();
             Storage::disk('public')->put($imageName, file_get_contents($request->file('image')->getRealPath()));
             $product->image = $imageName;
         }
