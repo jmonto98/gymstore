@@ -1,27 +1,83 @@
-.copyright {
-    background-color: #1a252f;
-    }
-    .fixed {
-    -ms-flex: 0 0 250px;
-    flex: 0 0 250px;
-    }
-    .content-grey {
-    background-color: #f8f9fc;
-    }
-    hr {
-    margin-top: 0.8em;
-    margin-bottom: 0.8em;
-    }
-    .img-profile {
-    height: 2rem;
-    width: 2rem;
-    }
-    .profile-font {
-    color: #858796 !important;
-    font-size: 80%;
-    font-weight: 400;
-    }
-    .card-header {
-    background-color: #f8f9fc;
-    border-bottom: 1px solid #e3e6f0;
-    }
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+    font-size: 1.25rem; 
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 1em;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.875rem;
+}
+
+#hero {
+    background: url('/images/fitness-bg.jpg') no-repeat center center/cover;
+    color: #fff;
+    padding: 5em 1em;
+    text-align: center;
+    font-size: 1.5rem; 
+}
+
+#hero .btn {
+    background-color: #f80;
+    color: #fff;
+    padding: 1em 2em;
+    text-decoration: none;
+    margin-top: 2em;
+    font-size: 1rem; 
+}
+
+.product-grid {
+    display: flex;
+    justify-content: space-around;
+    margin: 2em 0;
+}
+
+.product {
+    text-align: center;
+    font-size: 0.875rem; 
+}
+
+footer {
+    text-align: center;
+    padding: 1em;
+    background: #333;
+    color: #fff;
+    font-size: 0.875rem; 
+}
+
+.sidebar {
+    background-color: #45484b; 
+    color: #ffffff;
+}
+
+.sidebar .nav-link {
+    color: #ffffff; 
+}
+
+.sidebar .nav-link.active {
+    background-color: #495057; 
+}
+
+.sidebar .nav-item:hover .nav-link {
+    background-color: #495057;
+}

@@ -16,8 +16,8 @@ class UseMode extends Model
     public static function validate($request)
     {
         $request->validate([
-            'videoUrl' => 'required|string',
-            'product_id' => 'required',
+            'videoUrl' => 'required|url',
+            'product_id' => 'required|exists:products,id',
         ]);
     }
 
@@ -39,5 +39,10 @@ class UseMode extends Model
     public function getProductId(): int
     {
         return $this->attributes['product_id'];
+    }
+
+    public function getId(): string
+    {
+        return $this->attributes['id'];
     }
 }
