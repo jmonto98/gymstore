@@ -9,9 +9,14 @@ public function update(Request $request, $id): void
     {
         $request->validate([
         "name" => "required|max:255",
-        "description" => "required",
-        "price" => "required|numeric|gt:0",
-        'image' => 'image',
+        "lastName" => "required|max:255",
+        'address' => "required|max:255",
+        'email' => "required|email",
+        'username' => "required|max:255",
+        'password' => 'current_password',
+        'rol' => "required",
+        'state'=> "required",
+        'balance' => "required|numeric|gt:0",
     ]); 
     }
 }
