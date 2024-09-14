@@ -4,9 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        crossorigin="anonymous">
-    <link href="{{ asset('/css/admin.css') }}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     <title>@yield('title', 'Admin - Gym Store')</title>
 </head>
 
@@ -26,12 +25,13 @@
                             <a class="nav-link text-white" href="{{ route('admin.home.index') }}">Admin - Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="{{ route('admin.product.create') }}">Admin -
-                                Products</a>
+                            <a class="nav-link text-white" href="{{ route('admin.product.create') }}">Admin -Products</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="{{ route('category.home.index') }}">Admin -
-                                Categories</a>
+                            <a class="nav-link text-white" href="{{ route('category.home.index') }}">Admin -Categories</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="{{ route('useMode.home.index') }}">Admin -UseMode</a>
                         </li>
                     </ul>
                     <hr>
@@ -49,8 +49,7 @@
                     <div class="btn-toolbar mb-2 mb-md-0">
                         <div class="btn-group me-2">
                             <span class="profile-font me-2">Admin</span>
-                            <img class="img-profile rounded-circle" src="{{ asset('/images/undraw_profile.svg') }}"
-                                alt="Profile" width="32" height="32">
+                            <img class="img-profile rounded-circle" src="{{ asset('/images/undraw_profile.svg') }}"alt="Profile" width="33" height="33">
                         </div>
                     </div>
                 </div>

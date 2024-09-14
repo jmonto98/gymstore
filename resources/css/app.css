@@ -1,0 +1,55 @@
+body {
+    background-color: #f1f1f1; 
+    color: #333; 
+}
+
+
+copyright {
+    background-color: #003366; 
+    color: #ffffff;
+    padding: 1rem; 
+    text-align: center;
+    font-size: 0.875rem; 
+}
+
+.fixed {
+    -ms-flex: 0 0 250px;
+    flex: 0 0 250px;
+    background-color: #004080; 
+    color: #ffffff;
+}
+
+.content-grey {
+    background-color: #e9ecef; 
+    padding: 1rem; 
+    border-radius: 0.5rem; 
+}
+
+
+hr {
+    margin-top: 0.8em;
+    margin-bottom: 0.8em;
+    border: 0; 
+    height: 1px; 
+    background: #cccccc; 
+}
+
+.img-profile {
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%; 
+    border: 2px solid #007bff;
+}
+
+.profile-font {
+    color: #6c757d !important; 
+    font-size: 0.875rem; 
+    font-weight: 400; 
+}
+
+.card-header {
+    background-color: #007bff; 
+    color: #ffffff; 
+    border-bottom: 1px solid #0056b3; 
+    padding: 0.75rem 1.25rem; 
+}
