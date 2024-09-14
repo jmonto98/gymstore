@@ -16,11 +16,11 @@ class Product extends Model
     public static function validate($request)
     {
         $request->validate([
-            "name" => "required|max:255",
-            "price" => "required|numeric|gt:0",
-            "stock" => "required|numeric|gt:0",
+            'name' => 'required|max:255',
+            'price' => 'required|numeric|gt:0',
+            'stock' => 'required|numeric|gt:0',
             'image' => 'image',
-            "category_id" => "required",
+            'category_id' => 'required',
         ]);
     }
 
