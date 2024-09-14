@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('username')->unique();
             $table->string('password');
-            $table->string('rol');
+            $table->string('rol')->default('customer');
             $table->string('state');
             $table->integer('balance');
             $table->timestamps();

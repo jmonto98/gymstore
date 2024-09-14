@@ -13,7 +13,7 @@
   <!-- header -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-secondary py-4">
     <div class="container">
-      <a class="navbar-brand" href="#">Store Online</a>
+      <a class="navbar-brand" href="#">GymStore</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
         aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -31,7 +31,7 @@
 
   <header class="masthead bg-primary text-white text-center py-4">
     <div class="container d-flex align-items-center flex-column">
-      <h2>@yield('subtitle', 'Gym Store')</h2>
+      <h2>@yield('subtitle', 'GymStore')</h2>
     </div>
   </header>
   <!-- header -->
