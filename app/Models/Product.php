@@ -19,8 +19,8 @@ class Product extends Model
             "name" => "required|max:255",
             "price" => "required|numeric|gt:0",
             "stock" => "required|numeric|gt:0",
-            'image' => 'image',
-            "category_id" => "required",
+            'image' => "nullable|image",
+            "category_id" => "required|exists:categories,id",
         ]);
     }
 
@@ -42,6 +42,11 @@ class Product extends Model
     public function items()
     {
         return $this->hasMany(Item::class);
+    }
+
+    public function getId(): string
+    {
+        return $this->attributes['id'];
     }
 
     public function getName(): string

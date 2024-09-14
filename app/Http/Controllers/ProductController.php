@@ -1,8 +1,6 @@
 <?php
 namespace App\Http\Controllers;
 use App\Models\Product;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class ProductController extends Controller
@@ -13,7 +11,7 @@ class ProductController extends Controller
         $viewData["title"] = "Products - Online Store";
         $viewData["subtitle"] = "List of products";
         $viewData["products"] = Product::all();
-    return view('product.index')->with("viewData", $viewData);
+        return view('product.index')->with("viewData", $viewData);
     }
 
     public function show($id): View

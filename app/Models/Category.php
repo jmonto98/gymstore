@@ -27,6 +27,11 @@ class Category extends Model
         return $this->hasMany(Product::class);
     }
 
+    public function getId(): string
+    {
+        return $this->attributes['id'];
+    }
+
     public function getName(): string
     {
         return $this->attributes['name'];
@@ -45,5 +50,25 @@ class Category extends Model
     public function setDescription(string $description): void
     {
         $this->attributes['description'] = $description;
+    }
+
+    public function getCreatedAt(): mixed
+    {
+        return $this->attributes['created_at'];
+    }
+
+    public function setCreatedAt(mixed $createdAt): void
+    {
+        $this->attributes['created_at'] = $createdAt;
+    }
+
+    public function getUpdatedAt(): mixed
+    {
+        return $this->attributes['updated_at'];
+    }
+
+    public function setUpdatedAt(mixed $updatedAt): void
+    {
+        $this->attributes['updated_at'] = $updatedAt;
     }
 }
