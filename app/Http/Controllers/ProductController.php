@@ -10,10 +10,11 @@ class ProductController extends Controller
     public function index(): View
     {
         $viewData = [];
-        $viewData["title"] = "Products - Online Store";
-        $viewData["subtitle"] = "List of products";
-        $viewData["products"] = Product::all();
-    return view('product.index')->with("viewData", $viewData);
+        $viewData['title'] = 'Products - Online Store';
+        $viewData['subtitle'] = 'List of products';
+        $viewData['products'] = Product::all();
+
+        return view('product.index')->with('viewData', $viewData);
     }
 
     public function show($id): View

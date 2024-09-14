@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Product;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -16,10 +16,9 @@ class AdminProductController extends Controller
     {
         $products = Product::all();
         $categories = Category::all();
+
         return view('admin.product.create', compact('products', 'categories'));
     }
-
-
 
     public function store(Request $request): RedirectResponse
     {
@@ -30,13 +29,13 @@ class AdminProductController extends Controller
         $newProduct->setPrice($request->input('price'));
         $newProduct->setStock($request->input('stock'));
         $newProduct->setImage('default_image.png');
-        $newProduct->setSumReviews(0);  
+        $newProduct->setSumReviews(0);
         $newProduct->setTotalReviews(0);
         $newProduct->category_id = $request->input('category_id');
         $newProduct->save();
 
         if ($request->hasFile('image')) {
-            $imageName = 'images/' . $newProduct->getId() . '.' . $request->file('image')->extension();
+            $imageName = 'images/'.$newProduct->getId().'.'.$request->file('image')->extension();
             Storage::disk('public')->put(
                 $imageName,
                 file_get_contents($request->file('image')->getRealPath())
@@ -59,12 +58,13 @@ class AdminProductController extends Controller
     {
 
         $products = Product::findOrFail($id);
-        $categories = Category::all(); 
+        $categories = Category::all();
         $viewData = [
             'product' => $products,
             'categories' => $categories,
             'title' => 'Edit Product',
         ];
+
         return view('admin.product.edit', $viewData);
 
     }
@@ -74,25 +74,25 @@ class AdminProductController extends Controller
         Product::validate($request);
 
         $product = Product::findOrFail($id);
-    
+
         $product->name = $request->input('name');
         $product->price = $request->input('price');
         $product->stock = $request->input('stock');
         $product->category_id = $request->input('category_id');
-        
+
         if ($request->hasFile('image')) {
             if ($product->image && Storage::disk('public')->exists($product->image)) {
                 Storage::disk('public')->delete($product->image);
             }
 
-            $imageName = 'images/' . $product->id . '.' . $request->file('image')->extension();
+            $imageName = 'images/'.$product->id.'.'.$request->file('image')->extension();
             Storage::disk('public')->put(
                 $imageName,
                 file_get_contents($request->file('image')->getRealPath())
             );
             $product->image = $imageName;
         }
-    
+
         $product->save();
 
         return redirect()->route('admin.product.create')->with('success', 'Product updated successfully.');

@@ -1,13 +1,13 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home.index');
 
-Route::get('/admin', 'App\Http\Controllers\Admin\AdminHomeController@index')->name("admin.home.index");
-Route::get('/admin/products', 'App\Http\Controllers\Admin\AdminProductController@index')->name("admin.product.create"); 
-Route::post('/admin/products/store', 'App\Http\Controllers\Admin\AdminProductController@store')->name("admin.product.store"); 
+Route::get('/admin', 'App\Http\Controllers\Admin\AdminHomeController@index')->name('admin.home.index');
+Route::get('/admin/products', 'App\Http\Controllers\Admin\AdminProductController@index')->name('admin.product.create');
+Route::post('/admin/products/store', 'App\Http\Controllers\Admin\AdminProductController@store')->name('admin.product.store');
 Route::delete('/admin/products/{id}/delete', 'App\Http\Controllers\Admin\AdminProductController@delete')->name('admin.product.delete');
 Route::get('/admin/products/{id}/edit', 'App\Http\Controllers\Admin\AdminProductController@edit')->name('admin.product.edit');
 Route::put('/admin/products/{id}/update', 'App\Http\Controllers\Admin\AdminProductController@update')->name('admin.product.update');
@@ -22,3 +22,5 @@ Route::put('/usesMode/{id}', 'App\Http\Controllers\UseMode\AdminUseModeControlle
 Route::post('/usesMode/store', 'App\Http\Controllers\UseMode\AdminUseModeController@store')->name('useMode.store');
 Route::delete('/usesMode/{id}', 'App\Http\Controllers\UseMode\AdminUseModeController@delete')->name('useMode.delete');
 // Auth::routes();
+
+Route::get('/user', 'App\Http\Controllers\User\UserHomeController@index')->name('user.index');

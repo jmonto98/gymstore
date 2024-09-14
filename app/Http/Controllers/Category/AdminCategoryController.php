@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Category;
+
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\RedirectResponse;
@@ -18,7 +19,6 @@ class AdminCategoryController extends Controller
 
         return view('category.home.index')->with('viewData', $viewData);
     }
-
 
     public function store(Request $request): RedirectResponse
     {
@@ -57,5 +57,4 @@ class AdminCategoryController extends Controller
 
         return redirect()->route('category.home.index');
     }
-
 }
