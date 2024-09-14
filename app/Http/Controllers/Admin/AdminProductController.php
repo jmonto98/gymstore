@@ -36,7 +36,7 @@ class AdminProductController extends Controller
         $newProduct->save();
 
         if ($request->hasFile('image')) {
-            $imageName = $newProduct->getId().'.'.$request->file('image')->extension();
+            $imageName = 'images/' . $newProduct->getId() . '.' . $request->file('image')->extension();
             Storage::disk('public')->put(
                 $imageName,
                 file_get_contents($request->file('image')->getRealPath())
@@ -81,13 +81,15 @@ class AdminProductController extends Controller
         $product->category_id = $request->input('category_id');
         
         if ($request->hasFile('image')) {
-
             if ($product->image && Storage::disk('public')->exists($product->image)) {
                 Storage::disk('public')->delete($product->image);
             }
-    
-            $imageName = $product->id . '.' . $request->file('image')->extension();
-            $request->file('image')->storeAs('public/images', $imageName);
+
+            $imageName = 'images/' . $product->id . '.' . $request->file('image')->extension();
+            Storage::disk('public')->put(
+                $imageName,
+                file_get_contents($request->file('image')->getRealPath())
+            );
             $product->image = $imageName;
         }
     

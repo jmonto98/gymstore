@@ -59,7 +59,8 @@
                 <div class="col-md-6">
                     @if ($product->getImage())
                         <div class="mb-3">
-                            <img src="{{ asset('storage/' . $product->getImage()) }}" alt="Current Image" class="img-fluid" style="max-height: 150px;">
+                            <img src="{{ asset('storage/' . $product->getImage()) }}" alt="Current Image" class="img-fluid"
+                                style="max-height: 150px;">
                         </div>
                     @endif
                 </div>

@@ -28,15 +28,18 @@
                 <div class="row mb-3">
                     <div class="col-md-4">
                         <label for="name" class="form-label">Name:</label>
-                        <input id="name" name="name" value="{{ old('name') }}" type="text" class="form-control" required>
+                        <input id="name" name="name" value="{{ old('name') }}" type="text" class="form-control"
+                            required>
                     </div>
                     <div class="col-md-4">
                         <label for="price" class="form-label">Price:</label>
-                        <input id="price" name="price" value="{{ old('price') }}" type="number" step="0.01" class="form-control" required>
+                        <input id="price" name="price" value="{{ old('price') }}" type="number" step="0.01"
+                            class="form-control" required>
                     </div>
                     <div class="col-md-4">
                         <label for="stock" class="form-label">Stock:</label>
-                        <input id="stock" name="stock" value="{{ old('stock') }}" type="number" class="form-control" required>
+                        <input id="stock" name="stock" value="{{ old('stock') }}" type="number" class="form-control"
+                            required>
                     </div>
                 </div>
                 <div class="mb-3">
@@ -71,6 +74,7 @@
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Name</th>
+                        <th scope="col">Price</th>
                         <th scope="col">Stock</th>
                         <th scope="col">Edit</th>
                         <th scope="col">Delete</th>
@@ -79,16 +83,18 @@
                 <tbody>
                     @foreach ($products as $product)
                         <tr>
-                            <td>{{ $product->id }}</td>
-                            <td>{{ $product->name }}</td>
-                            <td>{{ $product->stock }}</td>
+                            <td>{{ $product->getId() }}</td>
+                            <td>{{ $product->getName() }}</td>
+                            <td>{{ $product->getPrice() }}</td>
+                            <td>{{ $product->getStock() }}</td>
                             <td>
-                                <a class="btn btn-primary" href="{{ route('admin.product.edit', ['id' => $product->id]) }}">
+                                <a class="btn btn-primary"
+                                    href="{{ route('admin.product.edit', ['id' => $product->getId()]) }}">
                                     <i class="bi-pencil"></i>
                                 </a>
                             </td>
                             <td>
-                                <form action="{{ route('admin.product.delete', $product->id) }}" method="POST">
+                                <form action="{{ route('admin.product.delete', $product->getId()) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger">

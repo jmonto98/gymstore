@@ -1,80 +1,84 @@
 @extends('layouts.admin')
 @section('title', $viewData["title"])
 @section('content')
-<div class="card mb-4">
-    <div class="card-header">
-        Create categories
-    </div>
-    <div class="card-body">
-        @if(session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
-        @if($errors->any())
-            <ul class="alert alert-danger list-unstyled">
-                @foreach($errors->all() as $error)
-                    <li>- {{ $error }}</li>
-                @endforeach
-            </ul>
-        @endif
+<div class="container py-4">
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Create Category</h4>
+        </div>
+        <div class="card-body">
+            @if($errors->any())
+                <div class="alert alert-danger">
+                    <ul class="mb-0">
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
-        <form method="POST" action="{{ route('category.store') }}">
-            @csrf
-            <div class="row">
-                <div class="col">
-                    <div class="mb-3 row">
-                        <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Name:</label>
-                        <div class="col-lg-10 col-md-6 col-sm-12">
-                            <input name="name" value="{{ old('name') }}" type="text" class="form-control">
-                        </div>
+            <form method="POST" action="{{ route('category.store') }}">
+                @csrf
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="name" class="form-label">Name:</label>
+                        <input id="name" name="name" value="{{ old('name') }}" type="text" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="description" class="form-label">Description:</label>
+                        <textarea id="description" name="description" class="form-control" rows="3">{{ old('description') }}</textarea>
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label">Description</label>
-                    <textarea class="form-control" name="description" rows="3">{{ old('description') }}</textarea>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Create Category</button>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+            </form>
+        </div>
     </div>
-</div>
-<div class="card">
-    <div class="card-header">
-        Manage Categories
-    </div>
-    <div class="card-body">
-        <table class="table table-bordered table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Edit</th>
-                    <th scope="col">Delete</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($viewData["categories"] as $category)
+
+    <div class="card mt-4">
+        <div class="card-header">
+            Manage Categories
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered table-striped">
+                <thead>
                     <tr>
-                        <td>{{ $category->getId() }}</td>
-                        <td>{{ $category->getName() }}</td>
-                        <td>
-                            <a class="btn btn-primary" href="{{route('category.edit', ['id' => $category->getId()])}}">
-                                <i class="bi-pencil"></i>
-                            </a>
-                        </td>
-                        <td>
-                            <form action="{{ route('category.destroy', $category->getId())}}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-danger">
-                                    <i class="bi-trash"></i>
-                                </button>
-                            </form>
-                        </td>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach ($viewData["categories"] as $category)
+                        <tr>
+                            <td>{{ $category->getId() }}</td>
+                            <td>{{ $category->getName() }}</td>
+                            <td>
+                                <a class="btn btn-primary" href="{{ route('category.edit', ['id' => $category->getId()]) }}">
+                                    <i class="bi-pencil"></i>
+                                </a>
+                            </td>
+                            <td>
+                                <form action="{{ route('category.destroy', $category->getId()) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger">
+                                        <i class="bi-trash"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 @endsection
