@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-
 class Item extends Model
 {
     use HasFactory;
@@ -17,10 +16,10 @@ class Item extends Model
     public static function validate($request)
     {
         $request->validate([
-            "price" => "required|numeric|gt:0",
-            "quantity" => "required|numeric|gt:0",
-            "order_id" => "required",
-            "product_id" => "required",
+            'price' => 'required|numeric|gt:0',
+            'quantity' => 'required|numeric|gt:0',
+            'order_id' => 'required',
+            'product_id' => 'required',
         ]);
     }
 
@@ -63,5 +62,4 @@ class Item extends Model
     {
         return $this->attributes['product_id'];
     }
-
 }
