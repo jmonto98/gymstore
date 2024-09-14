@@ -17,6 +17,7 @@ class CreateProductsTable extends Migration
             $table->integer('sumReviews')->default(0);
             $table->integer('totalReviews')->default(0);
             $table->unsignedBigInteger('category_id');
+            $table->string('state');
             $table->timestamps();
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
