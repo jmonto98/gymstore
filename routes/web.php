@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home.index');
 Route::get('/admin', 'App\Http\Controllers\Admin\AdminHomeController@index')->name("admin.home.index");
@@ -14,3 +15,6 @@ Route::get('/categories/{id}/edit', 'App\Http\Controllers\Category\AdminCategory
 Route::put('/categories/{id}/edit', 'App\Http\Controllers\Category\AdminCategoryController@update')->name('category.update');
 Route::post('/categories/store', 'App\Http\Controllers\Category\AdminCategoryController@store')->name('category.store');
 Route::delete('/categories/{id}', 'App\Http\Controllers\Category\AdminCategoryController@destroy')->name('category.destroy');
+Route::get('/admin', 'App\Http\Controllers\Admin\AdminHomeController@index')->name('admin.index');
+
+Auth::routes();

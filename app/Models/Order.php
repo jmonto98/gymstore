@@ -2,11 +2,9 @@
 
 namespace App\Models;
 
-use DateTime;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Date;
-use Illuminate\Validation\Rules\In;
 
 class Order extends Model
 {
@@ -19,14 +17,14 @@ class Order extends Model
     public static function validate($request)
     {
         $request->validate([
-            "orderDate" => "required|date",
-            "status" => "required|",
-            "totalOrder" => "required|numeric|gt:0",
-            "cusPayment" => "required|string",
-            "user_id" => "required",
+            'orderDate' => 'required|date',
+            'status' => 'required|',
+            'totalOrder' => 'required|numeric|gt:0',
+            'cusPayment' => 'required|string',
+            'user_id' => 'required',
         ]);
     }
-    
+
     public function user()
     {
         return $this->belongsTo(User::class);

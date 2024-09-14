@@ -16,8 +16,8 @@ class UseMode extends Model
     public static function validate($request)
     {
         $request->validate([
-            "videoUrl" => "required|string",
-            "product_id" => "required",
+            'videoUrl' => 'required|string',
+            'product_id' => 'required',
         ]);
     }
 
@@ -40,5 +40,4 @@ class UseMode extends Model
     {
         return $this->attributes['product_id'];
     }
-
 }

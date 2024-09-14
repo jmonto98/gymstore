@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+<<<<<<< HEAD
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\RedirectResponse;
+=======
+>>>>>>> bc23343a033d79ee485172ce535bd115cbe0521d
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
@@ -57,6 +60,7 @@ class AdminProductController extends Controller
 
     public function edit($id): View
     {
+<<<<<<< HEAD
         $products = Product::findOrFail($id);
         $categories = Category::all(); 
         $viewData = [
@@ -65,10 +69,18 @@ class AdminProductController extends Controller
             'title' => 'Edit Product',
         ];
         return view('admin.product.edit', $viewData);
+=======
+        $viewData = [];
+        $viewData['title'] = 'Admin Page - Edit Product - Online Store';
+        $viewData['product'] = Product::findOrFail($id);
+
+        return view('admin.product.edit')->with('viewData', $viewData);
+>>>>>>> bc23343a033d79ee485172ce535bd115cbe0521d
     }
 
     public function update(Request $request, $id): RedirectResponse
     {
+<<<<<<< HEAD
         Product::validate($request);
 
         $product = Product::findOrFail($id);
@@ -92,5 +104,13 @@ class AdminProductController extends Controller
         $product->save();
 
         return redirect()->route('admin.product.create')->with('success', 'Product updated successfully.');
+=======
+        $request->validate([
+            'name' => 'required|max:255',
+            'description' => 'required',
+            'price' => 'required|numeric|gt:0',
+            'image' => 'image',
+        ]);
+>>>>>>> bc23343a033d79ee485172ce535bd115cbe0521d
     }
 }

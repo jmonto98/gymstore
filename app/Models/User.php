@@ -23,15 +23,15 @@ class User extends Authenticatable
     public static function validate($request)
     {
         $request->validate([
-            "name" => "required|string",
-            "lastName" => "required|string",
-            "address" => "required|string",
-            'email' => "required|string",
-            "username" => "required|string",
-            "password" => "required|string",
-            "rol" => "required|string",
-            "state" => "required|string",
-            "balance" => "required|numeric",
+            'name' => 'required|string',
+            'lastName' => 'required|string',
+            'address' => 'required|string',
+            'email' => 'required|string',
+            'username' => 'required|string',
+            'password' => 'required|string',
+            'rol' => 'required|string',
+            'state' => 'required|string',
+            'balance' => 'required|numeric',
         ]);
     }
 
