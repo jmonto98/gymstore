@@ -12,9 +12,21 @@ class UserHomeController extends Controller
 {
     public function index(): View
     {
-        $user = User::all();
+        $users = User::all();
 
-        return view('user.index');
+        return view('user.index', compact('users'));
+
+    }
+
+    public function edit($id): View
+    {
+        $user = User::findOrFail($id);
+        $viewData = [
+            'user' => $user,
+            'title' => 'Edit User',
+        ];
+
+        return view('user.edit', $viewData);
     }
 
     public function create(Request $request): RedirectResponse
@@ -37,18 +49,23 @@ class UserHomeController extends Controller
         return redirect()->route('user.index')->with('success', 'User created successfully.');
     }
 
-    public function update(Request $request, $id): void
+    public function update(Request $request, $id): RedirectResponse
     {
-        $request->validate([
-            'name' => 'required|max:255',
-            'lastName' => 'required|max:255',
-            'address' => 'required|max:255',
-            'email' => 'required|email',
-            'username' => 'required|max:255',
-            'password' => 'current_password',
-            'rol' => 'required',
-            'state' => 'required',
-            'balance' => 'required|numeric|gt:0',
-        ]);
+
+        User::validate($request);
+        $user = User::findOrFail($id);
+        $user->setName($request->input('name'));
+        $user->setLastName($request->input('lastName'));
+        $user->setAddress($request->input('address'));
+        $user->setEmail($request->input('email'));
+        $user->setUsername($request->input('username'));
+        $user->setPassword($request->input('password'));
+        $user->setRol($request->input('rol'));
+        $user->setState($request->input('state'));
+        $user->setBalance($request->input('balance'));
+
+        $user->save();
+
+        return redirect()->route('user.index')->with('success', 'User updated successfully.');
     }
 }

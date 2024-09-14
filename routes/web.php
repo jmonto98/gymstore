@@ -25,3 +25,5 @@ Route::delete('/usesMode/{id}', 'App\Http\Controllers\UseMode\AdminUseModeContro
 
 Route::get('/user', 'App\Http\Controllers\User\UserHomeController@index')->name('user.index');
 Route::post('/user/create', 'App\Http\Controllers\User\UserHomeController@create')->name('user.create');
+Route::get('/user/edit/{id}', 'App\Http\Controllers\User\UserHomeController@edit')->name('user.edit');
+Route::put('/user/update/{id}', 'App\Http\Controllers\User\UserHomeController@update')->name('user.update');

@@ -26,13 +26,8 @@
                     <a class="nav-link active" href="">Contact Us</a>
                     <div class="vr bg-white mx-2 d-none d-lg-block"></div>
                     @guest
-<<<<<<< HEAD
                     <a class="nav-link active" href="">Login</a>
                     <a class="nav-link active" href="">Register</a>
-=======
-                    <!-- <a class="nav-link active" href="{{ route('login') }}">Login</a>
-                    <a class="nav-link active" href="{{ route('register') }}">Register</a> -->
->>>>>>> 8a1b4849a40e9ea45820d5f4cf4e4d5e41abc135
                     @else
                     <form id="logout" action="{{ route('logout') }}" method="POST">
                         <a role="button" class="nav-link active"
