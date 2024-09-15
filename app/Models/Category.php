@@ -38,7 +38,7 @@ class Category extends Model
 
     public function setName(string $name): void
     {
-        $this->attributes['name'] = $name;
+        $this->attributes['name'] = strtoupper($name);
     }
 
     public function getDescription(): string
@@ -48,7 +48,7 @@ class Category extends Model
 
     public function setDescription(string $description): void
     {
-        $this->attributes['description'] = $description;
+        $this->attributes['description'] = ucfirst(strtolower($description));
     }
 
     public function getCreatedAt(): mixed

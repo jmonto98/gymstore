@@ -57,7 +57,7 @@ class User extends Authenticatable
 
     public function setName(string $name): void
     {
-        $this->attributes['name'] = $name;
+        $this->attributes['name'] = strtoupper($name);
     }
 
     public function getLastName(): string
@@ -67,7 +67,7 @@ class User extends Authenticatable
 
     public function setLastName(string $lastName): void
     {
-        $this->attributes['lastName'] = $lastName;
+        $this->attributes['lastName'] = strtoupper($lastName);
     }
 
     public function getAddress(): string
@@ -77,7 +77,7 @@ class User extends Authenticatable
 
     public function setAddress(string $address): void
     {
-        $this->attributes['address'] = $address;
+        $this->attributes['address'] = strtolower($address);
     }
 
     public function getEmail(): string
@@ -87,7 +87,7 @@ class User extends Authenticatable
 
     public function setEmail(string $email): void
     {
-        $this->attributes['email'] = $email;
+        $this->attributes['email'] = strtolower($email);
     }
 
     public function getUsername(): string
@@ -97,7 +97,7 @@ class User extends Authenticatable
 
     public function setUsername(string $username): void
     {
-        $this->attributes['username'] = $username;
+        $this->attributes['username'] = strtolower($username);
     }
 
     public function getPassword(): string
@@ -117,7 +117,7 @@ class User extends Authenticatable
 
     public function setRol(string $rol): void
     {
-        $this->attributes['rol'] = $rol;
+        $this->attributes['rol'] = strtoupper($rol);
     }
 
     public function getState(): string
@@ -127,7 +127,7 @@ class User extends Authenticatable
 
     public function setState(string $state): void
     {
-        $this->attributes['state'] = $state;
+        $this->attributes['state'] = strtoupper($state);
     }
 
     public function getBalance(): int

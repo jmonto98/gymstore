@@ -51,7 +51,7 @@ class Review extends Model
 
     public function setComment(string $comment): void
     {
-        $this->attributes['comment'] = $comment;
+        $this->attributes['comment'] = ucfirst(strtolower($comment));
     }
 
     public function getApproved(): bool
