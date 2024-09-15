@@ -18,6 +18,13 @@ class UserHomeController extends Controller
 
     }
 
+    public function register(): View
+    {
+
+        return view('user.register');
+
+    }
+
     public function edit($id): View
     {
         $user = User::findOrFail($id);
@@ -46,7 +53,7 @@ class UserHomeController extends Controller
 
         $newUser->save();
 
-        return redirect()->route('user.index')->with('success', 'User created successfully.');
+        return redirect()->route('home.index')->with('success', 'User created successfully.');
     }
 
     public function update(Request $request, $id): RedirectResponse

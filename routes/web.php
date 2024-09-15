@@ -23,6 +23,7 @@ Route::post('/usesMode/store', 'App\Http\Controllers\UseMode\AdminUseModeControl
 Route::delete('/usesMode/{id}', 'App\Http\Controllers\UseMode\AdminUseModeController@delete')->name('useMode.delete');
 // Auth::routes();
 
+Route::get('/register', 'App\Http\Controllers\User\UserHomeController@register')->name('user.register');
 Route::get('/user', 'App\Http\Controllers\User\UserHomeController@index')->name('user.index');
 Route::post('/user/create', 'App\Http\Controllers\User\UserHomeController@create')->name('user.create');
 Route::get('/user/edit/{id}', 'App\Http\Controllers\User\UserHomeController@edit')->name('user.edit');
