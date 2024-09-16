@@ -80,6 +80,7 @@ class AdminProductController extends Controller
         $product->stock = $request->input('stock');
         $product->category_id = $request->input('category_id');
         $product->state = $request->input('state');
+        $product->image = 'default_image.png';
 
         if ($request->hasFile('image')) {
             if ($product->image && Storage::disk('public')->exists($product->image)) {

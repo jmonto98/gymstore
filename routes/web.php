@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home.index');
 
+Route::get('/products', 'App\Http\Controllers\ProductController@index')->name('product.index');
+
 Route::get('/admin', 'App\Http\Controllers\Admin\AdminHomeController@index')->name('admin.home.index');
 Route::get('/admin/products', 'App\Http\Controllers\Admin\AdminProductController@index')->name('admin.product.index');
 Route::post('/admin/products/store', 'App\Http\Controllers\Admin\AdminProductController@store')->name('admin.product.store');
@@ -21,12 +23,13 @@ Route::get('/usesMode/{id}/edit', 'App\Http\Controllers\UseMode\AdminUseModeCont
 Route::put('/usesMode/{id}', 'App\Http\Controllers\UseMode\AdminUseModeController@update')->name('useMode.update');
 Route::post('/usesMode/store', 'App\Http\Controllers\UseMode\AdminUseModeController@store')->name('useMode.store');
 Route::delete('/usesMode/{id}', 'App\Http\Controllers\UseMode\AdminUseModeController@delete')->name('useMode.delete');
-// Auth::routes();
 
 Route::get('/register', 'App\Http\Controllers\User\UserHomeController@register')->name('user.register');
 Route::get('/user', 'App\Http\Controllers\User\UserHomeController@index')->name('user.index');
 Route::post('/user/create', 'App\Http\Controllers\User\UserHomeController@create')->name('user.create');
 Route::get('/user/edit/{id}', 'App\Http\Controllers\User\UserHomeController@edit')->name('user.edit');
 Route::put('/user/update/{id}', 'App\Http\Controllers\User\UserHomeController@update')->name('user.update');
+
+require __DIR__.'/auth.php';
 
 Auth::routes();

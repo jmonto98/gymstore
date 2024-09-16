@@ -29,9 +29,6 @@ class User extends Authenticatable
             'email' => 'required|string',
             'username' => 'required|string',
             'password' => 'required|string',
-            'rol' => 'required|string',
-            'state' => 'required|string',
-            'balance' => 'required|numeric',
         ]);
     }
 
