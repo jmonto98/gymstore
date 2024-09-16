@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Validation\Rules\In;
 
 class Review extends Model
 {
@@ -17,11 +16,11 @@ class Review extends Model
     public static function validate($request)
     {
         $request->validate([
-            "rating" => "required|numeric|gt:0",
-            "comment" => "required|max:255",
-            "approved" => "required|bool",
+            'rating' => 'required|numeric|gt:0',
+            'comment' => 'required|max:255',
+            'approved' => 'required|bool',
             'user_id' => 'required',
-            "product_id" => "required",
+            'product_id' => 'required',
         ]);
     }
 
@@ -52,7 +51,7 @@ class Review extends Model
 
     public function setComment(string $comment): void
     {
-        $this->attributes['comment'] = $comment;
+        $this->attributes['comment'] = ucfirst(strtolower($comment));
     }
 
     public function getApproved(): bool
@@ -74,5 +73,4 @@ class Review extends Model
     {
         return $this->attributes['product_id'];
     }
-
 }

@@ -10,17 +10,19 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'price', 'stock', 'image', 'sumReviews', 'totalReviews', 'category_id',
+        'name', 'price', 'stock', 'image', 'sumReviews', 'totalReviews', 'category_id', 'state',
     ];
 
     public static function validate($request)
     {
         $request->validate([
-            "name" => "required|max:255",
-            "price" => "required|numeric|gt:0",
-            "stock" => "required|numeric|gt:0",
-            'image' => 'image',
-            "category_id" => "required",
+
+            'name' => 'required|max:255',
+            'price' => 'required|numeric|gt:0',
+            'stock' => 'required|numeric|gt:0',
+            'image' => 'nullable|image',
+            'category_id' => 'required|exists:categories,id',
+            'state' => 'required|string',
         ]);
     }
 
@@ -39,9 +41,24 @@ class Product extends Model
         return $this->hasMany(Review::class);
     }
 
+    public static function sumPricesByQuantities($products, $productsInSession)
+    {
+        $total = 0;
+        foreach ($products as $product) {
+            $total = $total + ($product->getPrice()*$productsInSession[$product->getId()]);
+        }
+
+        return $total;
+    }
+
     public function items()
     {
         return $this->hasMany(Item::class);
+    }
+
+    public function getId(): string
+    {
+        return $this->attributes['id'];
     }
 
     public function getName(): string
@@ -52,6 +69,16 @@ class Product extends Model
     public function setName(string $name): void
     {
         $this->attributes['name'] = $name;
+    }
+
+    public function getDescription(): string
+    {
+        return $this->attributes['description'];
+    }
+
+    public function setDescription(string $description): void
+    {
+        $this->attributes['description'] = $description;
     }
 
     public function getPrice(): int
@@ -107,5 +134,15 @@ class Product extends Model
     public function getCategoryId(): int
     {
         return $this->attributes['category_id'];
+    }
+
+    public function getState(): string
+    {
+        return $this->attributes['state'];
+    }
+
+    public function setState(string $state): void
+    {
+        $this->attributes['state'] = $state;
     }
 }

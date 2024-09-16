@@ -19,9 +19,9 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('username')->unique();
             $table->string('password');
-            $table->string('rol')->default('customer');
-            $table->string('state');
-            $table->integer('balance');
+            $table->string('rol')->default('Customer');
+            $table->string('state')->default('Active');
+            $table->integer('balance')->default(0);
             $table->timestamps();
         });
 
