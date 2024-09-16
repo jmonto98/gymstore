@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('products', function (Blueprint $table) {
             //
-            $table->string('description')->default("Lorem Ipsum")->after('name');
+            $table->string('description')->default('Lorem Ipsum')->after('name');
         });
     }
 

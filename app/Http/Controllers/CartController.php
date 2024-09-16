@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
-use App\Models\Order;
 use App\Models\Item;
+use App\Models\Order;
+use App\Models\Product;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Date;
-use Carbon\Carbon;
 
 class CartController extends Controller
 {
@@ -17,23 +16,24 @@ class CartController extends Controller
         $total = 0;
         $productsInCart = [];
 
-        $productsInSession = $request->session()->get("products");
+        $productsInSession = $request->session()->get('products');
         if ($productsInSession) {
             $productsInCart = Product::findMany(array_keys($productsInSession));
             $total = Product::sumPricesByQuantities($productsInCart, $productsInSession);
         }
 
         $viewData = [];
-        $viewData["title"] = "Cart - Online Store";
-        $viewData["subtitle"] =  "Shopping Cart";
-        $viewData["total"] = $total;
-        $viewData["products"] = $productsInCart;
-        return view('cart.index')->with("viewData", $viewData);
+        $viewData['title'] = 'Cart - Online Store';
+        $viewData['subtitle'] = 'Shopping Cart';
+        $viewData['total'] = $total;
+        $viewData['products'] = $productsInCart;
+
+        return view('cart.index')->with('viewData', $viewData);
     }
 
     public function add(Request $request, $id)
     {
-        $products = $request->session()->get("products");
+        $products = $request->session()->get('products');
         $products[$id] = $request->input('quantity');
         $request->session()->put('products', $products);
 
@@ -43,16 +43,17 @@ class CartController extends Controller
     public function delete(Request $request)
     {
         $request->session()->forget('products');
+
         return back();
     }
 
     public function purchase(Request $request)
     {
-        $productsInSession = $request->session()->get("products");
+        $productsInSession = $request->session()->get('products');
         if ($productsInSession) {
             $userId = Auth::user()->getId();
-            $order = new Order();
-            $order-> setOrderDate(date(Carbon::now()));
+            $order = new Order;
+            $order->setOrderDate(date(Carbon::now()));
             $order->setStatus('Aproved');
             $order->setTotalOrder(0);
             $order->setCusPayment('ADV543RE8');
@@ -63,13 +64,13 @@ class CartController extends Controller
             $productsInCart = Product::findMany(array_keys($productsInSession));
             foreach ($productsInCart as $product) {
                 $quantity = $productsInSession[$product->getId()];
-                $item = new Item();
+                $item = new Item;
                 $item->setQuantity($quantity);
                 $item->setPrice($product->getPrice());
                 $item->setProductId($product->getId());
                 $item->setOrderId($order->getId());
                 $item->save();
-                $total = $total + ($product->getPrice()*$quantity);
+                $total = $total + ($product->getPrice() * $quantity);
             }
             $order->setTotalOrder($total);
             $order->save();
@@ -81,10 +82,11 @@ class CartController extends Controller
             $request->session()->forget('products');
 
             $viewData = [];
-            $viewData["title"] = "Purchase - Online Store";
-            $viewData["subtitle"] =  "Purchase Status";
-            $viewData["order"] =  $order;
-            return view('cart.purchase')->with("viewData", $viewData);
+            $viewData['title'] = 'Purchase - Online Store';
+            $viewData['subtitle'] = 'Purchase Status';
+            $viewData['order'] = $order;
+
+            return view('cart.purchase')->with('viewData', $viewData);
         } else {
             return redirect()->route('cart.index');
         }

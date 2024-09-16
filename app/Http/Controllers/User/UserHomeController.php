@@ -6,8 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\View\View;
+
 class UserHomeController extends Controller
 {
     public function index(): View
@@ -49,7 +50,7 @@ class UserHomeController extends Controller
         $newUser->setPassword(Hash::make($request->input('password')));
         $newUser->setRol($request->input('rol'));
         $newUser->setState($request->input('state'));
-        $newUser->setBalance($request->input('balance'));   
+        $newUser->setBalance($request->input('balance'));
 
         $newUser->save();
 
