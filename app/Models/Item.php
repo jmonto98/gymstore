@@ -58,8 +58,18 @@ class Item extends Model
         return $this->attributes['order_id'];
     }
 
+    public function setOrderId(int $orderId): void
+    {
+         $this->attributes['order_id']= $orderId;
+    }
+
     public function getProductId(): int
     {
         return $this->attributes['product_id'];
+    }
+
+    public function setProductId(int $productId): void
+    {
+         $this->attributes['product_id']= $productId;
     }
 }

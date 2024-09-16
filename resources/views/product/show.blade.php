@@ -2,42 +2,35 @@
 @section('title', $viewData["title"])
 @section('subtitle', $viewData["subtitle"])
 @section('content')
-    <div class="card mb-3 shadow-sm">
-        <div class="row g-0">
-            <div class="col-md-4">
-                <img src="{{ asset('/storage/'.$viewData["product"]->getImage()) }}" class="img-fluid rounded-start" alt="{{ $viewData['product']->getName() }}">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h3 class="card-title">
-                        {{ $viewData["product"]->getName() }}
-                        <span class="text-muted">(${{ number_format($viewData["product"]->getPrice(), 2) }})</span>
-                    </h3>
-                    <p class="card-text mt-3">{{ $viewData["product"]->getDescription() }}</p>
-                    <div class="mb-3">
-                        <p class="card-text">
-                            <small class="text-muted">
-                                Created at: {{ $viewData["product"]->created_at->format('Y-m-d H:i') }}
-                            </small><br>
-                            <small class="text-muted">
-                                Updated at: {{ $viewData["product"]->updated_at->format('Y-m-d H:i') }}
-                            </small>
-                        </p>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <form method="POST" action="{{ route('admin.product.delete', ['id'=> $viewData['product']->getId()]) }}">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">
-                                <i class="bi bi-trash"></i> Delete Product
-                            </button>
-                            <a href="{{ route('product.index') }}" class="btn btn-secondary">
-                                <i class="bi bi-arrow-left"></i> Back to Products
-                            </a>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="card mb-3">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{{ asset('/storage/'.$viewData["product"]->getImage()) }}" class="img-fluid rounded-start">
     </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">
+          {{ $viewData["product"]->getName() }} (${{ $viewData["product"]->getPrice() }})
+        </h5>
+        <p class="card-text">{{ $viewData["product"]->getDescription() }}</p>
+        <p class="card-text">
+        <form method="POST" action="{{ route('cart.add', ['id'=> $viewData['product']->getId()]) }}">
+          <div class="row">
+            @csrf
+            <div class="col-auto">
+              <div class="input-group col-auto">
+                <div class="input-group-text">Quantity</div>
+                <input type="number" min="1" max="10" class="form-control quantity-input" name="quantity" value="1">
+              </div>
+            </div>
+            <div class="col-auto">
+              <button class="btn bg-primary text-white" type="submit">Add to cart</button>
+            </div>
+          </div>
+        </form>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
 @endsection

@@ -41,6 +41,16 @@ class Product extends Model
         return $this->hasMany(Review::class);
     }
 
+    public static function sumPricesByQuantities($products, $productsInSession)
+    {
+        $total = 0;
+        foreach ($products as $product) {
+            $total = $total + ($product->getPrice()*$productsInSession[$product->getId()]);
+        }
+
+        return $total;
+    }
+
     public function items()
     {
         return $this->hasMany(Item::class);
@@ -59,6 +69,16 @@ class Product extends Model
     public function setName(string $name): void
     {
         $this->attributes['name'] = $name;
+    }
+
+    public function getDescription(): string
+    {
+        return $this->attributes['description'];
+    }
+
+    public function setDescription(string $description): void
+    {
+        $this->attributes['description'] = $description;
     }
 
     public function getPrice(): int

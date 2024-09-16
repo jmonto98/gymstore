@@ -8,7 +8,7 @@
             <div class="card">
                 <img src="{{ asset( 'storage/'.$product->getImage()) }}" class="card-img-top" width="300" height="300">
                 <div class="card-body text-center">
-                    <a href="{{ route('product.index', ['id'=> $product->getId()]) }}"
+                    <a href="{{ route('product.show', ['id'=> $product->getId()]) }}"
                        class="btn bg-primary text-white">
                         {{ $product->getName() }}
                     </a>

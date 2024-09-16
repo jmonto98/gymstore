@@ -17,7 +17,7 @@ class Order extends Model
     public static function validate($request)
     {
         $request->validate([
-            'orderDate' => 'required|date',
+            
             'status' => 'required|',
             'totalOrder' => 'required|numeric|gt:0',
             'cusPayment' => 'required|string',
@@ -35,14 +35,20 @@ class Order extends Model
         return $this->hasMany(Item::class);
     }
 
+    public function getId(): int
+    {
+        return $this->attributes['id'];
+    }
+
+
     public function getOrderDate(): date
     {
         return $this->attributes['orderDate'];
     }
 
-    public function setOrderDate(date $orderDate): void
+    public function setOrderDate(): void
     {
-        $this->attributes['orderDate'] = $orderDate;
+        $this->attributes['orderDate'] = now();
     }
 
     public function getStatus(): string
@@ -78,5 +84,10 @@ class Order extends Model
     public function getUserId(): int
     {
         return $this->attributes['user_id'];
+    }
+
+    public function setUserId($userId): void
+    {
+        $this->attributes['user_id'] = $userId;
     }
 }
