@@ -9,6 +9,7 @@
   <div class="card-body">
     <div class="alert alert-success" role="alert">
       Congratulations, purchase completed. Order number is <b>#{{ $viewData["order"]->getId() }}</b>
+      <b>#{{ $viewData["stock"] }}</b>
     </div>
   </div>
 </div>

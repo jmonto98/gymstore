@@ -41,7 +41,7 @@ class Product extends Model
         return $this->hasMany(Review::class);
     }
 
-    public static function sumPricesByQuantities($products, $productsInSession)
+    public static function sumPricesByQuantities($products, $productsInSession): int
     {
         $total = 0;
         foreach ($products as $product) {
@@ -134,6 +134,11 @@ class Product extends Model
     public function getCategoryId(): int
     {
         return $this->attributes['category_id'];
+    }
+
+    public function setCategoryId(int $categoryId): void
+    {
+        $this->attributes['category_id'] = $categoryId;
     }
 
     public function getState(): string

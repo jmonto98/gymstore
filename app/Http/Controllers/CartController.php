@@ -71,6 +71,9 @@ class CartController extends Controller
                 $item->setOrderId($order->getId());
                 $item->save();
                 $total = $total + ($product->getPrice() * $quantity);
+
+                $stock=($product->getStock() - $quantity);
+                $product->where("id", $product->getId())->update(["stock" => $stock]);
             }
             $order->setTotalOrder($total);
             $order->save();
@@ -85,6 +88,7 @@ class CartController extends Controller
             $viewData['title'] = 'Purchase - Online Store';
             $viewData['subtitle'] = 'Purchase Status';
             $viewData['order'] = $order;
+            $viewData['stock'] = 0;
 
             return view('cart.purchase')->with('viewData', $viewData);
         } else {

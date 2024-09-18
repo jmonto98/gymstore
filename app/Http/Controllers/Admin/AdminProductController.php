@@ -24,19 +24,18 @@ class AdminProductController extends Controller
     {
         Product::validate($request);
         $newProduct = new Product;
-        $newProduct->name = $request->input('name');
-        $newProduct->price = $request->input('price');
-        $newProduct->stock = $request->input('stock');
-        $newProduct->category_id = $request->input('category_id');
-        $newProduct->state = $request->input('state');
-        $newProduct->image = 'default_image.png';
-
+        $newProduct->setName($request->input('name'));
+        $newProduct->setPrice($request->input('price'));
+        $newProduct->setStock($request->input('stock'));
+        $newProduct->setCategoryId($request->input('category_id'));
+        $newProduct->setState($request->input('state'));
+        $newProduct->setImage('default_image.png');
         $newProduct->save();
 
         if ($request->hasFile('image')) {
             $imageName = 'images/'.$newProduct->id.'.'.$request->file('image')->extension();
             Storage::disk('public')->put($imageName, file_get_contents($request->file('image')->getRealPath()));
-            $newProduct->image = $imageName;
+            $newProduct->setImage($imageName);
             $newProduct->save();
         }
 
@@ -75,12 +74,12 @@ class AdminProductController extends Controller
 
         Product::validate($request);
         $product = Product::findOrFail($id);
-        $product->name = $request->input('name');
-        $product->price = $request->input('price');
-        $product->stock = $request->input('stock');
-        $product->category_id = $request->input('category_id');
-        $product->state = $request->input('state');
-        $product->image = 'default_image.png';
+        $product->setName($request->input('name'));
+        $product->setPrice($request->input('price'));
+        $product->setStock($request->input('stock'));
+        $product->setCategoryId($request->input('category_id'));
+        $product->setState($request->input('state'));
+        
 
         if ($request->hasFile('image')) {
             if ($product->image && Storage::disk('public')->exists($product->image)) {
@@ -89,7 +88,7 @@ class AdminProductController extends Controller
 
             $imageName = 'images/'.$product->id.'.'.$request->file('image')->extension();
             Storage::disk('public')->put($imageName, file_get_contents($request->file('image')->getRealPath()));
-            $product->image = $imageName;
+            $product->setImage($imageName);
         }
 
         $product->save();

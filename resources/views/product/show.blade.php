@@ -47,11 +47,19 @@
             <div class="col-auto">
               <div class="input-group col-auto">
                 <div class="input-group-text">Quantity</div>
-                <input type="number" min="1" max="10" class="form-control quantity-input" name="quantity" value="1">
+                @if ( $viewData["product"]->getStock()==0)
+                  <input disabled type="number" min="1" max="{{ $viewData["product"]->getStock() }}"" class="form-control quantity-input" name="quantity" value="0" >
+                @else
+                <input type="number" min="1" max="{{ $viewData["product"]->getStock() }}"" class="form-control quantity-input" name="quantity" value="1" >
+                @endif
               </div>
             </div>
             <div class="col-auto">
+            @if ( $viewData["product"]->getStock()==0)
+              <button disabled class="btn bg-primary text-white" type="submit">Out of Stock</button>
+            @else
               <button class="btn bg-primary text-white" type="submit">Add to cart</button>
+            @endif
             </div>
           </div>
         </form>
@@ -70,7 +78,7 @@
 @else
     @foreach ($viewData['product']->reviews as $review)
         <div class="review">
-            <strong>{{ $review->user->name }}:</strong>
+            <strong>{{ $review->user->username }}:</strong>
 
 
             <div class="rating">
