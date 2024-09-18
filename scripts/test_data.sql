@@ -1,4 +1,13 @@
 --
+-- Data to populate table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `lastName`, `address`, `email`, `username`, `password`, `rol`, `state`, `balance`, `created_at`, `updated_at`) VALUES
+(1, 'ADMIN', 'ADMIN', 'springfield', 'admin@gymstore.com', 'admin', '$2y$12$ObbZLrl2vSwyNZtQ/nB./.ksC1kYNExgsYU4rXBkrvdzWYRgq630y', 'ADMIN', 'ACTIVE', 5000, '2024-09-18 08:01:52', '2024-09-18 08:01:52'),
+(2, 'CUSTOMER', 'CUSTOMER', 'springfield', 'customer@gymstore.com', 'customer', '$2y$12$w7Rdc.53L3F5rUMXWNdX/.RyMKlZkMuW2SapbgQZVrenu6c9CsjvC', 'CUSTOMER', 'ACTIVE', 5000, '2024-09-18 08:04:27', '2024-09-18 08:04:27');
+
+
+--
 -- Data to populate table `categories`
 --
 
