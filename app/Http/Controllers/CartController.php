@@ -88,7 +88,6 @@ class CartController extends Controller
             $viewData['title'] = 'Purchase - Online Store';
             $viewData['subtitle'] = 'Purchase Status';
             $viewData['order'] = $order;
-            $viewData['stock'] = 0;
 
             return view('cart.purchase')->with('viewData', $viewData);
         } else {

@@ -48,9 +48,9 @@
               <div class="input-group col-auto">
                 <div class="input-group-text">Quantity</div>
                 @if ( $viewData["product"]->getStock()==0)
-                  <input disabled type="number" min="1" max="{{ $viewData["product"]->getStock() }}"" class="form-control quantity-input" name="quantity" value="0" >
+                  <input required type="number" min="1" max="{{ $viewData["product"]->getStock() }}"" class="form-control quantity-input" name="quantity" value="0">
                 @else
-                <input type="number" min="1" max="{{ $viewData["product"]->getStock() }}"" class="form-control quantity-input" name="quantity" value="1" >
+                <input required type="number" min="1" max="{{ $viewData["product"]->getStock() }}"" class="form-control quantity-input" name="quantity" value="1" >
                 @endif
               </div>
             </div>
