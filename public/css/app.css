@@ -57,3 +57,25 @@ footer {
     background: #333;
     color: #fff;
 }
+
+
+.star-rating {
+    direction: rtl;
+    display: inline-flex;
+    font-size: 2rem;
+}
+.star-rating input[type="radio"] {
+    display: none;
+}
+.star-rating label {
+    color: #ddd;
+    font-size: 2rem;
+    cursor: pointer;
+}
+.star-rating input[type="radio"]:checked ~ label {
+    color: #f5b301;
+}
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color: #f5b301;
+}
