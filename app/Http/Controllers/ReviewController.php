@@ -1,8 +1,8 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Review;
-use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,10 +17,10 @@ class ReviewController extends Controller
 
         Review::create([
             'user_id' => Auth::id(),
-            'product_id' => $productId, 
+            'product_id' => $productId,
             'rating' => $request->input('rating'),
             'comment' => $request->input('comment'),
-            'approved' => false, 
+            'approved' => false,
         ]);
 
         return redirect()->back()->with('success', 'Review submitted successfully!');

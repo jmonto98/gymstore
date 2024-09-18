@@ -18,9 +18,9 @@ class Review extends Model
         $request->validate([
             'rating' => 'required|numeric|gt:0',
             'comment' => 'required|max:255',
-            'approved' => 'boolean', 
-            'user_id' => 'required|exists:users,id', 
-            'product_id' => 'required|exists:products,id', 
+            'approved' => 'boolean',
+            'user_id' => 'required|exists:users,id',
+            'product_id' => 'required|exists:products,id',
         ]);
     }
 
@@ -51,7 +51,7 @@ class Review extends Model
 
     public function setComment(string $comment): void
     {
-        $this->attributes['comment'] = ucfirst(strtolower($comment)); 
+        $this->attributes['comment'] = ucfirst(strtolower($comment));
     }
 
     public function getApproved(): bool
