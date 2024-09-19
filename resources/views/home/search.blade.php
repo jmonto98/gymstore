@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('title', 'Search')
+@section('subtitle', 'Search results for category')
 @section('content')
     <!-- Mostrar los productos encontrados && $products->isNotEmpty()-->
 @if(isset($products) && $products->isNotEmpty())
-    <h2>Products in this category:</h2>
     <div class="row">
         @foreach($products as $product)
             <div class="col-md-4 col-lg-3 mb-2">

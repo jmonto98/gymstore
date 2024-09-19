@@ -19,19 +19,14 @@ class HomeController extends Controller
     public function search(Request $request): View
     {
         $request->validate([
-            'name' => 'required|string',
+            'name' => 'nullable|string',
         ]);
 
-        $category = Category::where('name', 'like', '%'.$request->category_name.'%')->first();
+        $query = $request->input('name', '');
+        $categories = Category::where('name', 'like', '%' . $query . '%')->get();
+        $products = Product::whereIn('category_id', $categories->pluck('id'))->get();
+        $totalProducts = $products->count();
 
-        if ($category) {
-
-            $products = Product::where('category_id', $category->id)->get();  // Filtrando productos activos (state = 1)
-        } else {
-
-            $products = collect();
-        }
-
-        return view('home.search', compact('products'));
+        return view('home.search')->with('products', $products, 'totalProducts', $totalProducts, 'query', $query);    
     }
 }

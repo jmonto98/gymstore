@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Product extends Model
@@ -27,19 +28,24 @@ class Product extends Model
         ]);
     }
 
-    public function category()
+    public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
 
-    public function useModes()
+    public function useModes(): HasMany
     {
         return $this->hasMany(UseMode::class);
     }
 
-    public function reviews()
+    public function reviews(): HasMany
     {
         return $this->hasMany(Review::class);
+    }
+
+    public function items(): HasMany
+    {
+        return $this->hasMany(Item::class);
     }
 
     public static function sumPricesByQuantities($products, $productsInSession): int
@@ -50,11 +56,6 @@ class Product extends Model
         }
 
         return $total;
-    }
-
-    public function items(): HasMany
-    {
-        return $this->hasMany(Item::class);
     }
 
     public function getId(): string
