@@ -37,7 +37,7 @@ Route::put('/usesMode/{id}', 'App\Http\Controllers\UseMode\AdminUseModeControlle
 Route::post('/usesMode/store', 'App\Http\Controllers\UseMode\AdminUseModeController@store')->name('useMode.store');
 Route::delete('/usesMode/{id}', 'App\Http\Controllers\UseMode\AdminUseModeController@delete')->name('useMode.delete');
 
-Route::get('/register', 'App\Http\Controllers\User\UserHomeController@register')->name('user.register');
+#Route::get('/register', 'App\Http\Controllers\User\UserHomeController@register')->name('user.register');
 Route::get('/user', 'App\Http\Controllers\User\UserHomeController@index')->name('user.index');
 Route::post('/user/create', 'App\Http\Controllers\User\UserHomeController@create')->name('user.create');
 Route::get('/user/edit/{id}', 'App\Http\Controllers\User\UserHomeController@edit')->name('user.edit');
