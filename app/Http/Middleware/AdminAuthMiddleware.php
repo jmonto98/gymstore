@@ -16,10 +16,10 @@ class AdminAuthMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ($request->user() && $request->user()->getRol() == 'ADMIN') {
+        if (Auth::user() && Auth::user()->getRol() == 'ADMIN') {
             return $next($request);
-            } else {
+        } else {
             return redirect()->route('home.index');
-            }
+        }
     }
 }

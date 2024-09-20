@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\AdminAuthMiddleware;
 
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home.index');
 Route::post('/search', 'App\Http\Controllers\HomeController@search')->name('home.search');
@@ -16,11 +17,10 @@ Route::post('/cart/add/{id}', 'App\Http\Controllers\CartController@add')->name('
 Route::middleware('auth')->group(function () {
     Route::get('/cart/purchase', 'App\Http\Controllers\CartController@purchase')->name('cart.purchase');
     Route::get('/my-account/orders', 'App\Http\Controllers\MyAccountController@orders')->name('myaccount.orders');
-
     Route::post('/products/{id}/reviews', 'App\Http\Controllers\ReviewController@store')->name('review.store');
 });
 
-//Route::middleware('admin')->group(function () {
+Route::middleware([AdminAuthMiddleware::class])->group(function () {
     Route::get('/admin', 'App\Http\Controllers\Admin\AdminHomeController@index')->name('admin.home.index');
     Route::get('/admin/products', 'App\Http\Controllers\Admin\AdminProductController@index')->name('admin.product.index');
     Route::post('/admin/products/store', 'App\Http\Controllers\Admin\AdminProductController@store')->name('admin.product.store');
@@ -37,7 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/usesMode/{id}', 'App\Http\Controllers\UseMode\AdminUseModeController@update')->name('useMode.update');
     Route::post('/usesMode/store', 'App\Http\Controllers\UseMode\AdminUseModeController@store')->name('useMode.store');
     Route::delete('/usesMode/{id}', 'App\Http\Controllers\UseMode\AdminUseModeController@delete')->name('useMode.delete');
-//});
+});
 
 #Route::get('/register', 'App\Http\Controllers\User\UserHomeController@register')->name('user.register');
 Route::get('/user', 'App\Http\Controllers\User\UserHomeController@index')->name('user.index');
