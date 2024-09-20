@@ -27,6 +27,29 @@ class HomeController extends Controller
         $products = Product::whereIn('category_id', $categories->pluck('id'))->get();
         $totalProducts = $products->count();
 
-        return view('home.search')->with('products', $products, 'totalProducts', $totalProducts, 'query', $query);    
+        return view('home.search')->with('products', $products, 'totalProducts', $totalProducts, 'query', $query);
+    }
+
+    public function about(): View
+    {
+        $viewData = [];
+        $viewData['title'] = 'About us - Online Store';
+        $viewData['subtitle'] = 'About us';
+        $viewData['description'] = 'This page was developed as a class project for the subject Special Topics in Systems Engineering at EAFIT University.';
+        $viewData['author'] = 'Developed by: John Montoya';
+
+        return view('home.about')->with('viewData', $viewData);
+    }
+
+    public function contact(): View
+    {
+        $viewData = [];
+        $viewData['title'] = 'Contact us - Online Store';
+        $viewData['subtitle'] = 'Contact us';
+        $viewData['email'] = 'fxmail@fakestore.com';
+        $viewData['address'] = 'Springfield';
+        $viewData['phone'] = '604 5521245';
+
+        return view('home.contact')->with('viewData', $viewData);
     }
 }

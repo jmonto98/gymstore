@@ -23,8 +23,8 @@
                 <div class="navbar-nav ms-auto">
                     <a class="nav-link active" href="{{ route('home.index') }}">{{ __('messages.home') }}</a>
                     <a class="nav-link active" href="{{ route('product.index') }}">{{ __('messages.products') }}</a>
-                    <a class="nav-link active" href="">{{ __('messages.about') }}</a>
-                    <a class="nav-link active" href="">{{ __('messages.contact_us') }}</a>
+                    <a class="nav-link active" href="{{ route('home.about') }}">{{ __('messages.about') }}</a>
+                    <a class="nav-link active" href="{{ route('home.contact') }}">{{ __('messages.contact_us') }}</a>
                     <div class="vr bg-white mx-2 d-none d-lg-block"></div>
                     @guest
                     <a class="nav-link active" href="{{ route('login') }}">{{ __('messages.login') }}</a>
