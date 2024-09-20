@@ -10,6 +10,15 @@ class Item extends Model
 {
     use HasFactory;
 
+    /**
+     * ITEM ATTRIBUTES
+     * $this->attributes['id'] - int - contains the item primary key (id)
+     * $this->attributes['price'] - int - contains the item price
+     * $this->attributes['quantity'] - int - contains the item quantity
+     * $this->attributes['order_id'] - int - contains the foreign key of the associated order
+     * $this->attributes['product_id'] - int - contains the foreign key of the associated product
+     */ 
+
     protected $fillable = [
         'price', 'quantity', 'order_id', 'product_id',
     ];

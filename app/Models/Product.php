@@ -11,6 +11,20 @@ class Product extends Model
 {
     use HasFactory;
 
+    /**
+     * PRODUCT ATTRIBUTES
+     * $this->attributes['id'] - int - contains the product primary key (id)
+     * $this->attributes['name'] - string - contains the product name
+     * $this->attributes['price'] - int - contains the product price
+     * $this->attributes['stock'] - int - contains the product stock
+     * $this->attributes['image'] - string - contains the product image
+     * $this->attributes['sumReviews'] - int - contains the sum of the product reviews
+     * $this->attributes['totalReviews'] - int - contains the total number of reviews of the product
+     * $this->attributes['category_id'] - int - contains the foreign key of the associated category
+     * $this->attributes['state'] - string - contains the product state (e.g., 'active', 'inactive')
+     */ 
+
+
     protected $fillable = [
         'name', 'price', 'stock', 'image', 'sumReviews', 'totalReviews', 'category_id', 'state',
     ];

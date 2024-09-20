@@ -12,6 +12,16 @@ class Order extends Model
 {
     use HasFactory;
 
+    /**
+     * ORDER ATTRIBUTES
+     * $this->attributes['id'] - int - contains the order primary key (id)
+     * $this->attributes['orderDate'] - date - contains the order date
+     * $this->attributes['status'] - string - contains the order status (e.g., 'pending', 'shipped', 'delivered')
+     * $this->attributes['totalOrder'] - int - contains the total order amount
+     * $this->attributes['cusPayment'] - string - contains the customer's payment method
+     * $this->attributes['user_id'] - int - contains the foreign key of the associated user
+     */ 
+
     protected $fillable = [
         'orderDate', 'status', 'totalOrder', 'cusPayment', 'user_id',
     ];

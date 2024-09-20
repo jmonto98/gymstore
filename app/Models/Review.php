@@ -10,6 +10,17 @@ class Review extends Model
 {
     use HasFactory;
 
+    /**
+     * REVIEW ATTRIBUTES
+     * $this->attributes['id'] - int - contains the review primary key (id)
+     * $this->attributes['rating'] - int - contains the rating given by the user (1 to 5)
+     * $this->attributes['comment'] - string - contains the user's review comment
+     * $this->attributes['approved'] - boolean - indicates if the review has been approved by an admin
+     * $this->attributes['user_id'] - int - contains the foreign key of the associated user
+     * $this->attributes['product_id'] - int - contains the foreign key of the associated product
+     * $this->attributes['created_at'] - timestamp - contains the creation date of the review
+     */
+
     protected $fillable = [
         'rating', 'comment', 'approved', 'user_id', 'product_id',
     ];

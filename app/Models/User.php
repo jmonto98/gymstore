@@ -13,6 +13,19 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     /**
+     * USER ATTRIBUTES
+     * $this->attributes['id'] - int - contains the primary key of the user
+     * $this->attributes['name'] - string - contains the user's name
+     * $this->attributes['lastName'] - string - contains the user's last name
+     * $this->attributes['address'] - string - contains the user's address
+     * $this->attributes['email'] - string - contains the user's email address
+     * $this->attributes['username'] - string - contains the username
+     * $this->attributes['password'] - string - contains the user's encrypted password
+     * $this->attributes['rol'] - string - contains the user's role (e.g., 'admin', 'user')
+     * $this->attributes['state'] - string - contains the user's state (e.g., 'active', 'inactive')
+     * $this->attributes['balance'] - float - contains the user's balance
+     */
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>

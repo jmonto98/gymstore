@@ -10,8 +10,18 @@ class Category extends Model
 {
     use HasFactory;
 
+    /**
+     * CATEGORY ATTRIBUTES
+     * $this->attributes['id'] - int - contains the category primary key (id)
+     * $this->attributes['name'] - string - contains the category name
+     * $this->attributes['description'] - string - contains the category description
+     * $this->attributes['created_at'] - timestamp - contains the creation date of the category
+     * $this->attributes['updated_at'] - timestamp - contains the last update date of the category
+     */
+
     protected $fillable = [
-        'name', 'description',
+        'name',
+        'description',
     ];
 
     public static function validate($request)
