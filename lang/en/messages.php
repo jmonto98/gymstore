@@ -16,4 +16,5 @@ return [
     'usemode' => 'Usage Mode',
     'go_back_to_home_page' => 'Go Back to Home Page',
     'copyright' => 'Copyright',
+    'search_by_category' => 'Search by Category',
 ];

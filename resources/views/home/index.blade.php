@@ -9,7 +9,7 @@
     @endif
     <div class="card mb-4">
         <div class="card-header bg-primary text-white">
-            <h4 class="mb-0">Search by Category</h4>
+            <h4 class="mb-0">{{ __('messages.search_by_category') }}</h4>
         </div>
         <div class="card-body">
             @if($errors->any())
