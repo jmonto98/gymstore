@@ -1,16 +1,16 @@
 -- Populate Users table (10 users)
 INSERT INTO users (name, lastName, address, email, username, password, rol, state, balance)
 VALUES
-('John', 'Doe', '123 Main St', 'john@example.com', 'johndoe', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'CUSTOMER', 'ACTIVE', FLOOR(RAND() * (10000 - 100 + 1) + 100)),
-('Jane', 'Smith', '456 Elm St', 'jane@example.com', 'janesmith', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'CUSTOMER', 'ACTIVE', FLOOR(RAND() * (10000 - 100 + 1) + 100)),
-('Bob', 'Johnson', '789 Oak St', 'bob@example.com', 'bobjohnson', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'CUSTOMER', 'ACTIVE', FLOOR(RAND() * (10000 - 100 + 1) + 100)),
-('Alice', 'Williams', '321 Pine St', 'alice@example.com', 'alicewilliams', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'CUSTOMER', 'ACTIVE', FLOOR(RAND() * (10000 - 100 + 1) + 100)),
-('Charlie', 'Brown', '654 Maple St', 'charlie@example.com', 'charliebrown', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'CUSTOMER', 'ACTIVE', FLOOR(RAND() * (10000 - 100 + 1) + 100)),
-('Eva', 'Davis', '987 Cedar St', 'eva@example.com', 'evadavis', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'CUSTOMER', 'ACTIVE', FLOOR(RAND() * (10000 - 100 + 1) + 100)),
-('Frank', 'Miller', '147 Birch St', 'frank@example.com', 'frankmiller', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'CUSTOMER', 'ACTIVE', FLOOR(RAND() * (10000 - 100 + 1) + 100)),
-('Grace', 'Wilson', '258 Walnut St', 'grace@example.com', 'gracewilson', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'CUSTOMER', 'ACTIVE', FLOOR(RAND() * (10000 - 100 + 1) + 100)),
-('Henry', 'Taylor', '369 Ash St', 'henry@example.com', 'henrytaylor', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'CUSTOMER', 'ACTIVE', FLOOR(RAND() * (10000 - 100 + 1) + 100)),
-('Ivy', 'Anderson', '741 Spruce St', 'ivy@example.com', 'ivyanderson', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'CUSTOMER', 'ACTIVE', FLOOR(RAND() * (10000 - 100 + 1) + 100)),
+('John', 'Doe', '123 Main St', 'john@example.com', 'johndoe', '$2y$12$9htEQcednR9c3cI/PDC/veEZ4YPXqqY.ae2ngZn5pgFJBZuc91Lee', 'CUSTOMER', 'ACTIVE', FLOOR(RAND() * (10000 - 100 + 1) + 100)),
+('Jane', 'Smith', '456 Elm St', 'jane@example.com', 'janesmith', '$2y$12$9htEQcednR9c3cI/PDC/veEZ4YPXqqY.ae2ngZn5pgFJBZuc91Lee', 'CUSTOMER', 'ACTIVE', FLOOR(RAND() * (10000 - 100 + 1) + 100)),
+('Bob', 'Johnson', '789 Oak St', 'bob@example.com', 'bobjohnson', '$2y$12$9htEQcednR9c3cI/PDC/veEZ4YPXqqY.ae2ngZn5pgFJBZuc91Lee', 'CUSTOMER', 'ACTIVE', FLOOR(RAND() * (10000 - 100 + 1) + 100)),
+('Alice', 'Williams', '321 Pine St', 'alice@example.com', 'alicewilliams', '$2y$12$9htEQcednR9c3cI/PDC/veEZ4YPXqqY.ae2ngZn5pgFJBZuc91Lee', 'CUSTOMER', 'ACTIVE', FLOOR(RAND() * (10000 - 100 + 1) + 100)),
+('Charlie', 'Brown', '654 Maple St', 'charlie@example.com', 'charliebrown', '$2y$12$9htEQcednR9c3cI/PDC/veEZ4YPXqqY.ae2ngZn5pgFJBZuc91Lee', 'CUSTOMER', 'ACTIVE', FLOOR(RAND() * (10000 - 100 + 1) + 100)),
+('Eva', 'Davis', '987 Cedar St', 'eva@example.com', 'evadavis', '$2y$12$9htEQcednR9c3cI/PDC/veEZ4YPXqqY.ae2ngZn5pgFJBZuc91Lee', 'CUSTOMER', 'ACTIVE', FLOOR(RAND() * (10000 - 100 + 1) + 100)),
+('Frank', 'Miller', '147 Birch St', 'frank@example.com', 'frankmiller', '$2y$12$9htEQcednR9c3cI/PDC/veEZ4YPXqqY.ae2ngZn5pgFJBZuc91Lee', 'CUSTOMER', 'ACTIVE', FLOOR(RAND() * (10000 - 100 + 1) + 100)),
+('Grace', 'Wilson', '258 Walnut St', 'grace@example.com', 'gracewilson', '$2y$12$9htEQcednR9c3cI/PDC/veEZ4YPXqqY.ae2ngZn5pgFJBZuc91Lee', 'CUSTOMER', 'ACTIVE', FLOOR(RAND() * (10000 - 100 + 1) + 100)),
+('Henry', 'Taylor', '369 Ash St', 'henry@example.com', 'henrytaylor', '$2y$12$9htEQcednR9c3cI/PDC/veEZ4YPXqqY.ae2ngZn5pgFJBZuc91Lee', 'CUSTOMER', 'ACTIVE', FLOOR(RAND() * (10000 - 100 + 1) + 100)),
+('Ivy', 'Anderson', '741 Spruce St', 'ivy@example.com', 'ivyanderson', '$2y$12$9htEQcednR9c3cI/PDC/veEZ4YPXqqY.ae2ngZn5pgFJBZuc91Lee', 'CUSTOMER', 'ACTIVE', FLOOR(RAND() * (10000 - 100 + 1) + 100)),
 ('Admin', 'GymStore', 'springfield', 'admin@gymstore.com', 'admin', '$2y$12$ObbZLrl2vSwyNZtQ/nB./.ksC1kYNExgsYU4rXBkrvdzWYRgq630y', 'ADMIN', 'ACTIVE', 5000);
 
 -- Populate Categories table (20 categories)

@@ -10,6 +10,7 @@ return [
     'register' => 'Register',
     'cart' => 'Cart',
     'logout' => 'Logout',
+    'admin' => 'Admin',
     'admin_panel' => 'Admin Panel',
     'dashboard' => 'Dashboard',
     'categories' => 'Categories',

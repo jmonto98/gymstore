@@ -32,9 +32,12 @@
                     <a class="nav-link active" href="{{ route('cart.index') }}">{{ __('messages.cart') }}</a>
                     @else
                     <form id="logout" action="{{ route('logout') }}" method="POST">
-                        <a class="nav-link active" href="{{ route('cart.index') }}">{{ __('messages.cart') }}</a>
-                        <a role="button" class="nav-link active" onclick="document.getElementById('logout').submit();">{{ __('messages.logout') }}</a>
-                        @csrf
+                    <a class="nav-link active" href="{{ route('cart.index') }}">{{ __('messages.cart') }}</a>
+                    @if(Auth::check() && Auth::user()->getRol() == 'ADMIN')
+                    <a class="nav-link active" href="{{ route('admin.home.index') }}">{{ __('messages.admin_panel') }}</a>
+                    @endif
+                    <a role="button" class="nav-link active" onclick="document.getElementById('logout').submit();">{{ __('messages.logout') }}</a>
+                    @csrf
                     </form>
                     @endguest
                 </div>
