@@ -25,7 +25,7 @@
                 </div>
             @endif
 
-            <!-- <form method="POST" action="{{ route('useMode.store') }}">
+            <form method="POST" action="{{ route('useMode.store') }}">
                 @csrf
                 <div class="row mb-3">
                     <div class="col-md-6">
@@ -49,7 +49,7 @@
                 </div>
             </form>
         </div>
-    </div> -->
+    </div>
 
     <div class="card mt-4">
         <div class="card-header">
