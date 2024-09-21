@@ -17,14 +17,16 @@ class Category extends Model
      * $this->attributes['description'] - string - contains the category description
      * $this->attributes['created_at'] - timestamp - contains the creation date of the category
      * $this->attributes['updated_at'] - timestamp - contains the last update date of the category
+     * $this->attributes['image'] - string - contains the category image
      */
 
     protected $fillable = [
         'name',
         'description',
+        'image'
     ];
 
-    public static function validate($request)
+    public static function validate($request): void   
     {
         $request->validate([
             'name' => 'required|max:255',

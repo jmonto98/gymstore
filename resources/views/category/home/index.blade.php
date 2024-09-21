@@ -22,7 +22,7 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('category.store') }}">
+            <form method="POST" action="{{ route('category.store') }}" enctype="multipart/form-data"> <!-- Añadir enctype -->
                 @csrf
                 <div class="row mb-3">
                     <div class="col-md-6">
@@ -33,6 +33,10 @@
                         <label for="description" class="form-label">Description:</label>
                         <textarea id="description" name="description" class="form-control" rows="3">{{ old('description') }}</textarea>
                     </div>
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label">Image:</label>
+                    <input type="file" id="image" name="image" class="form-control" accept="image/*" required> <!-- Campo para la imagen -->
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary">Create Category</button>

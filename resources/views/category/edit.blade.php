@@ -32,6 +32,16 @@
                     <label class="form-label">Description</label>
                     <textarea class="form-control" name="description" rows="3" required>{{ $viewData['category']->getDescription() }}</textarea>
                 </div>
+                <div class="mb-3">
+                    <label class="form-label">Image:</label>
+                    <input type="file" name="image" class="form-control" accept="image/*"> <!-- Campo para la nueva imagen -->
+                </div>
+                @if($viewData['category']->image) <!-- Mostrar la imagen actual si existe -->
+                    <div class="mb-3">
+                        <label class="form-label">Current Image:</label>
+                        <img src="{{ asset('storage/' . $viewData['category']->image) }}" alt="{{ $viewData['category']->getName() }}" style="width: 100px; height: auto;">
+                    </div>
+                @endif
                 <button type="submit" class="btn btn-primary">Edit</button>
             </form>
         </div>

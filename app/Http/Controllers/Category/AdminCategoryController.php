@@ -7,6 +7,7 @@ use App\Models\Category;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Storage; 
 
 class AdminCategoryController extends Controller
 {
@@ -23,7 +24,11 @@ class AdminCategoryController extends Controller
     public function store(Request $request): RedirectResponse
     {
         Category::validate($request);
-        Category::create($request->only(['name', 'description']));
+
+       
+        $imagePath = $request->file('image')->store('categories', 'public'); // Almacena la imagen en la carpeta 'categories'
+
+        Category::create($request->only(['name', 'description']) + ['image' => $imagePath]);
 
         return redirect()->route('category.home.index')->with('success', 'Category was successfully created');
     }
@@ -49,7 +54,18 @@ class AdminCategoryController extends Controller
     {
         Category::validate($request);
 
-        $category = category::findOrFail($id);
+        $category = Category::findOrFail($id);
+
+       
+        if ($request->hasFile('image')) {
+            
+            if ($category->image) {
+                Storage::disk('public')->delete($category->image);
+            }
+
+            $imagePath = $request->file('image')->store('categories', 'public');
+            $category->image = $imagePath; // Actualiza el campo de imagen
+        }
 
         $category->setName($request->input('name'));
         $category->setDescription($request->input('description'));
