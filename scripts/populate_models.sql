@@ -14,27 +14,27 @@ VALUES
 ('Admin', 'GymStore', 'springfield', 'admin@gymstore.com', 'admin', '$2y$12$ObbZLrl2vSwyNZtQ/nB./.ksC1kYNExgsYU4rXBkrvdzWYRgq630y', 'ADMIN', 'ACTIVE', 5000);
 
 -- Populate Categories table (20 categories)
-INSERT INTO categories (name, description) VALUES
-('Training Equipment', 'Dumbbells, resistance bands, yoga mats, exercise machines, etc.'),
-('Sports Apparel', 'T-shirts, pants, jackets, sports underwear, etc.'),
-('Sports Footwear', 'Running shoes, soccer cleats, basketball shoes, hiking boots, etc.'),
-('Sports Accessories', 'Water bottles, caps, backpacks, socks, wristbands, etc.'),
-('Outdoor Sports', 'Cycling, camping, hiking, water sports, etc.'),
-('Team Sports', 'Soccer balls, basketballs, volleyballs, baseball equipment, etc.'),
-('Racquet Sports', 'Tennis, padel, badminton, squash, racquets, balls, etc.'),
-('Combat Sports', 'Boxing gloves, mouthguards, punching bags, kimono, etc.'),
-('Sports Supplements & Nutrition', 'Proteins, vitamins, energy drinks, energy bars, etc.'),
-('Sports Technology', 'Smartwatches, heart rate monitors, sports earbuds, fitness apps, etc.'),
-('Weights', 'Various weights for strength training'),
-('Cardio Equipment', 'Machines for cardiovascular exercise'),
-('Yoga & Pilates', 'Equipment for yoga and pilates practices'),
-('Resistance Bands', 'Elastic bands for resistance training'),
-('Fitness Accessories', 'Various accessories for fitness routines'),
-('Gym Machines', 'Large equipment for gym use'),
-('Recovery & Wellness', 'Products for post-workout recovery'),
-('Sports Nutrition', 'Supplements and nutrition products'),
-('Workout Apparel', 'Clothing for exercise and fitness'),
-('Home Gym Essentials', 'Essential equipment for home gyms');
+INSERT INTO categories (name, description, image) VALUES
+('Training Equipment', 'Dumbbells, resistance bands, yoga mats, exercise machines, etc.', 'images/default_image.png'),
+('Sports Apparel', 'T-shirts, pants, jackets, sports underwear, etc.', 'images/default_image.png'),
+('Sports Footwear', 'Running shoes, soccer cleats, basketball shoes, hiking boots, etc.', 'images/default_image.png'),
+('Sports Accessories', 'Water bottles, caps, backpacks, socks, wristbands, etc.', 'images/default_image.png'    ),
+('Outdoor Sports', 'Cycling, camping, hiking, water sports, etc.', 'images/default_image.png'),
+('Team Sports', 'Soccer balls, basketballs, volleyballs, baseball equipment, etc.', 'images/default_image.png'),
+('Racquet Sports', 'Tennis, padel, badminton, squash, racquets, balls, etc.', 'images/default_image.png'),
+('Combat Sports', 'Boxing gloves, mouthguards, punching bags, kimono, etc.', 'images/default_image.png'),
+('Sports Supplements & Nutrition', 'Proteins, vitamins, energy drinks, energy bars, etc.', 'images/default_image.png'),
+('Sports Technology', 'Smartwatches, heart rate monitors, sports earbuds, fitness apps, etc.', 'images/default_image.png'),
+('Weights', 'Various weights for strength training', 'images/default_image.png'),
+('Cardio Equipment', 'Machines for cardiovascular exercise', 'images/default_image.png'),
+('Yoga & Pilates', 'Equipment for yoga and pilates practices', 'images/default_image.png'),
+('Resistance Bands', 'Elastic bands for resistance training', 'images/default_image.png'),
+('Fitness Accessories', 'Various accessories for fitness routines', 'images/default_image.png'),
+('Gym Machines', 'Large equipment for gym use', 'images/default_image.png'  ),
+('Recovery & Wellness', 'Products for post-workout recovery', 'images/default_image.png'),
+('Sports Nutrition', 'Supplements and nutrition products', 'images/default_image.png'),
+('Workout Apparel', 'Clothing for exercise and fitness', 'images/default_image.png'),
+('Home Gym Essentials', 'Essential equipment for home gyms', 'images/default_image.png');
 
 -- Populate Products table (80 products)
 INSERT INTO products (name, description, price, stock, image, sumReviews, totalReviews, category_id, state) VALUES
