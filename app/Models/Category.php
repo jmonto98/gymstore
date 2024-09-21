@@ -29,6 +29,7 @@ class Category extends Model
         $request->validate([
             'name' => 'required|max:255',
             'description' => 'required',
+            'image' => 'nullable|image',
         ]);
     }
 
@@ -60,6 +61,16 @@ class Category extends Model
     public function setDescription(string $description): void
     {
         $this->attributes['description'] = ucfirst(strtolower($description));
+    }
+
+    public function getImage(): string
+    {
+        return $this->attributes['image'];
+    }
+
+    public function setImage(string $image): void
+    {
+        $this->attributes['image'] = $image;
     }
 
     public function getCreatedAt(): mixed

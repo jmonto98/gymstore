@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\UseMode;
 use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -60,10 +61,13 @@ class AdminProductController extends Controller
     {
         $product = Product::findOrFail($id);
         $categories = Category::all();
+        $useMode = UseMode::where('product_id',  $id)->get();
+        #$videoUrl = $useModes->videoUrl;
         $viewData = [
             'product' => $product,
             'categories' => $categories,
             'title' => 'Edit Product',
+            'useMode' => $useMode,
         ];
 
         return view('admin.product.edit', $viewData);

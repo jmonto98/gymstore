@@ -65,6 +65,10 @@
                     <label for="image" class="form-label">Image:</label>
                     <input class="form-control" type="file" id="image" name="image">
                 </div>
+                <div class="col-md-4">
+                        <label for="video" class="form-label">Video URL:</label>
+                        <input id="video" name="video" value="{{ old('video') }}" type="text" class="form-control">
+                </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary">Create Product</button>
                 </div>

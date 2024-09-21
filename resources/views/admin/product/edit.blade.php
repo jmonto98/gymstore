@@ -7,11 +7,11 @@
     </div>
     <div class="card-body">
         @if($errors->any())
-            <ul class="alert alert-danger list-unstyled">
-                @foreach($errors->all() as $error)
-                    <li>- {{ $error }}</li>
-                @endforeach
-            </ul>
+        <ul class="alert alert-danger list-unstyled">
+            @foreach($errors->all() as $error)
+            <li>- {{ $error }}</li>
+            @endforeach
+        </ul>
         @endif
 
         <form method="POST" action="{{ route('admin.product.update', ['id' => $product->getId()]) }}"
@@ -43,9 +43,9 @@
                     <select id="category_id" name="category_id" class="form-control" required>
                         <option value="">Select a category</option>
                         @foreach($categories as $category)
-                            <option value="{{ $category->id }}" {{ (old('category_id', $product->getCategoryId()) == $category->id) ? 'selected' : '' }}>
-                                {{ $category->name }}
-                            </option>
+                        <option value="{{ $category->id }}" {{ (old('category_id', $product->getCategoryId()) == $category->id) ? 'selected' : '' }}>
+                            {{ $category->name }}
+                        </option>
                         @endforeach
                     </select>
                 </div>
@@ -64,15 +64,19 @@
                     <input class="form-control" type="file" id="image" name="image">
                 </div>
                 <div class="col-md-6">
+                    <label for="video" class="form-label">Video URL:</label>
+                    <input id="video" name="video" value="{{ old('videoUrl', $useMode) }}" type="text"
+                        class="form-control" required>
+                </div>
+                <div class="col-md-6">
                     @if ($product->getImage())
-                        <div class="mb-3">
-                            <img src="{{ asset('storage/' . $product->getImage()) }}" alt="Current Image" class="img-fluid"
-                                style="max-height: 150px;">
-                        </div>
+                    <div class="mb-3"><br>
+                        <img src="{{ asset('storage/' . $product->getImage()) }}" alt="Current Image" class="img-fluid"
+                            style="max-height: 150px;">
+                    </div>
                     @endif
                 </div>
             </div>
-
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>
