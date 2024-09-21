@@ -12,8 +12,12 @@ class HomeController extends Controller
     public function index(Request $request): View
     {
         $categories = Category::all();
+        $topProducts = Product::where('totalReviews', '>', 0)
+        ->orderByRaw('sumReviews / totalReviews DESC')
+        ->take(5)
+        ->get();
 
-        return view('home.index', compact('categories'));
+    return view('home.index', compact('categories', 'topProducts'));
     }
 
     public function search(Request $request): View
