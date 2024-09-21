@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\AdminAuthMiddleware;
 
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home.index');
+Route::get('/search', 'App\Http\Controllers\HomeController@search')->name('home.search');
 Route::post('/search', 'App\Http\Controllers\HomeController@search')->name('home.search');
 Route::get('/contact', 'App\Http\Controllers\HomeController@contact')->name('home.contact');
 Route::get('/about', 'App\Http\Controllers\HomeController@about')->name('home.about');
@@ -39,7 +40,8 @@ Route::middleware([AdminAuthMiddleware::class])->group(function () {
     Route::put('/usesMode/{id}', 'App\Http\Controllers\UseMode\AdminUseModeController@update')->name('useMode.update');
     Route::post('/usesMode/store', 'App\Http\Controllers\UseMode\AdminUseModeController@store')->name('useMode.store');
     Route::delete('/usesMode/{id}', 'App\Http\Controllers\UseMode\AdminUseModeController@delete')->name('useMode.delete');
-    Route::get('/user', 'App\Http\Controllers\User\UserHomeController@index')->name('user.index');
+
+    Route::get('/user', 'App\Http\Controllers\User\UserHomeController@index')->name('admin.user.index');
     Route::post('/user/create', 'App\Http\Controllers\User\UserHomeController@create')->name('user.create');
     Route::get('/user/edit/{id}', 'App\Http\Controllers\User\UserHomeController@edit')->name('user.edit');
     Route::put('/user/update/{id}', 'App\Http\Controllers\User\UserHomeController@update')->name('user.update');

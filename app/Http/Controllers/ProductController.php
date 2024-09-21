@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
 use App\Models\UseMode;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {

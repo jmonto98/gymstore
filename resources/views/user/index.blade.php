@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('title', 'User')
 @section('content')
 <div class="container py-4">
@@ -59,7 +59,7 @@
                     <label for="rol" class="form-label">Rol:</label>
                     <select id="rol" name="rol" class="form-select" required>
                         <option value="">Select a Rol</option>
-                        <option value="Administrator">Administrator</option> 
+                        <option value="Admin">Admin</option> 
                         <option value="Customer ">Customer</option>                         
                     </select>
                 </div>
@@ -84,9 +84,6 @@
           </form>
         </div>
       </div>
-    </div>
-  </div>
-  <!-- //Manager User -->
     <div class="card mt-4">
         <div class="card-header">
             Manage User
@@ -127,5 +124,6 @@
                     @endforeach
                 </tbody>
             </table>
- </div>
+    </div>
+</div>
 @endsection

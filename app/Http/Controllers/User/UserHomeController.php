@@ -54,7 +54,7 @@ class UserHomeController extends Controller
 
         $newUser->save();
 
-        return redirect()->route('home.index')->with('success', 'User created successfully.');
+        return redirect()->route('admin.user.index')->with('success', 'User created successfully.');
     }
 
     public function update(Request $request, $id): RedirectResponse
@@ -74,6 +74,6 @@ class UserHomeController extends Controller
 
         $user->save();
 
-        return redirect()->route('user.index')->with('success', 'User updated successfully.');
+        return redirect()->route('admin.user.index')->with('success', 'User updated successfully.');
     }
 }

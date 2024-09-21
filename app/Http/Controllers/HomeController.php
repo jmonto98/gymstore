@@ -11,9 +11,12 @@ class HomeController extends Controller
 {
     public function index(Request $request): View
     {
-        $categories = Category::all();
+        $viewData = [];
+        $viewData['title'] = 'About us - Online Store';
+        $viewData['subtitle'] = 'About us';
+        $viewData['categories'] = Category::all();
 
-        return view('home.index', compact('categories'));
+        return view('home.index')->with('viewData',$viewData);
     }
 
     public function search(Request $request): View
@@ -21,7 +24,6 @@ class HomeController extends Controller
         $request->validate([
             'name' => 'nullable|string',
         ]);
-
         $query = $request->input('name', '');
         $categories = Category::where('name', 'like', '%' . $query . '%')->get();
         $products = Product::whereIn('category_id', $categories->pluck('id'))->get();

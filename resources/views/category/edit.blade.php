@@ -42,7 +42,7 @@
                         <img src="{{ asset('storage/' . $viewData['category']->image) }}" alt="{{ $viewData['category']->getName() }}" style="width: 100px; height: auto;">
                     </div>
                 @endif
-                <button type="submit" class="btn btn-primary">Edit</button>
+                <button type="submit" class="btn btn-primary">Save</button>
             </form>
         </div>
     </div>

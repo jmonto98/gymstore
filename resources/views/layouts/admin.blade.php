@@ -33,6 +33,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-white" href="{{ route('useMode.home.index') }}">{{ __('messages.usemode') }}</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="{{ route('admin.user.index') }}">{{ __('messages.user') }}</a>
+                        </li>
                     </ul>
                     <hr>
                     <div class="px-3">

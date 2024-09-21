@@ -4,6 +4,7 @@ return [
     'brand' => 'GymStore',
     'home' => 'Home',
     'products' => 'Products',
+    'user' => 'User',
     'about' => 'About',
     'contact_us' => 'Contact Us',
     'login' => 'Login',
