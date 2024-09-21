@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\UseMode;
 use Illuminate\View\View;
 
 class ProductController extends Controller
@@ -24,6 +25,10 @@ class ProductController extends Controller
         $viewData['title'] = $product->getName().' - Online Store';
         $viewData['subtitle'] = $product->getName().' - Product information';
         $viewData['product'] = $product;
+
+        // Obtener el video relacionado del modelo UseMode
+        $useMode = UseMode::where('product_id', $product->id)->first(); 
+        $viewData['useMode'] = $useMode; 
 
         return view('product.show')->with('viewData', $viewData);
     }

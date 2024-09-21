@@ -14,7 +14,21 @@
         </h5>
         <p class="card-text">{{ $viewData["product"]->getDescription() }}</p>
 
-        {{-- Mostrar estrellas promedio basado en las reseñas --}}
+        @if(isset($viewData['useMode']) && $viewData['useMode']->videoUrl)
+          <div class="mb-3">
+            <h6>Video:</h6>
+            @php
+              preg_match('/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/', $viewData['useMode']->videoUrl, $matches);
+              $videoId = $matches[1] ?? null; 
+            @endphp
+            @if($videoId)
+              <iframe width="100%" height="315" src="https://www.youtube.com/embed/{{ $videoId }}" frameborder="0" allowfullscreen></iframe>
+            @else
+              <p>Video URL is not valid.</p>
+            @endif
+          </div>
+        @endif
+
         <p class="card-text">
           @php
             $averageRating = round($viewData['product']->reviews->avg('rating'), 1);
@@ -22,17 +36,15 @@
             $halfStar = $averageRating - $fullStars >= 0.5;
           @endphp
 
-          {{-- Mostrar estrellas completas --}}
+
           @for ($i = 0; $i < $fullStars; $i++)
             <i class="fas fa-star text-warning"></i>
           @endfor
 
-          {{-- Mostrar media estrella si aplica --}}
           @if ($halfStar)
             <i class="fas fa-star-half-alt text-warning"></i>
           @endif
 
-          {{-- Mostrar estrellas vacías --}}
           @for ($i = $fullStars + ($halfStar ? 1 : 0); $i < 5; $i++)
             <i class="far fa-star text-warning"></i>
           @endfor
@@ -79,7 +91,6 @@
         <div class="review">
             <strong>{{ $review->user->username }}:</strong>
 
-
             <div class="rating">
               @for ($i = 1; $i <= 5; $i++)
                 @if ($i <= $review->rating)
@@ -97,7 +108,6 @@
 
 <hr>
 
-{{-- Formulario para agregar reseñas --}}
 @auth
     <h3>Leave a Review</h3>
     <form action="{{ route('review.store', $viewData['product']->getId()) }}" method="POST">
@@ -123,6 +133,5 @@
 @else
     <p><a href="{{ route('login') }}">Log in</a> to leave a review.</p>
 @endauth
-
 
 @endsection
