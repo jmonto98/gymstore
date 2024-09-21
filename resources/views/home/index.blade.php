@@ -49,7 +49,6 @@
             <div class="card-header bg-primary text-white">
                 <h4 class="mb-0"><center>{{ __('messages.categories') }}</center></h4>
             </div>
-            <!-- <form method="POST" action="{{ route ('home.search')}}">   -->
             @csrf    
                 <div class="card-body">           
                     <div class="row">          
@@ -58,8 +57,6 @@
                                 <div class="card">
                                     <img src="{{ asset( 'storage/'.$category->getImage()) }}" class="card-img-top" width="300" height="300">
                                     <div class="card-body text-center">
-                                        <!-- <button type="submit">{{ $category->getName() }}</button>
-                                        <input name="name" value="{{ $category->getName() }}"/> -->
                                         <a href="{{ route('home.search', ['name'=> $category->getName()]) }}"
                                             class="btn bg-primary text-white">
                                                 {{ $category->getName() }}
@@ -70,6 +67,5 @@
                         @endforeach        
                     </div>
                 </div> 
-            <!-- </form> -->
 </div>
 @endsection
