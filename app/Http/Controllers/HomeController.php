@@ -11,12 +11,9 @@ class HomeController extends Controller
 {
     public function index(Request $request): View
     {
-        $viewData = [];
-        $viewData['title'] = 'About us - Online Store';
-        $viewData['subtitle'] = 'About us';
-        $viewData['categories'] = Category::all();
+        $categories = Category::all();
 
-        return view('home.index')->with('viewData',$viewData);
+        return view('home.index', compact('categories'));
     }
 
     public function search(Request $request): View

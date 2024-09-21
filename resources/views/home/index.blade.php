@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Home Page')
+
 @section('content')
 <div class="container py-4">
     @if(session('success'))
@@ -21,56 +22,28 @@
                     </ul>
                 </div>
             @endif
-            <form method="POST" action="{{ route ('home.search') }}">
-            @csrf
-              <label for="name">Category name:</label>
-              <input type="text" id="name" name="name">
-              <button type="submit">Search</button>
+            <form method="POST" action="{{ route('home.search') }}">
+                @csrf
+                <label for="name">Category name:</label>
+                <input type="text" id="name" name="name">
+                <button type="submit">Search</button>
             </form>
         </div>
+
         @if(isset($products) && $products->isNotEmpty())
-            <h2>Products in this category:</h2>
-                <ul>
-                    @foreach($products as $product)
-                        <li>
-                            <strong>{{ $product->name }}</strong><br>
-                            Description: {{ $product->description }}<br>
-                            Price: ${{ number_format($product->price, 2) }}<br>
-                            Stock: {{ $product->stock }}
-                        </li>
-                    @endforeach
-                </ul>
-        @elseif(isset($products))
-            <p>No products were found in this category.</p>
-        @endif
-    </div>
-    
-        <div class="card mb-4">
-            <div class="card-header bg-primary text-white">
-                <h4 class="mb-0"><center>{{ __('messages.categories') }}</center></h4>
-            </div>
-            <!-- <form method="POST" action="{{ route ('home.search')}}">   -->
-            @csrf    
-                <div class="card-body">           
-                    <div class="row">          
-                        @foreach ($viewData["categories"] as $category)                            
-                            <div class="col-md-4 col-lg-3 mb-2">
-                                <div class="card">
-                                    <img src="{{ asset( 'storage/'.$category->getImage()) }}" class="card-img-top" width="300" height="300">
-                                    <div class="card-body text-center">
-                                        <!-- <button type="submit">{{ $category->getName() }}</button>
-                                        <input name="name" value="{{ $category->getName() }}"/> -->
-                                        <a href="{{ route('home.search', ['name'=> $category->getName()]) }}"
-                                            class="btn bg-primary text-white">
-                                                {{ $category->getName() }}
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach        
-                    </div>
-                </div> 
-            <!-- </form> -->
-    </div>
+    <h2>Products in this category:</h2>
+    <ul>
+        @foreach($products as $product)
+            <li>
+                <strong>{{ $product->name }}</strong><br>
+                Description: {{ $product->description }}<br>
+                Price: ${{ number_format($product->price, 2) }}<br>
+                Stock: {{ $product->stock }}
+            </li>
+        @endforeach
+    </ul>
+@elseif(isset($products))
+    <p>No products were found in this category.</p>
+@endif
 </div>
 @endsection
