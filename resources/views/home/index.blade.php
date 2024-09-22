@@ -24,9 +24,8 @@
             @endif
             <form method="POST" action="{{ route('home.search') }}">
                 @csrf
-                <label for="name">Category name:</label>
-                <input type="text" id="name" name="name">
-                <button type="submit">Search</button>
+                <input type="text" id="name" name="name" class="form-control" placeholder="Search by Category"><br>
+                <button type="submit" class="btn bg-primary text-white">Search</button>
             </form>
         </div>
         @if(isset($products) && $products->isNotEmpty())
@@ -68,5 +67,4 @@
         </div>
     </div>
 </div>
-
 @endsection
