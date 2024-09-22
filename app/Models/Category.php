@@ -52,7 +52,7 @@ class Category extends Model
 
     public function setName(string $name): void
     {
-        $this->attributes['name'] = strtoupper($name);
+        $this->attributes['name'] = ucwords(strtolower($name));
     }
 
     public function getDescription(): string
@@ -62,7 +62,7 @@ class Category extends Model
 
     public function setDescription(string $description): void
     {
-        $this->attributes['description'] = ucfirst(strtolower($description));
+        $this->attributes['description'] = ucwords(strtolower($description));
     }
 
     public function getImage(): string

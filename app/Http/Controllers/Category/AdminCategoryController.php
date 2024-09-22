@@ -57,14 +57,14 @@ class AdminCategoryController extends Controller
         $category = Category::findOrFail($id);
 
        
-        if ($request->hasFile('image')) {
-            
-            if ($category->image) {
+        if ($request->hasFile('image')) {           
+            if ($category->image && Storage::disk('public')->exists($category->image)) {
                 Storage::disk('public')->delete($category->image);
             }
 
-            $imagePath = $request->file('image')->store('categories', 'public');
-            $category->image = $imagePath; // Actualiza el campo de imagen
+            $imagePath = 'categories/'.$category->id.'.'.$request->file('image')->extension();
+            Storage::disk('public')->put($imagePath, file_get_contents($request->file('image')->getRealPath()));
+            $category->setImage($imagePath); // Actualiza el campo de imagen
         }
 
         $category->setName($request->input('name'));

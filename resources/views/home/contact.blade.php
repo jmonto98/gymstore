@@ -1,11 +1,11 @@
 @extends('layouts.app')
 @section('title', 'Contact GymStore')
-@section('subtitle', 'Get in Touch')
+@section('subtitle', 'Contact Us')
 @section('content')
 <div class="container">
   <div class="row">
     <div class="col-lg-8 mx-auto">
-      <h2 class="text-center mb-4">Contact Us</h2>
+      <!-- <h2 class="text-center mb-4">Contact Us</h2> -->
       <p class="lead">
         At GymStore, we value communication with our customers. If you have any questions, suggestions, or need assistance, don't hesitate to get in touch with us.
       </p>

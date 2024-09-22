@@ -12,6 +12,7 @@
         <div class="card-header bg-primary text-white">
             <h4 class="mb-0">{{ __('messages.search_by_category') }}</h4>
         </div>
+
         <div class="card-body">
             @if($errors->any())
                 <div class="alert alert-danger">
@@ -22,7 +23,7 @@
                     </ul>
                 </div>
             @endif
-            <form method="POST" action="{{ route('home.search') }}">
+           <form method="POST" action="{{ route('home.search') }}">
                 @csrf
                 <input type="text" id="name" name="name" class="form-control" placeholder="Search by Category"><br>
                 <button type="submit" class="btn bg-primary text-white">Search</button>

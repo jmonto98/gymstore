@@ -48,9 +48,9 @@ class HomeController extends Controller
         $viewData = [];
         $viewData['title'] = 'Contact us - Online Store';
         $viewData['subtitle'] = 'Contact us';
-        $viewData['email'] = 'fxmail@fakestore.com';
-        $viewData['address'] = 'Springfield';
-        $viewData['phone'] = '604 5521245';
+        $viewData['email'] = 'info@gymstore.com';
+        $viewData['address'] = '123 Fitness Street, Sports City';
+        $viewData['phone'] = '+1 (555) 123-4567';
 
         return view('home.contact')->with('viewData', $viewData);
     }

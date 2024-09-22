@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('categories', function (Blueprint $table) {
             //
-            $table->string('image')->nullable();
+            $table->string('image')->nullable()->default('categories/default_image.png');
         });
     }
 
