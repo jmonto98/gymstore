@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
-use Illuminate\Support\Facades\Storage; 
 
 class AdminCategoryController extends Controller
 {
@@ -25,7 +25,6 @@ class AdminCategoryController extends Controller
     {
         Category::validate($request);
 
-       
         $imagePath = $request->file('image')->store('categories', 'public'); // Almacena la imagen en la carpeta 'categories'
 
         Category::create($request->only(['name', 'description']) + ['image' => $imagePath]);
@@ -56,8 +55,7 @@ class AdminCategoryController extends Controller
 
         $category = Category::findOrFail($id);
 
-       
-        if ($request->hasFile('image')) {           
+        if ($request->hasFile('image')) {
             if ($category->image && Storage::disk('public')->exists($category->image)) {
                 Storage::disk('public')->delete($category->image);
             }

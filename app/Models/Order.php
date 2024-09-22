@@ -20,8 +20,7 @@ class Order extends Model
      * $this->attributes['totalOrder'] - int - contains the total order amount
      * $this->attributes['cusPayment'] - string - contains the customer's payment method
      * $this->attributes['user_id'] - int - contains the foreign key of the associated user
-     */ 
-
+     */
     protected $fillable = [
         'orderDate', 'status', 'totalOrder', 'cusPayment', 'user_id',
     ];

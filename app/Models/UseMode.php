@@ -18,8 +18,6 @@ class UseMode extends Model
      * $this->attributes['created_at'] - timestamp - contains the creation date of the use mode
      * $this->attributes['updated_at'] - timestamp - contains the last update date of the use mode
      */
-
-
     protected $fillable = [
         'videoUrl',
         'product_id',

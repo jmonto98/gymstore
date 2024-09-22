@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Middleware\AdminAuthMiddleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\AdminAuthMiddleware;
 
 Route::get('/home', 'App\Http\Controllers\HomeController@home')->name('home');
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home.index');
@@ -48,6 +48,6 @@ Route::middleware([AdminAuthMiddleware::class])->group(function () {
     Route::put('/user/update/{id}', 'App\Http\Controllers\User\UserHomeController@update')->name('user.update');
 });
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';
 
 Auth::routes();

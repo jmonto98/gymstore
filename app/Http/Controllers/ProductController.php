@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use App\Models\Category;
 use App\Models\UseMode;
 use Illuminate\View\View;
-use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -29,8 +27,8 @@ class ProductController extends Controller
         $viewData['product'] = $product;
 
         // Obtener el video relacionado del modelo UseMode
-        $useMode = UseMode::where('product_id', $product->id)->first(); 
-        $viewData['useMode'] = $useMode; 
+        $useMode = UseMode::where('product_id', $product->id)->first();
+        $viewData['useMode'] = $useMode;
 
         return view('product.show')->with('viewData', $viewData);
     }

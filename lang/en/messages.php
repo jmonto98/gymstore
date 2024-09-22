@@ -18,5 +18,5 @@ return [
     'go_to_the_store' => 'Back to the Store',
     'copyright' => 'Copyright',
     'search_by_category' => 'Search by Category',
-    'users' => 'Users'
+    'users' => 'Users',
 ];

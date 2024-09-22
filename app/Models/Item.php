@@ -17,8 +17,7 @@ class Item extends Model
      * $this->attributes['quantity'] - int - contains the item quantity
      * $this->attributes['order_id'] - int - contains the foreign key of the associated order
      * $this->attributes['product_id'] - int - contains the foreign key of the associated product
-     */ 
-
+     */
     protected $fillable = [
         'price', 'quantity', 'order_id', 'product_id',
     ];

@@ -22,9 +22,7 @@ class Product extends Model
      * $this->attributes['totalReviews'] - int - contains the total number of reviews of the product
      * $this->attributes['category_id'] - int - contains the foreign key of the associated category
      * $this->attributes['state'] - string - contains the product state (e.g., 'active', 'inactive')
-     */ 
-
-
+     */
     protected $fillable = [
         'name', 'price', 'stock', 'image', 'sumReviews', 'totalReviews', 'category_id', 'state',
     ];
