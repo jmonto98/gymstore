@@ -30,16 +30,16 @@
                         <li class="nav-item">
                             <a class="nav-link text-white" href="{{ route('category.home.index') }}">{{ __('messages.categories') }}</a>
                         </li>
-                        <li class="nav-item">
+ <!--                        <li class="nav-item">
                             <a class="nav-link text-white" href="{{ route('useMode.home.index') }}">{{ __('messages.usemode') }}</a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="{{ route('admin.user.index') }}">{{ __('messages.user') }}</a>
+                            <a class="nav-link text-white" href="{{ route('admin.user.index') }}">{{ __('messages.users') }}</a>
                         </li>
                     </ul>
                     <hr>
                     <div class="px-3">
-                        <a href="{{ route('home.index') }}" class="btn btn-primary w-100">{{ __('messages.go_back_to_home_page') }}</a>
+                        <a href="{{ route('home.index') }}" class="btn btn-primary w-100">{{ __('messages.go_to_the_store') }}</a>
                     </div>
                 </div>
             </nav>

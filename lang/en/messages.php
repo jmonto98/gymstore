@@ -4,7 +4,6 @@ return [
     'brand' => 'GymStore',
     'home' => 'Home',
     'products' => 'Products',
-    'user' => 'User',
     'about' => 'About',
     'contact_us' => 'Contact Us',
     'login' => 'Login',
@@ -16,7 +15,8 @@ return [
     'dashboard' => 'Dashboard',
     'categories' => 'Categories',
     'usemode' => 'Usage Mode',
-    'go_back_to_home_page' => 'Go Back to Home Page',
+    'go_to_the_store' => 'Back to the Store',
     'copyright' => 'Copyright',
     'search_by_category' => 'Search by Category',
+    'users' => 'Users'
 ];

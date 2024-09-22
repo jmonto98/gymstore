@@ -33,10 +33,16 @@ class AdminProductController extends Controller
         $newProduct->setCategoryId($request->input('category_id'));
         $newProduct->setState($request->input('state'));
         $newProduct->setImage('default_image.png');
+
         $newProduct->save();
 
+        $useModes = new UseMode();
+        $useModes->setProductId($newProduct->getId());
+        $useModes->setVideoUrl($request->input('video'));
+        $useModes->save();
+
         if ($request->hasFile('image')) {
-            $imageName = 'images/'.$newProduct->id.'.'.$request->file('image')->extension();
+            $imageName = 'images/' . $newProduct->id . '.' . $request->file('image')->extension();
             Storage::disk('public')->put($imageName, file_get_contents($request->file('image')->getRealPath()));
             $newProduct->setImage($imageName);
             $newProduct->save();
@@ -68,8 +74,8 @@ class AdminProductController extends Controller
         $viewData['categories'] = Category::all();
         if ($useModes) {
             $viewData['useMode'] = $useModes->getVideoUrl();
-        }else{
-            $viewData['useMode'] = "No video yet";
+        } else {
+            $viewData['useMode'] = "Add a video!";
         }
 
         return view('admin.product.edit', compact('viewData'));
@@ -85,17 +91,25 @@ class AdminProductController extends Controller
         $product->setStock($request->input('stock'));
         $product->setCategoryId($request->input('category_id'));
         $product->setState($request->input('state'));
-        
+
 
         if ($request->hasFile('image')) {
             if ($product->image && Storage::disk('public')->exists($product->image)) {
                 Storage::disk('public')->delete($product->image);
             }
 
-            $imageName = 'images/'.$product->id.'.'.$request->file('image')->extension();
+            $imageName = 'images/' . $product->id . '.' . $request->file('image')->extension();
             Storage::disk('public')->put($imageName, file_get_contents($request->file('image')->getRealPath()));
             $product->setImage($imageName);
         }
+
+        $useModes = UseMode::where('product_id', $id)->first();
+        if (!$useModes) {
+            $useModes = new UseMode();
+        }
+        $useModes->setProductId($product->getId());
+        $useModes->setVideoUrl($request->input('video'));
+        $useModes->save();
 
         $product->save();
 

@@ -48,6 +48,11 @@ class UseMode extends Model
         $this->attributes['videoUrl'] = $videoUrl;
     }
 
+    public function setProductId(int $productId): void
+    {
+        $this->attributes['product_id'] = $productId;
+    }
+
     public function getProductId(): int
     {
         return $this->attributes['product_id'];
