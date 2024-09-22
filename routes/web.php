@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\AdminAuthMiddleware;
 
+Route::get('/home', 'App\Http\Controllers\HomeController@home')->name('home');
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home.index');
 Route::get('/search', 'App\Http\Controllers\HomeController@search')->name('home.search');
 Route::post('/search', 'App\Http\Controllers\HomeController@search')->name('home.search');

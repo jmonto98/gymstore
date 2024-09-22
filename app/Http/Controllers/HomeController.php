@@ -54,4 +54,10 @@ class HomeController extends Controller
 
         return view('home.contact')->with('viewData', $viewData);
     }
+
+    public function home(): View
+    {
+        return view('home');
+    }
+
 }

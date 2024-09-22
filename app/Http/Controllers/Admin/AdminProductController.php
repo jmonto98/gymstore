@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\UseMode;
+use Illuminate\Support\Facades\DB;
 use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
+use Illuminate\View\ViewFinderInterface;
 
 class AdminProductController extends Controller
 {
@@ -59,18 +61,18 @@ class AdminProductController extends Controller
 
     public function edit($id): View
     {
-        $product = Product::findOrFail($id);
-        $categories = Category::all();
-        $useMode = UseMode::where('product_id',  $id)->get();
-        #$videoUrl = $useModes->videoUrl;
-        $viewData = [
-            'product' => $product,
-            'categories' => $categories,
-            'title' => 'Edit Product',
-            'useMode' => $useMode,
-        ];
+        $useModes = UseMode::where('product_id', $id)->first();
+        $viewData = [];
+        $viewData['title'] = 'Edit Product';
+        $viewData['product'] = Product::findOrFail($id);
+        $viewData['categories'] = Category::all();
+        if ($useModes) {
+            $viewData['useMode'] = $useModes->getVideoUrl();
+        }else{
+            $viewData['useMode'] = "No video yet";
+        }
 
-        return view('admin.product.edit', $viewData);
+        return view('admin.product.edit', compact('viewData'));
     }
 
     public function update(Request $request, $id): RedirectResponse

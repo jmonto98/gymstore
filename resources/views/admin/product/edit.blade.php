@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', $title) {{-- Aquí accedemos directamente al título --}}
+@section('title', $viewData['title'])
 @section('content')
 <div class="card mb-4">
     <div class="card-header">
@@ -14,7 +14,7 @@
         </ul>
         @endif
 
-        <form method="POST" action="{{ route('admin.product.update', ['id' => $product->getId()]) }}"
+        <form method="POST" action="{{ route('admin.product.update', ['id' => $viewData['product']->getId()]) }}"
             enctype="multipart/form-data">
             @csrf
             @method('PUT')
@@ -22,12 +22,12 @@
             <div class="row mb-3">
                 <div class="col-md-6">
                     <label for="name" class="form-label">Name:</label>
-                    <input id="name" name="name" value="{{ old('name', $product->getName()) }}" type="text"
+                    <input id="name" name="name" value="{{ old('name', $viewData['product']->getName()) }}" type="text"
                         class="form-control" required>
                 </div>
                 <div class="col-md-6">
                     <label for="price" class="form-label">Price:</label>
-                    <input id="price" name="price" value="{{ old('price', $product->getPrice()) }}" type="number"
+                    <input id="price" name="price" value="{{ old('price', $viewData['product']->getPrice()) }}" type="number"
                         step="0.01" class="form-control" required>
                 </div>
             </div>
@@ -35,15 +35,15 @@
             <div class="row mb-3">
                 <div class="col-md-6">
                     <label for="stock" class="form-label">Stock:</label>
-                    <input id="stock" name="stock" value="{{ old('stock', $product->getStock()) }}" type="number"
+                    <input id="stock" name="stock" value="{{ old('stock', $viewData['product']->getStock()) }}" type="number"
                         class="form-control" required>
                 </div>
                 <div class="col-md-6">
                     <label for="category_id" class="form-label">Category:</label>
                     <select id="category_id" name="category_id" class="form-control" required>
                         <option value="">Select a category</option>
-                        @foreach($categories as $category)
-                        <option value="{{ $category->id }}" {{ (old('category_id', $product->getCategoryId()) == $category->id) ? 'selected' : '' }}>
+                        @foreach($viewData['categories'] as $category)
+                        <option value="{{ $category->id }}" {{ (old('category_id', $viewData['product']->getCategoryId()) == $category->id) ? 'selected' : '' }}>
                             {{ $category->name }}
                         </option>
                         @endforeach
@@ -65,13 +65,13 @@
                 </div>
                 <div class="col-md-6">
                     <label for="video" class="form-label">Video URL:</label>
-                    <input id="video" name="video" value="{{ old('videoUrl', $useMode) }}" type="text"
+                    <input id="video" name="video" value="{{ $viewData['useMode'] }}" type="text"
                         class="form-control" required>
                 </div>
                 <div class="col-md-6">
-                    @if ($product->getImage())
+                    @if ($viewData['product']->getImage())
                     <div class="mb-3"><br>
-                        <img src="{{ asset('storage/' . $product->getImage()) }}" alt="Current Image" class="img-fluid"
+                        <img src="{{ asset('storage/' . $viewData['product']->getImage()) }}" alt="Current Image" class="img-fluid"
                             style="max-height: 150px;">
                     </div>
                     @endif

@@ -14,35 +14,53 @@
 
 <body>
     <!-- header -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary py-4">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light py-4">
         <div class="container">
-            <a class="navbar-brand" href="/">{{ __('messages.brand') }}</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="/"><i class="fas fa-dumbbell me-2"></i>{{ __('messages.brand') }}</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCircleIcons" aria-controls="navbarCircleIcons" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav ms-auto">
-                    <a class="nav-link active" href="{{ route('home.index') }}">{{ __('messages.home') }}</a>
-                    <a class="nav-link active" href="{{ route('product.index') }}">{{ __('messages.products') }}</a>
-                    <a class="nav-link active" href="{{ route('home.about') }}">{{ __('messages.about') }}</a>
-                    <a class="nav-link active" href="{{ route('home.contact') }}">{{ __('messages.contact_us') }}</a>
-                    <div class="vr bg-white mx-2 d-none d-lg-block"></div>
+            <div class="collapse navbar-collapse" id="navbarCircleIcons">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('home.index') }}"><span class="bg-primary text-white rounded-circle p-2"><i class="fas fa-home"></i></span> {{ __('messages.home') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('product.index') }}"><span class="bg-success text-white rounded-circle p-2"><i class="fas fa-box"></i></span> {{ __('messages.products') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('cart.index') }}"><span class="bg-primary text-white rounded-circle p-2"><i class="fas fa-shopping-cart"></i></span> {{ __('messages.cart') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('home.about') }}"><span class="bg-warning text-white rounded-circle p-2"><i class="fas fa-info-circle"></i></span> {{ __('messages.about') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('home.contact') }}"><span class="bg-danger text-white rounded-circle p-2"><i class="fas fa-envelope"></i></span> {{ __('messages.contact_us') }}</a>
+                    </li>
                     @guest
-                    <a class="nav-link active" href="{{ route('login') }}">{{ __('messages.login') }}</a>
-                    <a class="nav-link active" href="{{ route('register') }}">{{ __('messages.register') }}</a>
-                    <a class="nav-link active" href="{{ route('cart.index') }}">{{ __('messages.cart') }}</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}"><span class="bg-info text-white rounded-circle p-2"><i class="fas fa-sign-in-alt"></i></span> {{ __('messages.login') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}"><span class="bg-secondary text-white rounded-circle p-2"><i class="fas fa-user-plus"></i></span> {{ __('messages.register') }}</a>
+                    </li>
                     @else
-                    <form id="logout" action="{{ route('logout') }}" method="POST">
-                    <a class="nav-link active" href="{{ route('cart.index') }}">{{ __('messages.cart') }}</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('cart.index') }}"><span class="bg-success text-white rounded-circle p-2"><i class="fas fa-shopping-cart"></i></span> {{ __('messages.cart') }}</a>
+                    </li>
                     @if(Auth::check() && Auth::user()->getRol() == 'ADMIN')
-                    <a class="nav-link active" href="{{ route('admin.home.index') }}">{{ __('messages.admin_panel') }}</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.home.index') }}"><span class="bg-dark text-white rounded-circle p-2"><i class="fas fa-user-shield"></i></span> {{ __('messages.admin_panel') }}</a>
+                    </li>
                     @endif
-                    <a role="button" class="nav-link active" onclick="document.getElementById('logout').submit();">{{ __('messages.logout') }}</a>
-                    @csrf
-                    </form>
+                    <li class="nav-item">
+                        <form id="logout" action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <a role="button" class="nav-link" onclick="document.getElementById('logout').submit();"><span class="bg-danger text-white rounded-circle p-2"><i class="fas fa-sign-out-alt"></i></span> {{ __('messages.logout') }}</a>
+                        </form>
+                    </li>
                     @endguest
-                </div>
+                </ul>
             </div>
         </div>
     </nav>
