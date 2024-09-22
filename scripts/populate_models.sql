@@ -1,17 +1,17 @@
 -- Populate Users table (10 users)
 INSERT INTO users (name, lastName, address, email, username, password, rol, state, balance)
 VALUES
-('John', 'Doe', '123 Main St', 'john@example.com', 'johndoe', '$2y$12$9htEQcednR9c3cI/PDC/veEZ4YPXqqY.ae2ngZn5pgFJBZuc91Lee', 'CUSTOMER', 'ACTIVE', FLOOR(RAND() * (10000 - 100 + 1) + 100)),
-('Jane', 'Smith', '456 Elm St', 'jane@example.com', 'janesmith', '$2y$12$9htEQcednR9c3cI/PDC/veEZ4YPXqqY.ae2ngZn5pgFJBZuc91Lee', 'CUSTOMER', 'ACTIVE', FLOOR(RAND() * (10000 - 100 + 1) + 100)),
-('Bob', 'Johnson', '789 Oak St', 'bob@example.com', 'bobjohnson', '$2y$12$9htEQcednR9c3cI/PDC/veEZ4YPXqqY.ae2ngZn5pgFJBZuc91Lee', 'CUSTOMER', 'ACTIVE', FLOOR(RAND() * (10000 - 100 + 1) + 100)),
-('Alice', 'Williams', '321 Pine St', 'alice@example.com', 'alicewilliams', '$2y$12$9htEQcednR9c3cI/PDC/veEZ4YPXqqY.ae2ngZn5pgFJBZuc91Lee', 'CUSTOMER', 'ACTIVE', FLOOR(RAND() * (10000 - 100 + 1) + 100)),
-('Charlie', 'Brown', '654 Maple St', 'charlie@example.com', 'charliebrown', '$2y$12$9htEQcednR9c3cI/PDC/veEZ4YPXqqY.ae2ngZn5pgFJBZuc91Lee', 'CUSTOMER', 'ACTIVE', FLOOR(RAND() * (10000 - 100 + 1) + 100)),
-('Eva', 'Davis', '987 Cedar St', 'eva@example.com', 'evadavis', '$2y$12$9htEQcednR9c3cI/PDC/veEZ4YPXqqY.ae2ngZn5pgFJBZuc91Lee', 'CUSTOMER', 'ACTIVE', FLOOR(RAND() * (10000 - 100 + 1) + 100)),
-('Frank', 'Miller', '147 Birch St', 'frank@example.com', 'frankmiller', '$2y$12$9htEQcednR9c3cI/PDC/veEZ4YPXqqY.ae2ngZn5pgFJBZuc91Lee', 'CUSTOMER', 'ACTIVE', FLOOR(RAND() * (10000 - 100 + 1) + 100)),
-('Grace', 'Wilson', '258 Walnut St', 'grace@example.com', 'gracewilson', '$2y$12$9htEQcednR9c3cI/PDC/veEZ4YPXqqY.ae2ngZn5pgFJBZuc91Lee', 'CUSTOMER', 'ACTIVE', FLOOR(RAND() * (10000 - 100 + 1) + 100)),
-('Henry', 'Taylor', '369 Ash St', 'henry@example.com', 'henrytaylor', '$2y$12$9htEQcednR9c3cI/PDC/veEZ4YPXqqY.ae2ngZn5pgFJBZuc91Lee', 'CUSTOMER', 'ACTIVE', FLOOR(RAND() * (10000 - 100 + 1) + 100)),
-('Ivy', 'Anderson', '741 Spruce St', 'ivy@example.com', 'ivyanderson', '$2y$12$9htEQcednR9c3cI/PDC/veEZ4YPXqqY.ae2ngZn5pgFJBZuc91Lee', 'CUSTOMER', 'ACTIVE', FLOOR(RAND() * (10000 - 100 + 1) + 100)),
-('Admin', 'GymStore', 'springfield', 'admin@gymstore.com', 'admin', '$2y$12$ObbZLrl2vSwyNZtQ/nB./.ksC1kYNExgsYU4rXBkrvdzWYRgq630y', 'ADMIN', 'ACTIVE', 5000);
+('John', 'Doe', '123 Main St', 'john@example.com', 'johndoe', '$2y$12$9htEQcednR9c3cI/PDC/veEZ4YPXqqY.ae2ngZn5pgFJBZuc91Lee', 'Customer', 'ACTIVE', FLOOR(RAND() * (10000 - 100 + 1) + 100)),
+('Jane', 'Smith', '456 Elm St', 'jane@example.com', 'janesmith', '$2y$12$9htEQcednR9c3cI/PDC/veEZ4YPXqqY.ae2ngZn5pgFJBZuc91Lee', 'Customer', 'ACTIVE', FLOOR(RAND() * (10000 - 100 + 1) + 100)),
+('Bob', 'Johnson', '789 Oak St', 'bob@example.com', 'bobjohnson', '$2y$12$9htEQcednR9c3cI/PDC/veEZ4YPXqqY.ae2ngZn5pgFJBZuc91Lee', 'Customer', 'ACTIVE', FLOOR(RAND() * (10000 - 100 + 1) + 100)),
+('Alice', 'Williams', '321 Pine St', 'alice@example.com', 'alicewilliams', '$2y$12$9htEQcednR9c3cI/PDC/veEZ4YPXqqY.ae2ngZn5pgFJBZuc91Lee', 'Customer', 'ACTIVE', FLOOR(RAND() * (10000 - 100 + 1) + 100)),
+('Charlie', 'Brown', '654 Maple St', 'charlie@example.com', 'charliebrown', '$2y$12$9htEQcednR9c3cI/PDC/veEZ4YPXqqY.ae2ngZn5pgFJBZuc91Lee', 'Customer', 'ACTIVE', FLOOR(RAND() * (10000 - 100 + 1) + 100)),
+('Eva', 'Davis', '987 Cedar St', 'eva@example.com', 'evadavis', '$2y$12$9htEQcednR9c3cI/PDC/veEZ4YPXqqY.ae2ngZn5pgFJBZuc91Lee', 'Customer', 'ACTIVE', FLOOR(RAND() * (10000 - 100 + 1) + 100)),
+('Frank', 'Miller', '147 Birch St', 'frank@example.com', 'frankmiller', '$2y$12$9htEQcednR9c3cI/PDC/veEZ4YPXqqY.ae2ngZn5pgFJBZuc91Lee', 'Customer', 'ACTIVE', FLOOR(RAND() * (10000 - 100 + 1) + 100)),
+('Grace', 'Wilson', '258 Walnut St', 'grace@example.com', 'gracewilson', '$2y$12$9htEQcednR9c3cI/PDC/veEZ4YPXqqY.ae2ngZn5pgFJBZuc91Lee', 'Customer', 'ACTIVE', FLOOR(RAND() * (10000 - 100 + 1) + 100)),
+('Henry', 'Taylor', '369 Ash St', 'henry@example.com', 'henrytaylor', '$2y$12$9htEQcednR9c3cI/PDC/veEZ4YPXqqY.ae2ngZn5pgFJBZuc91Lee', 'Customer', 'ACTIVE', FLOOR(RAND() * (10000 - 100 + 1) + 100)),
+('Ivy', 'Anderson', '741 Spruce St', 'ivy@example.com', 'ivyanderson', '$2y$12$9htEQcednR9c3cI/PDC/veEZ4YPXqqY.ae2ngZn5pgFJBZuc91Lee', 'Customer', 'ACTIVE', FLOOR(RAND() * (10000 - 100 + 1) + 100)),
+('Admin', 'GymStore', 'springfield', 'admin@gymstore.com', 'admin', '$2y$12$ObbZLrl2vSwyNZtQ/nB./.ksC1kYNExgsYU4rXBkrvdzWYRgq630y', 'Admin', 'ACTIVE', 5000);
 
 -- Populate Categories table (20 categories)
 INSERT INTO categories (name, description, image) VALUES
@@ -145,28 +145,70 @@ FROM
 LIMIT 200;
 
 -- Populate Items table (for the 200 orders)
-INSERT INTO items (price, quantity, order_id, product_id)
-SELECT 
-    p.price,                          -- Price extracted from the products table
-    FLOOR(RAND() * 3) + 1 AS quantity, -- Random quantity between 1 and 3
-    o.id AS order_id,                 -- Order ID
-    p.id AS product_id                -- Product ID extracted from the products table
-FROM 
-    orders o
-JOIN (
-    SELECT orders.id, FLOOR(RAND() * 3) + 1 AS num_items
-    FROM orders
-    WHERE id <= 200  -- Limit to the first 200 orders
-) AS randomized_items ON o.id = randomized_items.id
-JOIN (
-    SELECT id, price FROM products
-) p ON p.id = FLOOR(RAND() * 80) + 1  -- Select a random product between 1 and 80
-CROSS JOIN (
-    SELECT 1 AS multiplier UNION ALL SELECT 2 UNION ALL SELECT 3
-) t1 
-WHERE t1.multiplier <= randomized_items.num_items  -- Control the number of items per order
-ORDER BY 
-    o.id;
+-- ... (código anterior sin cambios)
+
+-- Crear un procedimiento almacenado temporal para insertar los items
+DELIMITER //
+CREATE PROCEDURE temp_insert_items()
+BEGIN
+    DECLARE done INT DEFAULT FALSE;
+    DECLARE v_order_id INT;
+    DECLARE v_num_items INT;
+    DECLARE v_product_id INT;
+    DECLARE v_price DECIMAL(10, 2);
+    DECLARE v_quantity INT;
+
+    -- Cursor para recorrer las órdenes
+    DECLARE cur CURSOR FOR 
+        SELECT id, FLOOR(RAND() * 3) + 1 AS num_items
+        FROM orders
+        WHERE id <= 200;  -- Limitar a las primeras 200 órdenes
+
+    -- Manejador de fin de cursor
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+
+    -- Abrir el cursor
+    OPEN cur;
+
+    -- Iniciar el bucle de inserción
+    read_loop: LOOP
+        FETCH cur INTO v_order_id, v_num_items;
+        IF done THEN
+            LEAVE read_loop;
+        END IF;
+
+        -- Insertar items para cada orden
+        SET @i = 0;
+        WHILE @i < v_num_items DO
+            -- Seleccionar un producto aleatorio
+            SELECT id, price INTO v_product_id, v_price
+            FROM products
+            ORDER BY RAND()
+            LIMIT 1;
+
+            -- Generar una cantidad aleatoria
+            SET v_quantity = FLOOR(RAND() * 3) + 1;
+
+            -- Insertar el item
+            INSERT INTO items (price, quantity, order_id, product_id)
+            VALUES (v_price, v_quantity, v_order_id, v_product_id);
+
+            SET @i = @i + 1;
+        END WHILE;
+    END LOOP;
+
+    -- Cerrar el cursor
+    CLOSE cur;
+END //
+DELIMITER ;
+
+-- Ejecutar el procedimiento
+CALL temp_insert_items();
+
+-- Eliminar el procedimiento temporal
+DROP PROCEDURE IF EXISTS temp_insert_items;
+
+-- ... (código posterior sin cambios)
 
 
 -- Populate Reviews table (200 reviews)
