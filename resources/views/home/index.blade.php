@@ -8,6 +8,8 @@
             {{ session('success') }}
         </div>
     @endif
+   
+
     <div class="card mb-4">
         <div class="card-header bg-primary text-white">
             <h4 class="mb-0">{{ __('messages.search_by_category') }}</h4>
@@ -45,6 +47,29 @@
         <p>No products were found in this category.</p>
         @endif
     </div>
+
+    <div class="card mb-4">
+    <div class="card-header bg-primary text-white">
+        <h4 class="mb-0"><center>{{ __('messages.Top_5_Sales')  }}</center></h4>  
+    </div>
+    <div class="card-body">
+        <div class="row">
+            @foreach ($viewData['topProducts'] as $item)
+            <div class="col-md-4 col-lg-3 mb-2">
+                <div class="card">
+                    <img src="{{ asset('storage/'.$item->product->image) }}" class="card-img-top" width="300" height="300">
+                    <div class="card-body text-center">
+                        <h5>{{ $item->product->name }}</h5>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</div>
+
+
+    
     <div class="card mb-4">
         <div class="card-header bg-primary text-white">
             <h4 class="mb-0"><center>{{ __('messages.categories') }}</center></h4>

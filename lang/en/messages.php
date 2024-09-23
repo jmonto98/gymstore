@@ -19,4 +19,5 @@ return [
     'copyright' => 'Copyright',
     'search_by_category' => 'Search by Category',
     'users' => 'Users',
+    'Top_5_Sales' => 'Top 5 Sales',
 ];
