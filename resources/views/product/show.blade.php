@@ -110,17 +110,15 @@
 
 
 <hr>
-{{-- Sección de reseñas --}}
-<h3>Reviews</h3>
+<h3> reviews </h3>
 
-@if($viewData['product']->reviews->isEmpty())
-    <p>No reviews yet. Be the first to leave a review!</p>
+@if($viewData['reviews']->isEmpty())
+    <p> No reviews yet. Be the first to leave a review!</p>
 @else
     <div id="reviews-container">
-        @foreach ($viewData['product']->reviews->take(5) as $review)
+        @foreach ($viewData['reviews'] as $review)
             <div class="review">
                 <strong>{{ $review->user->username }}:</strong>
-
                 <div class="rating">
                     @for ($i = 1; $i <= 5; $i++)
                         @if ($i <= $review->rating)
@@ -130,51 +128,12 @@
                         @endif
                     @endfor
                 </div>
-
                 <p>{{ $review->comment }}</p>
+                <small class="text-muted">{{ $review->created_at->diffForHumans() }}</small>
             </div>
         @endforeach
     </div>
+      
 
-    @if ($viewData['product']->reviews->count() > 5)
-        <button id="show-more-reviews" class="btn btn-primary mt-3">Show More Reviews</button>
-    @endif
-
-        <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        let reviewsContainer = document.getElementById('reviews-container');
-        let showMoreButton = document.getElementById('show-more-reviews');
-        let allReviews = JSON.parse('{!! json_encode($viewData["product"]->reviews ?? []) !!}');
-        let currentIndex = 5;
-
-        if (showMoreButton) {
-            showMoreButton.addEventListener('click', function() {
-                let newReviews = allReviews.slice(currentIndex, currentIndex + 5);
-                newReviews.forEach(function(review) {
-                    let reviewElement = document.createElement('div');
-                    reviewElement.className = 'review';
-                    reviewElement.innerHTML = `
-                        <strong>${review.user.username}:</strong>
-                        <div class="rating">
-                            ${Array(5).fill().map((_, i) => 
-                                i < review.rating ? 
-                                '<i class="fas fa-star text-warning"></i>' : 
-                                '<i class="far fa-star text-warning"></i>'
-                            ).join('')}
-                        </div>
-                        <p>${review.comment}</p>
-                    `;
-                    reviewsContainer.appendChild(reviewElement);
-                });
-
-                currentIndex += 5;
-                if (currentIndex >= allReviews.length) {
-                    showMoreButton.style.display = 'none';
-                }
-            });
-        }
-    });
-    </script>
-@endif
-
+  @endif
 @endsection

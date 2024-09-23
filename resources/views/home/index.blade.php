@@ -54,16 +54,21 @@
     </div>
     <div class="card-body">
         <div class="row">
-            @foreach ($viewData['topProducts'] as $item)
+        @foreach ($viewData['topProducts'] as $item)
             <div class="col-md-4 col-lg-3 mb-2">
                 <div class="card">
-                    <img src="{{ asset('storage/'.$item->product->image) }}" class="card-img-top" width="300" height="300">
+                    <a href="{{ route('product.show', $item->product->id) }}">
+                        <img src="{{ asset('storage/' . $item->product->image) }}" class="card-img-top" width="300" height="300">
+                    </a>
                     <div class="card-body text-center">
-                        <h5>{{ $item->product->name }}</h5>
+                        <a href="{{ route('product.show', $item->product->id) }}">
+                            <h5>{{ $item->product->name }}</h5>
+                        </a>
                     </div>
                 </div>
             </div>
-            @endforeach
+        @endforeach
+
         </div>
     </div>
 </div>
