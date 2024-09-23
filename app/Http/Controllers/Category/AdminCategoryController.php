@@ -18,7 +18,7 @@ class AdminCategoryController extends Controller
         $categories = Category::all();
         $viewData['categories'] = $categories;
 
-        return view('category.home.index')->with('viewData', $viewData);
+        return view('category.index')->with('viewData', $viewData);
     }
 
     public function store(Request $request): RedirectResponse
@@ -29,7 +29,7 @@ class AdminCategoryController extends Controller
 
         Category::create($request->only(['name', 'description']) + ['image' => $imagePath]);
 
-        return redirect()->route('category.home.index')->with('success', 'Category was successfully created');
+        return redirect()->route('category.index')->with('success', 'Category was successfully created');
     }
 
     public function edit($id): View
@@ -61,6 +61,6 @@ class AdminCategoryController extends Controller
         $category->setDescription($request->input('description'));
         $category->save();
 
-        return redirect()->route('category.home.index');
+        return redirect()->route('category.index');
     }
 }

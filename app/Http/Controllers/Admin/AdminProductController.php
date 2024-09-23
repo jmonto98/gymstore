@@ -15,10 +15,12 @@ class AdminProductController extends Controller
 {
     public function index(): View
     {
-        $products = Product::all();
-        $categories = Category::all();
+        $viewData = [];
+        $viewData['title'] = 'Product Management';
+        $viewData['products'] = Product::all();
+        $viewData['categories'] = Category::all();
 
-        return view('admin.product.index', compact('products', 'categories'));
+        return view('admin.product.index')->with('viewData', $viewData);
     }
 
     public function store(Request $request): RedirectResponse
@@ -46,7 +48,7 @@ class AdminProductController extends Controller
             $newProduct->save();
         }
 
-        return redirect()->route('admin.product.index')->with('success', 'Product indexd successfully.');
+        return redirect()->route('admin.product.index')->with('success', 'Product indexed successfully.');
     }
 
     public function delete($id): RedirectResponse
@@ -65,23 +67,23 @@ class AdminProductController extends Controller
 
     public function edit($id): View
     {
-        $useModes = UseMode::where('product_id', $id)->first();
         $viewData = [];
         $viewData['title'] = 'Edit Product';
         $viewData['product'] = Product::findOrFail($id);
         $viewData['categories'] = Category::all();
+
+        $useModes = UseMode::where('product_id', $id)->first();
         if ($useModes) {
             $viewData['useMode'] = $useModes->getVideoUrl();
         } else {
             $viewData['useMode'] = 'Add a video!';
         }
 
-        return view('admin.product.edit', compact('viewData'));
+        return view('admin.product.edit')->with('viewData', $viewData);
     }
 
     public function update(Request $request, $id): RedirectResponse
     {
-
         Product::validate($request);
         $product = Product::findOrFail($id);
         $product->setName($request->input('name'));

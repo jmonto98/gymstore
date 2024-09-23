@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Item;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
-use App\Models\Item;
 use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
 
 class HomeController extends Controller
 {
@@ -17,15 +17,15 @@ class HomeController extends Controller
         $viewData['title'] = 'About us - Online Store';
         $viewData['subtitle'] = 'About us';
         $viewData['categories'] = Category::all();
-       
-        $topProducts = Item::select('product_id', DB::raw('SUM(quantity) as total_quantity'))
-        ->groupBy('product_id')
-        ->orderByDesc('total_quantity')
-        ->with('product') 
-        ->take(5)
-        ->get();
 
-    $viewData['topProducts'] = $topProducts;
+        $topProducts = Item::select('product_id', DB::raw('SUM(quantity) as total_quantity'))
+            ->groupBy('product_id')
+            ->orderByDesc('total_quantity')
+            ->with('product')
+            ->take(5)
+            ->get();
+
+        $viewData['topProducts'] = $topProducts;
 
         return view('home.index')->with('viewData', $viewData);
     }

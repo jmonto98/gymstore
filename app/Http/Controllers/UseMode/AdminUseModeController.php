@@ -11,14 +11,6 @@ use Illuminate\View\View;
 
 class AdminUseModeController extends Controller
 {
-    public function index(): View
-    {
-        $products = Product::all();
-        $useModes = UseMode::with('product')->get();
-
-        return view('useMode.home.index', compact('products', 'useModes'));
-    }
-
     public function store(Request $request): RedirectResponse
     {
 
@@ -37,7 +29,7 @@ class AdminUseModeController extends Controller
         $viewData = [];
         $viewData['title'] = 'Edit Video for Product';
         $viewData['useMode'] = UseMode::findOrFail($id);
-        $viewData['products'] = Product::all(); // Recupera todos los productos para el dropdown
+        $viewData['products'] = Product::all();
 
         return view('useMode.edit')->with('viewData', $viewData);
     }

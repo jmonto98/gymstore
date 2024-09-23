@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Product Management')
+@section('title', $viewData['title']) <!-- Cambiado para usar viewData -->
 
 @section('content')
 <div class="container py-4">
@@ -29,25 +29,22 @@
                 <div class="row mb-3">
                     <div class="col-md-4">
                         <label for="name" class="form-label">Name:</label>
-                        <input id="name" name="name" value="{{ old('name') }}" type="text" class="form-control"
-                            required>
+                        <input id="name" name="name" value="{{ old('name') }}" type="text" class="form-control" required>
                     </div>
                     <div class="col-md-4">
                         <label for="price" class="form-label">Price:</label>
-                        <input id="price" name="price" value="{{ old('price') }}" type="number" step="0.01"
-                            class="form-control" required>
+                        <input id="price" name="price" value="{{ old('price') }}" type="number" step="0.01" class="form-control" required>
                     </div>
                     <div class="col-md-4">
                         <label for="stock" class="form-label">Stock:</label>
-                        <input id="stock" name="stock" value="{{ old('stock') }}" type="number" class="form-control"
-                            required>
+                        <input id="stock" name="stock" value="{{ old('stock') }}" type="number" class="form-control" required>
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="category_id" class="form-label">Category:</label>
                     <select id="category_id" name="category_id" class="form-select" required>
                         <option value="">Select a category</option>
-                        @foreach($categories as $category)
+                        @foreach($viewData['categories'] as $category) <!-- Cambiado para usar viewData -->
                             <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
                                 {{ $category->name }}
                             </option>
@@ -66,8 +63,8 @@
                     <input class="form-control" type="file" id="image" name="image">
                 </div>
                 <div class="col-md-4">
-                        <label for="video" class="form-label">Video URL:</label>
-                        <input id="video" name="video" value="{{ old('video') }}" type="text" class="form-control">
+                    <label for="video" class="form-label">Video URL:</label>
+                    <input id="video" name="video" value="{{ old('video') }}" type="text" class="form-control">
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary">Create Product</button>
@@ -93,7 +90,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($products as $product)
+                    @foreach ($viewData['products'] as $product) <!-- Cambiado para usar viewData -->
                         <tr>
                             <td>{{ $product->id }}</td>
                             <td>{{ $product->name }}</td>
@@ -105,7 +102,6 @@
                                     <i class="bi-pencil"></i>
                                 </a>
                             </td>
-                            <td>
                         </tr>
                     @endforeach
                 </tbody>
