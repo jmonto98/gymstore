@@ -13,28 +13,21 @@ class UserHomeController extends Controller
 {
     public function index(): View
     {
-        $users = User::all();
+        $viewData = [];
+        $viewData['title'] = 'Users';
+        $viewData['subtitle'] = 'List of users';
+        $viewData['users'] = User::all();
 
-        return view('user.index', compact('users'));
-
-    }
-
-    public function register(): View
-    {
-
-        return view('user.register');
-
+        return view('user.index')->with('viewData', $viewData);
     }
 
     public function edit($id): View
     {
-        $user = User::findOrFail($id);
-        $viewData = [
-            'user' => $user,
-            'title' => 'Edit User',
-        ];
+        $viewData = [];
+        $viewData['user'] = User::findOrFail($id);
+        $viewData['title'] = 'Edit User';
 
-        return view('user.edit', $viewData);
+        return view('user.edit')->with('viewData', $viewData);
     }
 
     public function create(Request $request): RedirectResponse

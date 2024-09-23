@@ -25,14 +25,11 @@
                             <a class="nav-link text-white" href="{{ route('admin.home.index') }}">{{ __('messages.home') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="{{ route('admin.product.index') }}">{{ __('messages.products') }}</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link text-white" href="{{ route('category.home.index') }}">{{ __('messages.categories') }}</a>
                         </li>
- <!--                        <li class="nav-item">
-                            <a class="nav-link text-white" href="{{ route('useMode.home.index') }}">{{ __('messages.usemode') }}</a>
-                        </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="{{ route('admin.product.index') }}">{{ __('messages.products') }}</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="{{ route('admin.user.index') }}">{{ __('messages.users') }}</a>
                         </li>

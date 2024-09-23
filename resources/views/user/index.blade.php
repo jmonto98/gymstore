@@ -1,5 +1,6 @@
 @extends('layouts.admin')
-@section('title', 'User')
+@section('title', $viewData['title'])
+@section('subtitle', $viewData['subtitle'])
 @section('content')
 <div class="container py-4">
     @if(session('success'))
@@ -78,6 +79,7 @@
                 </div>
                 <br>
                 <div class="text-center">
+                    <br>
                   <input type="submit" class="btn btn-primary" value="Save"/>
                 </div>
             </div> 
@@ -104,7 +106,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                   @foreach ($users as $user)
+                   @foreach ($viewData['users'] as $user)
                         <tr>
                             <td>{{ $user->getId() }}</td>
                             <td>{{ $user->getName() }}</td>

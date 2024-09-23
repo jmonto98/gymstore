@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'User')
+@section('title', $viewData['title'])
 @section('content')
 <div class="container py-4">
     @if(session('success'))
@@ -22,43 +22,43 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('user.update', ['id' => $user->getId()]) }}">
+            <form method="POST" action="{{ route('user.update', ['id' => $viewData['user']->getId()]) }}">
               @csrf
               @method('PUT')
               <div class="row mb-3">
                 <div class="col-md-4">
                         <label for="name" class="form-label">Name:</label>
-                        <input id="name" name="name" value="{{ old('Name',$user->getName()) }}" type="text" class="form-control"
+                        <input id="name" name="name" value="{{ old('Name',$viewData['user']->getName()) }}" type="text" class="form-control"
                             required>
                 </div>
                 <div class="col-md-4">
                         <label for="lastName" class="form-label">Last Name:</label>
-                        <input id="lastName" name="lastName" value="{{ old('LastName',$user->getLastName()) }}" type="text"
+                        <input id="lastName" name="lastName" value="{{ old('LastName',$viewData['user']->getLastName()) }}" type="text"
                             class="form-control" required>
                 </div>
                 <div class="col-md-4">
                         <label for="email" class="form-label">Email:</label>
-                        <input type="email" id="email" name="email" value="{{ old('Email',$user->getEmail()) }}"
+                        <input type="email" id="email" name="email" value="{{ old('Email',$viewData['user']->getEmail()) }}"
                             class="form-control" required>
                 </div>
                 <div class="col-md-4">
                         <label for="address" class="form-label">Address:</label>
-                        <input id="address" name="address" value="{{ old('Address',$user->getAddress()) }}" type="text"
+                        <input id="address" name="address" value="{{ old('Address',$viewData['user']->getAddress()) }}" type="text"
                             class="form-control" required>
                 </div>
                 <div class="col-md-4">
                         <label for="username" class="form-label">User Name:</label>
-                        <input type="text" id="username" name="username" value="{{ old('Username',$user->getUsername()) }}"
+                        <input type="text" id="username" name="username" value="{{ old('Username',$viewData['user']->getUsername()) }}"
                             class="form-control" required>
                 </div>
                 <div class="col-md-4">
                         <label for="password" class="form-label">Password:</label>
-                        <input type="password" minlength="8" id="password" name="password" value="{{ old('Password',$user->getPassword()) }}" type="text"
+                        <input type="password" minlength="8" id="password" name="password" value="{{ old('Password',$viewData['user']->getPassword()) }}" type="text"
                             class="form-control" required>
                 </div>
                 <div class="mb-3">
                     <label for="rol" class="form-label">Rol:</label>
-                    <select id="rol" name="rol" class="form-select" value="{{ old('Rol',$user->getRol()) }}" required>
+                    <select id="rol" name="rol" class="form-select" value="{{ old('Rol',$viewData['user']->getRol()) }}" required>
                         <option value="">Select a Rol</option>
                         <option value="Admin">Admin</option> 
                         <option value="Customer ">Customer</option>                         
@@ -66,7 +66,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="state" class="form-label">State:</label>
-                    <select id="state" name="state" class="form-select" value="{{ old('State',$user->getState()) }}" required>
+                    <select id="state" name="state" class="form-select" value="{{ old('State',$viewData['user']->getState()) }}" required>
                         <option value="">Select a State</option>
                         <option value="Active">Active</option> 
                         <option value="Inactive">Inactive</option>                         
@@ -74,11 +74,12 @@
                 </div>
                 <div class="md-3">
                         <label for="balance" class="form-label">Balance:</label>
-                        <input type="number" id="balance" name="balance" value="{{ old('Balance',$user->getBalance()) }}" type="text"
+                        <input type="number" id="balance" name="balance" value="{{ old('Balance',$viewData['user']->getBalance()) }}" type="text"
                             class="form-control" required>
                 </div>
                 <br>
                 <div class="text-center">
+                    <br>
                   <input type="submit" class="btn btn-primary" value="Update"/>
                 </div>
             </div> 

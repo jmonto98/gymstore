@@ -56,7 +56,6 @@
                         <th scope="col">ID</th>
                         <th scope="col">Name</th>
                         <th scope="col">Edit</th>
-                        <th scope="col">Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -68,15 +67,6 @@
                                 <a class="btn btn-primary" href="{{ route('category.edit', ['id' => $category->getId()]) }}">
                                     <i class="bi-pencil"></i>
                                 </a>
-                            </td>
-                            <td>
-                                <form action="{{ route('category.delete', $category->getId()) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-danger">
-                                        <i class="bi-trash"></i>
-                                    </button>
-                                </form>
                             </td>
                         </tr>
                     @endforeach
