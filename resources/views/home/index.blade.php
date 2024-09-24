@@ -61,7 +61,7 @@
                         <img src="{{ asset('storage/' . $item->product->image) }}" class="card-img-top" width="300" height="300">
                     </a>
                     <div class="card-body text-center">
-                        <a href="{{ route('product.show', $item->product->id) }}">
+                        <a href="{{ route('product.show', $item->product->id) }}" class="btn bg-primary text-white">
                             <h5>{{ $item->product->name }}</h5>
                         </a>
                     </div>
