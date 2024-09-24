@@ -39,6 +39,16 @@ return [
     'manage_user' => 'Manage Users',
     'edit' => 'Edit',
     'update' => 'Update',
-    'edit_user' => 'Edit User'
-
+    'edit_user' => 'Edit User',
+    'no_reviews_yet' => 'No reviews yet.',
+    'be_the_first_to_leave_a_review' => 'Be the first to leave a review!',
+    'reviews' => 'Reviews',
+    'leave_a_review' => 'Leave a Review',
+    'rating' => 'Rating',
+    'comment' => 'Comment',
+    'submit_review' => 'Submit Review',
+    'log_in' => 'Log in',
+    'to_leave_a_review' => 'to leave a review.',
+    'out_of_stock' => 'Out of Stock',
+    'add_to_cart' => 'Add to cart',
 ];
