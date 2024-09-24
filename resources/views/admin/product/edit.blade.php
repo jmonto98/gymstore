@@ -61,7 +61,7 @@
                 </div>
                 <div class='col-md-6'>
                     <label for='video' class='form-label'>{{ __('messages.video_url') }}:</label>
-                    <input id='video' name='video' value='{{ $viewData['useMode'] }}' type='text' class='form-control' required>
+                    <input id='video' name='video' placeholder='{{ $viewData['useMode'] }}' type='text' class='form-control'>
                 </div>
                 <div class='col-md-6'>
                     @if ($viewData['product']->getImage())
