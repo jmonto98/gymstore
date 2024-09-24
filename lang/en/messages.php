@@ -20,6 +20,25 @@ return [
     'search_by_category' => 'Search by Category',
     'users' => 'Users',
     'Top_5_Sales' => 'Top 5 Sales',
-    
+    'create_user' => 'Create User',
+    'name' => 'Name',
+    'last_name' => 'Last Name',
+    'email' => 'Email',
+    'address' => 'Address',
+    'user_name' => 'Username',
+    'password' => 'Password',
+    'rol' => 'Role',
+    'select_rol' => 'Select Role',
+    'customer' => 'Customer',
+    'state' => 'State',
+    'select_state' => 'Select State',
+    'active' => 'Active',
+    'inactive' => 'Inactive',
+    'balance' => 'Balance',
+    'save' => 'Save',
+    'manage_user' => 'Manage Users',
+    'edit' => 'Edit',
+    'update' => 'Update',
+    'edit_user' => 'Edit User'
 
 ];
