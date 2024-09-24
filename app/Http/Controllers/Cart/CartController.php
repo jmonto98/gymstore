@@ -24,8 +24,8 @@ class CartController extends Controller
         }
 
         $viewData = [];
-        $viewData['title'] = 'Cart - Online Store';
-        $viewData['subtitle'] = 'Shopping Cart';
+        $viewData['title'] = __('messages.cart');
+        $viewData['subtitle'] = __('messages.shopping_cart');
         $viewData['total'] = $total;
         $viewData['products'] = $productsInCart;
 
@@ -51,8 +51,8 @@ class CartController extends Controller
     public function purchase(Request $request)
     {
         $viewData = [];
-        $viewData['title'] = 'Purchase - Online Store';
-        $viewData['subtitle'] = 'Purchase Status';
+        $viewData['title'] = __('messages.purchase');
+        $viewData['subtitle'] = __('messages.purchase_status');
 
         $productsInSession = $request->session()->get('products');
         $productsInCart = Product::findMany(array_keys($productsInSession));
@@ -66,9 +66,9 @@ class CartController extends Controller
 
 
             if ($total > $userBalance) {
-                $viewData['header'] = 'Transaction Rejected';
+                $viewData['header'] = __('messages.transaction_rejected');
                 $viewData['class'] = 'alert alert-danger';
-                $viewData['message'] = 'Your balance ($'. $userBalance . ') is less than the total amount of this purchase ($'. $total .')';
+                $viewData['message'] = __('messages.your_balance') .' ($'. $userBalance . ') ' . __('messages.is_less') .' ($'. $total .')';
             }
             else{
 
@@ -105,9 +105,9 @@ class CartController extends Controller
                 $request->session()->forget('products');
 
                 
-                $viewData['header'] = 'Purchase Completed';
+                $viewData['header'] = __('messages.purchase_completed');
                 $viewData['class'] = 'alert alert-success';
-                $viewData['message'] = 'Congratulations, purchase completed. Order number is '.$order->getId();
+                $viewData['message'] = __('messages.congratulations_purchase_completed') .' '.$order->getId();
             }
             return view('cart.purchase')->with('viewData', $viewData);
         } else {
