@@ -27,12 +27,12 @@
             @endif
            <form method="POST" action="{{ route('home.search') }}">
                 @csrf
-                <input type="text" id="name" name="name" class="form-control" placeholder="Search by Category"><br>
-                <button type="submit" class="btn bg-primary text-white">Search</button>
+                <input type="text" id="name" name="name" class="form-control" placeholder="{{ __('messages.search_by_category') }}"><br>
+                <button type="submit" class="btn bg-primary text-white">{{ __('messages.search') }}</button>
             </form>
         </div>
         @if(isset($products) && $products->isNotEmpty())
-        <h2>Products in this category:</h2>
+        <h2>{{ __('messages.products_in_this_category') }}:</h2>
         <ul>
             @foreach($products as $product)
             <li>
@@ -44,7 +44,7 @@
             @endforeach
         </ul>
         @elseif(isset($products))
-        <p>No products were found in this category.</p>
+        <p>{{ __('messages.no_products_were_found_in_this_category') }}.</p>
         @endif
     </div>
 
@@ -61,8 +61,12 @@
                         <img src="{{ asset('storage/' . $item->product->image) }}" class="card-img-top" width="300" height="300">
                     </a>
                     <div class="card-body text-center">
+<<<<<<< HEAD
                         <a href="{{ route('product.show', $item->product->id) }}" class="btn bg-primary text-white">
                             <h5>{{ $item->product->name }}</h5>
+=======
+                        <a href="{{ route('product.show', $item->product->id) }}"  class="btn bg-primary text-white">{{ $item->product->name }}
+>>>>>>> 3a6ff3ef4199f523063fe4ce615e5525eb110734
                         </a>
                     </div>
                 </div>

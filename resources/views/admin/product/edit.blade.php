@@ -3,7 +3,7 @@
 @section('content')
 <div class="card mb-4">
     <div class="card-header">
-        Edit Product
+        {{__('messages.edit_product')}}
     </div>
     <div class="card-body">
         @if($errors->any())
@@ -21,12 +21,12 @@
 
             <div class="row mb-3">
                 <div class="col-md-6">
-                    <label for="name" class="form-label">Name:</label>
+                    <label for="name" class="form-label">{{__('messages.name')}}:</label>
                     <input id="name" name="name" value="{{ old('name', $viewData['product']->getName()) }}" type="text"
                         class="form-control" required>
                 </div>
                 <div class="col-md-6">
-                    <label for="price" class="form-label">Price:</label>
+                    <label for="price" class="form-label">{{__('messages.price')}}:</label>
                     <input id="price" name="price" value="{{ old('price', $viewData['product']->getPrice()) }}" type="number"
                         step="0.01" class="form-control" required>
                 </div>
@@ -34,14 +34,14 @@
 
             <div class="row mb-3">
                 <div class="col-md-6">
-                    <label for="stock" class="form-label">Stock:</label>
+                    <label for="stock" class="form-label">{{__('messages.stock')}}:</label>
                     <input id="stock" name="stock" value="{{ old('stock', $viewData['product']->getStock()) }}" type="number"
                         class="form-control" required>
                 </div>
                 <div class="col-md-6">
-                    <label for="category_id" class="form-label">Category:</label>
+                    <label for="category_id" class="form-label">{{__('messages.select_a_category')}}:</label>
                     <select id="category_id" name="category_id" class="form-control" required>
-                        <option value="">Select a category</option>
+                        <option value="">{{__('messages.select_a_category')}}</option>
                         @foreach($viewData['categories'] as $category)
                         <option value="{{ $category->id }}" {{ (old('category_id', $viewData['product']->getCategoryId()) == $category->id) ? 'selected' : '' }}>
                             {{ $category->name }}
@@ -50,7 +50,7 @@
                     </select>
                 </div>
                 <div class="mb-3">
-                    <label for="state" class="form-label">State:</label>
+                    <label for="state" class="form-label">{{__('messages.state')}}:</label>
                     <select id="state" name="state" class="form-select" required>
                         <option value="active" {{ old('state') == 'active' ? 'selected' : '' }}>Active</option>
                         <option value="inactive" {{ old('state') == 'inactive' ? 'selected' : '' }}>Inactive</option>
@@ -60,11 +60,11 @@
 
             <div class="row mb-3">
                 <div class="col-md-6">
-                    <label for="image" class="form-label">Image:</label>
+                    <label for="image" class="form-label">{{__('messages.image')}}:</label>
                     <input class="form-control" type="file" id="image" name="image">
                 </div>
                 <div class="col-md-6">
-                    <label for="video" class="form-label">Video URL:</label>
+                    <label for="video" class="form-label">{{__('messages.video_url')}}:</label>
                     <input id="video" name="video" value="{{ $viewData['useMode'] }}" type="text"
                         class="form-control" required>
                 </div>
@@ -77,7 +77,7 @@
                     @endif
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Update</button>
+            <button type="submit" class="btn btn-primary">{{__('messages.update')}}</button>
         </form>
     </div>
 </div>

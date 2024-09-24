@@ -19,7 +19,6 @@ Route::post('/cart/add/{id}', 'App\Http\Controllers\Cart\CartController@add')->n
 
 Route::middleware('auth')->group(function () {
     Route::get('/cart/purchase', 'App\Http\Controllers\Cart\CartController@purchase')->name('cart.purchase');
-    Route::get('/my-account/orders', 'App\Http\Controllers\MyAccountController@orders')->name('myaccount.orders');
     Route::post('/products/{id}/reviews', 'App\Http\Controllers\Review\ReviewController@store')->name('review.store');
 });
 

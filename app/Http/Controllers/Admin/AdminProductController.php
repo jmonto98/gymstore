@@ -16,7 +16,7 @@ class AdminProductController extends Controller
     public function index(): View
     {
         $viewData = [];
-        $viewData['title'] = 'Product Management';
+        $viewData['title'] = __('messages.product_management');
         $viewData['products'] = Product::all();
         $viewData['categories'] = Category::all();
 
@@ -48,7 +48,7 @@ class AdminProductController extends Controller
             $newProduct->save();
         }
 
-        return redirect()->route('admin.product.index')->with('success', 'Product indexed successfully.');
+        return redirect()->route('admin.product.index')->with('success', __('messages.product_indexed_successfully'));
     }
 
     public function delete($id): RedirectResponse
@@ -62,13 +62,13 @@ class AdminProductController extends Controller
 
         $product->delete();
 
-        return redirect()->route('admin.product.index')->with('success', 'Product deleted successfully.');
+        return redirect()->route('admin.product.index')->with('success', __('messages.product_deleted_successfully'));
     }
 
     public function edit($id): View
     {
         $viewData = [];
-        $viewData['title'] = 'Edit Product';
+        $viewData['title'] = __('messages.edit_product');
         $viewData['product'] = Product::findOrFail($id);
         $viewData['categories'] = Category::all();
 
@@ -76,7 +76,7 @@ class AdminProductController extends Controller
         if ($useModes) {
             $viewData['useMode'] = $useModes->getVideoUrl();
         } else {
-            $viewData['useMode'] = 'Add a video!';
+            $viewData['useMode'] = __('messages.add_a_video');
         }
 
         return view('admin.product.edit')->with('viewData', $viewData);
@@ -112,6 +112,6 @@ class AdminProductController extends Controller
 
         $product->save();
 
-        return redirect()->route('admin.product.index')->with('success', 'Product updated successfully.');
+        return redirect()->route('admin.product.index')->with('success', __('messages.product_updated_successfully'));
     }
 }

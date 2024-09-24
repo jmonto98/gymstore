@@ -24,7 +24,7 @@
             @if($videoId)
               <iframe width="100%" height="315" src="https://www.youtube.com/embed/{{ $videoId }}" frameborder="0" allowfullscreen></iframe>
             @else
-              <p>Video URL is not valid.</p>
+              <p>{{ __('messages.video_url_not_valid') }}</p>
             @endif
           </div>
         @endif
@@ -57,7 +57,7 @@
             @csrf
             <div class="col-auto">
               <div class="input-group col-auto">
-                <div class="input-group-text">Quantity</div>
+                <div class="input-group-text">{{ __('messages.quantity') }}</div>
                 @if ( $viewData["product"]->getStock()==0)
                   <input required type="number" min="1" max="{{ $viewData["product"]->getStock() }}"" class="form-control quantity-input" name="quantity" value="0">
                 @else
@@ -67,9 +67,9 @@
             </div>
             <div class="col-auto">
             @if ( $viewData["product"]->getStock()==0)
-              <button disabled class="btn bg-primary text-white" type="submit">Out of Stock</button>
+              <button disabled class="btn bg-primary text-white" type="submit">{{ __('messages.out_of_stock') }}</button>
             @else
-              <button class="btn bg-primary text-white" type="submit">Add to cart</button>
+              <button class="btn bg-primary text-white" type="submit">{{ __('messages.add_to_cart') }}</button>
             @endif
             </div>
           </div>
@@ -82,11 +82,11 @@
 <hr>
 
 @auth
-    <h3>Leave a Review</h3>
+    <h3>{{ __('messages.leave_a_review') }}</h3>
     <form action="{{ route('review.store', $viewData['product']->getId()) }}" method="POST">
         @csrf
         <div class="form-group">
-            <label for="rating">Rating:</label>
+            <label for="rating">{{ __('messages.rating') }}:</label>
             <div class="star-rating">
                 <input type="radio" id="star5" name="rating" value="5"><label for="star5" title="5 stars">&#9733;</label>
                 <input type="radio" id="star4" name="rating" value="4"><label for="star4" title="4 stars">&#9733;</label>
@@ -97,23 +97,23 @@
         </div>
 
         <div class="form-group">
-            <label for="comment">Comment:</label>
+            <label for="comment">{{ __('messages.comment') }}:</label>
             <textarea class="form-control" id="comment" name="comment" rows="3" required></textarea>
         </div>
         
-        <button type="submit" class="btn btn-primary">Submit Review</button>
+        <button type="submit" class="btn btn-primary">{{ __('messages.submit_review') }}</button>
     </form>
 @else
-    <p><a href="{{ route('login') }}">Log in</a> to leave a review.</p>
+    <p><a href="{{ route('login') }}">{{ __('messages.log_in') }}</a> {{ __('messages.to_leave_a_review') }}.</p>
 @endauth
 
 
 
 <hr>
-<h3> reviews </h3>
+<h3>{{ __('messages.reviews') }}</h3>
 
 @if($viewData['reviews']->isEmpty())
-    <p> No reviews yet. Be the first to leave a review!</p>
+    <p>{{ __('messages.no_reviews_yet') }} {{ __('messages.be_the_first_to_leave_a_review') }}!</p>
 @else
     <div id="reviews-container">
         @foreach ($viewData['reviews'] as $review)
