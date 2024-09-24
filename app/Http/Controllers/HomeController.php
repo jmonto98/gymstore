@@ -14,8 +14,8 @@ class HomeController extends Controller
     public function index(Request $request): View
     {
         $viewData = [];
-        $viewData['title'] = 'About us - Online Store';
-        $viewData['subtitle'] = 'About us';
+        $viewData['title'] = __('messages.about_us');
+        $viewData['subtitle'] = __('messages.about_us');
         $viewData['categories'] = Category::all();
 
         $topProducts = Item::select('product_id', DB::raw('SUM(quantity) as total_quantity'))
@@ -35,21 +35,24 @@ class HomeController extends Controller
         $request->validate([
             'name' => 'nullable|string',
         ]);
-        $query = $request->input('name', '');
-        $categories = Category::where('name', 'like', '%'.$query.'%')->get();
-        $products = Product::whereIn('category_id', $categories->pluck('id'))->get();
-        $totalProducts = $products->count();
 
-        return view('home.search')->with('products', $products, 'totalProducts', $totalProducts, 'query', $query);
+        $query = $request->input('name', '');
+        $viewData = [];
+        $viewData['title'] = __('messages.search');
+        $viewData['subtitle'] = __('messages.search_results_for');
+        
+        $viewData['categories'] = Category::where('name', 'like', '%'.$query.'%')->get();
+        $viewData['products'] = Product::whereIn('category_id', $viewData['categories']->pluck('id'))->get();
+        $viewData['totalProducts'] = $viewData['products']->count();
+
+        return view('home.search')->with('viewData', $viewData);
     }
 
     public function about(): View
     {
         $viewData = [];
-        $viewData['title'] = 'About us - Online Store';
-        $viewData['subtitle'] = 'About us';
-        $viewData['description'] = 'This page was developed as a class project for the subject Special Topics in Systems Engineering at EAFIT University.';
-        $viewData['author'] = 'Developed by: John Montoya';
+        $viewData['title'] = __('messages.about_us');
+        $viewData['subtitle'] = __('messages.about_us');
 
         return view('home.about')->with('viewData', $viewData);
     }
@@ -57,8 +60,8 @@ class HomeController extends Controller
     public function contact(): View
     {
         $viewData = [];
-        $viewData['title'] = 'Contact us - Online Store';
-        $viewData['subtitle'] = 'Contact us';
+        $viewData['title'] = __('messages.contact_us');
+        $viewData['subtitle'] = __('messages.contact_us');
         $viewData['email'] = 'info@gymstore.com';
         $viewData['address'] = '123 Fitness Street, Sports City';
         $viewData['phone'] = '+1 (555) 123-4567';

@@ -27,12 +27,12 @@
             @endif
            <form method="POST" action="{{ route('home.search') }}">
                 @csrf
-                <input type="text" id="name" name="name" class="form-control" placeholder="Search by Category"><br>
-                <button type="submit" class="btn bg-primary text-white">Search</button>
+                <input type="text" id="name" name="name" class="form-control" placeholder="{{ __('messages.search_by_category') }}"><br>
+                <button type="submit" class="btn bg-primary text-white">{{ __('messages.search') }}</button>
             </form>
         </div>
         @if(isset($products) && $products->isNotEmpty())
-        <h2>Products in this category:</h2>
+        <h2>{{ __('messages.products_in_this_category') }}:</h2>
         <ul>
             @foreach($products as $product)
             <li>
@@ -44,7 +44,7 @@
             @endforeach
         </ul>
         @elseif(isset($products))
-        <p>No products were found in this category.</p>
+        <p>{{ __('messages.no_products_were_found_in_this_category') }}.</p>
         @endif
     </div>
 

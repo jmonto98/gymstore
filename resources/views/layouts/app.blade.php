@@ -80,7 +80,7 @@
     <div class="copyright py-4 text-center text-white">
         <div class="container">
             <small>
-                Copyright - GymStore Team
+                {{ __('messages.copyright') }}
                 </a>
             </small>
         </div>
