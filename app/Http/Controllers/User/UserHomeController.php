@@ -14,8 +14,8 @@ class UserHomeController extends Controller
     public function index(): View
     {
         $viewData = [];
-        $viewData['title'] = 'Users';
-        $viewData['subtitle'] = 'List of users';
+        $viewData['title'] = __('messages.users');
+        $viewData['subtitle'] = __('messages.list_of_users');
         $viewData['users'] = User::all();
 
         return view('user.index')->with('viewData', $viewData);
@@ -25,7 +25,7 @@ class UserHomeController extends Controller
     {
         $viewData = [];
         $viewData['user'] = User::findOrFail($id);
-        $viewData['title'] = 'Edit User';
+        $viewData['title'] = __('messages.edit_user');
 
         return view('user.edit')->with('viewData', $viewData);
     }
@@ -47,7 +47,7 @@ class UserHomeController extends Controller
 
         $newUser->save();
 
-        return redirect()->route('admin.user.index')->with('success', 'User created successfully.');
+        return redirect()->route('admin.user.index')->with('success', __('messages.user_created_successfully'));
     }
 
     public function update(Request $request, $id): RedirectResponse
@@ -67,6 +67,6 @@ class UserHomeController extends Controller
 
         $user->save();
 
-        return redirect()->route('admin.user.index')->with('success', 'User updated successfully.');
+        return redirect()->route('admin.user.index')->with('success', __('messages.user_updated_successfully'));
     }
 }

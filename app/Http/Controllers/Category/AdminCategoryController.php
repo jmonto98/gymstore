@@ -14,7 +14,7 @@ class AdminCategoryController extends Controller
     public function index(): View
     {
         $viewData = [];
-        $viewData['title'] = 'Admin Page - Create Categories - Gym Store';
+        $viewData['title'] = __('messages.manage_categories');
         $categories = Category::all();
         $viewData['categories'] = $categories;
 
@@ -35,7 +35,7 @@ class AdminCategoryController extends Controller
     public function edit($id): View
     {
         $viewData = [];
-        $viewData['title'] = 'Admin Page - Edit Category - Gym Store';
+        $viewData['title'] = __('messages.edit_category');
         $viewData['category'] = Category::findOrFail($id);
 
         return view('category.edit')->with('viewData', $viewData);
