@@ -6,7 +6,7 @@
 
 <div class="card">
     <div class="card-header">
-        Admin Panel - Home Page
+        <h3>{{__('messages.dashboard')}}</h3>
     </div>
     <div class="card-body">
         <div class="iframe-container">
