@@ -31,9 +31,10 @@ class ProductController extends Controller
         $viewData['useMode'] = $useMode;
 
         $reviews = Product::with(['reviews' => function ($query) {
-            $query->orderBy('created_at', 'desc'); }])->findOrFail($id);
-        $viewData['reviews'] = $reviews->reviews->take(5); 
-    
+            $query->orderBy('created_at', 'desc');
+        }])->findOrFail($id);
+        $viewData['reviews'] = $reviews->reviews->take(5);
+
         return view('product.show')->with('viewData', $viewData);
     }
 }

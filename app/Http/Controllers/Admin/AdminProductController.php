@@ -94,7 +94,7 @@ class AdminProductController extends Controller
 
         if ($request->hasFile('image')) {
             if ($product->image && Storage::disk('public')->exists($product->image)) {
-                if($product->image != 'images/default_image.png'){
+                if ($product->image != 'images/default_image.png') {
                     Storage::disk('public')->delete($product->image);
                 }
             }

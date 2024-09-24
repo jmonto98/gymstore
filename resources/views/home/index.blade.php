@@ -50,7 +50,7 @@
 
     <div class="card mb-4">
     <div class="card-header bg-primary text-white">
-        <h4 class="mb-0"><center>{{ __('messages.Top_5_Sales')  }}</center></h4>  
+        <h4 class="mb-0"><center>{{ __('messages.Top_Sales')  }}</center></h4>  
     </div>
     <div class="card-body">
         <div class="row">

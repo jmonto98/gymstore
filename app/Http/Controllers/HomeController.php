@@ -22,7 +22,7 @@ class HomeController extends Controller
             ->groupBy('product_id')
             ->orderByDesc('total_quantity')
             ->with('product')
-            ->take(5)
+            ->take(4)
             ->get();
 
         $viewData['topProducts'] = $topProducts;
@@ -40,7 +40,7 @@ class HomeController extends Controller
         $viewData = [];
         $viewData['title'] = __('messages.search');
         $viewData['subtitle'] = __('messages.search_results_for');
-        
+
         $viewData['categories'] = Category::where('name', 'like', '%'.$query.'%')->get();
         $viewData['products'] = Product::whereIn('category_id', $viewData['categories']->pluck('id'))->get();
         $viewData['totalProducts'] = $viewData['products']->count();
