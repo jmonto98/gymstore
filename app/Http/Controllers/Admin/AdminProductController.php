@@ -109,7 +109,7 @@ class AdminProductController extends Controller
             $useModes = UseMode::where('product_id', $id)->first();
             if (! $useModes) {
                 $useModes = new UseMode;
-            }   
+            }
             $useModes->setProductId($product->getId());
             $useModes->setVideoUrl($video);
             $useModes->save();
