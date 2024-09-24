@@ -122,5 +122,7 @@ return [
     'add_a_video' => 'Add a video!',
     'edit_product' => 'Edit Product',
     'delete_product' => 'Delete Product',
-    
+    'video_url_not_valid' => 'Video not Available.',
+    'product_details' => 'Product Details',
+    'list_of_products' => 'List of products',
 ];
