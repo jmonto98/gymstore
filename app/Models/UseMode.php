@@ -4,13 +4,23 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class UseMode extends Model
 {
     use HasFactory;
 
+    /**
+     * USE MODE ATTRIBUTES
+     * $this->attributes['id'] - int - contains the use mode primary key (id)
+     * $this->attributes['videoUrl'] - string - contains the URL of the video demonstrating the product use
+     * $this->attributes['product_id'] - int - contains the foreign key of the associated product
+     * $this->attributes['created_at'] - timestamp - contains the creation date of the use mode
+     * $this->attributes['updated_at'] - timestamp - contains the last update date of the use mode
+     */
     protected $fillable = [
-        'videoUrl', 'product_id',
+        'videoUrl',
+        'product_id',
     ];
 
     public static function validate($request)
@@ -21,7 +31,7 @@ class UseMode extends Model
         ]);
     }
 
-    public function product()
+    public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
     }
@@ -34,6 +44,11 @@ class UseMode extends Model
     public function setVideoUrl(string $videoUrl): void
     {
         $this->attributes['videoUrl'] = $videoUrl;
+    }
+
+    public function setProductId(int $productId): void
+    {
+        $this->attributes['product_id'] = $productId;
     }
 
     public function getProductId(): int

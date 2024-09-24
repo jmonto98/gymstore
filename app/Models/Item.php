@@ -4,11 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Item extends Model
 {
     use HasFactory;
 
+    /**
+     * ITEM ATTRIBUTES
+     * $this->attributes['id'] - int - contains the item primary key (id)
+     * $this->attributes['price'] - int - contains the item price
+     * $this->attributes['quantity'] - int - contains the item quantity
+     * $this->attributes['order_id'] - int - contains the foreign key of the associated order
+     * $this->attributes['product_id'] - int - contains the foreign key of the associated product
+     */
     protected $fillable = [
         'price', 'quantity', 'order_id', 'product_id',
     ];
@@ -23,12 +32,12 @@ class Item extends Model
         ]);
     }
 
-    public function order()
+    public function order(): BelongsTo
     {
         return $this->belongsTo(Order::class);
     }
 
-    public function product()
+    public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
     }
@@ -60,7 +69,7 @@ class Item extends Model
 
     public function setOrderId(int $orderId): void
     {
-         $this->attributes['order_id']= $orderId;
+        $this->attributes['order_id'] = $orderId;
     }
 
     public function getProductId(): int
@@ -70,6 +79,6 @@ class Item extends Model
 
     public function setProductId(int $productId): void
     {
-         $this->attributes['product_id']= $productId;
+        $this->attributes['product_id'] = $productId;
     }
 }

@@ -4,11 +4,25 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Product extends Model
 {
     use HasFactory;
 
+    /**
+     * PRODUCT ATTRIBUTES
+     * $this->attributes['id'] - int - contains the product primary key (id)
+     * $this->attributes['name'] - string - contains the product name
+     * $this->attributes['price'] - int - contains the product price
+     * $this->attributes['stock'] - int - contains the product stock
+     * $this->attributes['image'] - string - contains the product image
+     * $this->attributes['sumReviews'] - int - contains the sum of the product reviews
+     * $this->attributes['totalReviews'] - int - contains the total number of reviews of the product
+     * $this->attributes['category_id'] - int - contains the foreign key of the associated category
+     * $this->attributes['state'] - string - contains the product state (e.g., 'active', 'inactive')
+     */
     protected $fillable = [
         'name', 'price', 'stock', 'image', 'sumReviews', 'totalReviews', 'category_id', 'state',
     ];
@@ -26,34 +40,34 @@ class Product extends Model
         ]);
     }
 
-    public function category()
+    public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
 
-    public function useModes()
+    public function useModes(): HasMany
     {
         return $this->hasMany(UseMode::class);
     }
 
-    public function reviews()
+    public function reviews(): HasMany
     {
         return $this->hasMany(Review::class);
     }
 
-    public static function sumPricesByQuantities($products, $productsInSession)
+    public function items(): HasMany
+    {
+        return $this->hasMany(Item::class);
+    }
+
+    public static function sumPricesByQuantities($products, $productsInSession): int
     {
         $total = 0;
         foreach ($products as $product) {
-            $total = $total + ($product->getPrice()*$productsInSession[$product->getId()]);
+            $total = $total + ($product->getPrice() * $productsInSession[$product->getId()]);
         }
 
         return $total;
-    }
-
-    public function items()
-    {
-        return $this->hasMany(Item::class);
     }
 
     public function getId(): string
@@ -134,6 +148,11 @@ class Product extends Model
     public function getCategoryId(): int
     {
         return $this->attributes['category_id'];
+    }
+
+    public function setCategoryId(int $categoryId): void
+    {
+        $this->attributes['category_id'] = $categoryId;
     }
 
     public function getState(): string

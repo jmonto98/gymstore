@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('products', function (Blueprint $table) {
+        Schema::table('categories', function (Blueprint $table) {
             //
-            $table->string('description')->default('Lorem Ipsum')->after('name');
+            $table->string('image')->nullable()->default('categories/default_image.png');
         });
     }
 
@@ -22,9 +22,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('products', function (Blueprint $table) {
+        Schema::table('categories', function (Blueprint $table) {
             //
-            $table->dropColumn('description');
+            $table->dropColumn('image');
         });
     }
 };

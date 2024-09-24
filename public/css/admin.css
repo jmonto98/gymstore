@@ -81,3 +81,14 @@ footer {
 .sidebar .nav-item:hover .nav-link {
     background-color: #495057;
 }
+.iframe-container {
+    width: 100%; /* Asegura que el contenedor ocupa todo el ancho */
+    height: 80vh; /* Altura basada en el 75% de la altura de la ventana del visor */
+    overflow: hidden; /* Evita el desbordamiento no deseado */
+}
+
+iframe {
+    width: 100%; /* Asegura que el iframe ocupe todo el ancho del contenedor */
+    height: 100%; /* Asegura que el iframe ocupe toda la altura del contenedor */
+    border: none; /* Elimina el borde por defecto de los iframes */
+}

@@ -6,34 +6,28 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\View\View;
+
 class UserHomeController extends Controller
 {
     public function index(): View
     {
-        $users = User::all();
+        $viewData = [];
+        $viewData['title'] = __('messages.users');
+        $viewData['subtitle'] = __('messages.list_of_users');
+        $viewData['users'] = User::all();
 
-        return view('user.index', compact('users'));
-
-    }
-
-    public function register(): View
-    {
-
-        return view('user.register');
-
+        return view('user.index')->with('viewData', $viewData);
     }
 
     public function edit($id): View
     {
-        $user = User::findOrFail($id);
-        $viewData = [
-            'user' => $user,
-            'title' => 'Edit User',
-        ];
+        $viewData = [];
+        $viewData['user'] = User::findOrFail($id);
+        $viewData['title'] = __('messages.edit_user');
 
-        return view('user.edit', $viewData);
+        return view('user.edit')->with('viewData', $viewData);
     }
 
     public function create(Request $request): RedirectResponse
@@ -49,11 +43,11 @@ class UserHomeController extends Controller
         $newUser->setPassword(Hash::make($request->input('password')));
         $newUser->setRol($request->input('rol'));
         $newUser->setState($request->input('state'));
-        $newUser->setBalance($request->input('balance'));   
+        $newUser->setBalance($request->input('balance'));
 
         $newUser->save();
 
-        return redirect()->route('home.index')->with('success', 'User created successfully.');
+        return redirect()->route('admin.user.index')->with('success', __('messages.user_created_successfully'));
     }
 
     public function update(Request $request, $id): RedirectResponse
@@ -73,6 +67,6 @@ class UserHomeController extends Controller
 
         $user->save();
 
-        return redirect()->route('user.index')->with('success', 'User updated successfully.');
+        return redirect()->route('admin.user.index')->with('success', __('messages.user_updated_successfully'));
     }
 }

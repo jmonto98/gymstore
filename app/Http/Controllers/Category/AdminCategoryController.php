@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class AdminCategoryController extends Controller
@@ -13,33 +14,28 @@ class AdminCategoryController extends Controller
     public function index(): View
     {
         $viewData = [];
-        $viewData['title'] = 'Admin Page - Create Categories - Gym Store';
+        $viewData['title'] = __('messages.manage_categories');
         $categories = Category::all();
         $viewData['categories'] = $categories;
 
-        return view('category.home.index')->with('viewData', $viewData);
+        return view('category.index')->with('viewData', $viewData);
     }
 
     public function store(Request $request): RedirectResponse
     {
         Category::validate($request);
-        Category::create($request->only(['name', 'description']));
 
-        return redirect()->route('category.home.index')->with('success', 'Category was successfully created');
-    }
+        $imagePath = $request->file('image')->store('categories', 'public'); // Almacena la imagen en la carpeta 'categories'
 
-    public function delete(int $id): RedirectResponse
-    {
-        $category = Category::findOrFail($id);
-        $category->delete();
+        Category::create($request->only(['name', 'description']) + ['image' => $imagePath]);
 
-        return redirect()->route('category.home.index');
+        return redirect()->route('category.index')->with('success', 'Category was successfully created');
     }
 
     public function edit($id): View
     {
         $viewData = [];
-        $viewData['title'] = 'Admin Page - Edit Category - Gym Store';
+        $viewData['title'] = __('messages.edit_category');
         $viewData['category'] = Category::findOrFail($id);
 
         return view('category.edit')->with('viewData', $viewData);
@@ -49,12 +45,22 @@ class AdminCategoryController extends Controller
     {
         Category::validate($request);
 
-        $category = category::findOrFail($id);
+        $category = Category::findOrFail($id);
+
+        if ($request->hasFile('image')) {
+            if ($category->image && Storage::disk('public')->exists($category->image)) {
+                Storage::disk('public')->delete($category->image);
+            }
+
+            $imagePath = 'categories/'.$category->id.'.'.$request->file('image')->extension();
+            Storage::disk('public')->put($imagePath, file_get_contents($request->file('image')->getRealPath()));
+            $category->setImage($imagePath); // Actualiza el campo de imagen
+        }
 
         $category->setName($request->input('name'));
         $category->setDescription($request->input('description'));
         $category->save();
 
-        return redirect()->route('category.home.index');
+        return redirect()->route('category.index');
     }
 }

@@ -4,12 +4,23 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Date;
 
 class Order extends Model
 {
     use HasFactory;
 
+    /**
+     * ORDER ATTRIBUTES
+     * $this->attributes['id'] - int - contains the order primary key (id)
+     * $this->attributes['orderDate'] - date - contains the order date
+     * $this->attributes['status'] - string - contains the order status (e.g., 'pending', 'shipped', 'delivered')
+     * $this->attributes['totalOrder'] - int - contains the total order amount
+     * $this->attributes['cusPayment'] - string - contains the customer's payment method
+     * $this->attributes['user_id'] - int - contains the foreign key of the associated user
+     */
     protected $fillable = [
         'orderDate', 'status', 'totalOrder', 'cusPayment', 'user_id',
     ];
@@ -17,7 +28,7 @@ class Order extends Model
     public static function validate($request)
     {
         $request->validate([
-            
+
             'status' => 'required|',
             'totalOrder' => 'required|numeric|gt:0',
             'cusPayment' => 'required|string',
@@ -25,12 +36,12 @@ class Order extends Model
         ]);
     }
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function items()
+    public function items(): HasMany
     {
         return $this->hasMany(Item::class);
     }
@@ -39,7 +50,6 @@ class Order extends Model
     {
         return $this->attributes['id'];
     }
-
 
     public function getOrderDate(): date
     {

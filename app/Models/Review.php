@@ -4,11 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Review extends Model
 {
     use HasFactory;
 
+    /**
+     * REVIEW ATTRIBUTES
+     * $this->attributes['id'] - int - contains the review primary key (id)
+     * $this->attributes['rating'] - int - contains the rating given by the user (1 to 5)
+     * $this->attributes['comment'] - string - contains the user's review comment
+     * $this->attributes['approved'] - boolean - indicates if the review has been approved by an admin
+     * $this->attributes['user_id'] - int - contains the foreign key of the associated user
+     * $this->attributes['product_id'] - int - contains the foreign key of the associated product
+     * $this->attributes['created_at'] - timestamp - contains the creation date of the review
+     */
     protected $fillable = [
         'rating', 'comment', 'approved', 'user_id', 'product_id',
     ];
@@ -18,18 +29,18 @@ class Review extends Model
         $request->validate([
             'rating' => 'required|numeric|gt:0',
             'comment' => 'required|max:255',
-            'approved' => 'required|bool',
-            'user_id' => 'required',
-            'product_id' => 'required',
+            'approved' => 'boolean',
+            'user_id' => 'required|exists:users,id',
+            'product_id' => 'required|exists:products,id',
         ]);
     }
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function product()
+    public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
     }

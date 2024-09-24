@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\UseMode;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -14,33 +15,40 @@ class AdminProductController extends Controller
 {
     public function index(): View
     {
-        $products = Product::all();
-        $categories = Category::all();
+        $viewData = [];
+        $viewData['title'] = __('messages.product_management');
+        $viewData['products'] = Product::all();
+        $viewData['categories'] = Category::all();
 
-        return view('admin.product.index', compact('products', 'categories'));
+        return view('admin.product.index')->with('viewData', $viewData);
     }
 
     public function store(Request $request): RedirectResponse
     {
         Product::validate($request);
         $newProduct = new Product;
-        $newProduct->name = $request->input('name');
-        $newProduct->price = $request->input('price');
-        $newProduct->stock = $request->input('stock');
-        $newProduct->category_id = $request->input('category_id');
-        $newProduct->state = $request->input('state');
-        $newProduct->image = 'default_image.png';
+        $newProduct->setName($request->input('name'));
+        $newProduct->setPrice($request->input('price'));
+        $newProduct->setStock($request->input('stock'));
+        $newProduct->setCategoryId($request->input('category_id'));
+        $newProduct->setState($request->input('state'));
+        $newProduct->setImage('default_image.png');
 
         $newProduct->save();
+
+        $useModes = new UseMode;
+        $useModes->setProductId($newProduct->getId());
+        $useModes->setVideoUrl($request->input('video'));
+        $useModes->save();
 
         if ($request->hasFile('image')) {
             $imageName = 'images/'.$newProduct->id.'.'.$request->file('image')->extension();
             Storage::disk('public')->put($imageName, file_get_contents($request->file('image')->getRealPath()));
-            $newProduct->image = $imageName;
+            $newProduct->setImage($imageName);
             $newProduct->save();
         }
 
-        return redirect()->route('admin.product.index')->with('success', 'Product indexd successfully.');
+        return redirect()->route('admin.product.index')->with('success', __('messages.product_indexed_successfully'));
     }
 
     public function delete($id): RedirectResponse
@@ -54,46 +62,61 @@ class AdminProductController extends Controller
 
         $product->delete();
 
-        return redirect()->route('admin.product.index')->with('success', 'Product deleted successfully.');
+        return redirect()->route('admin.product.index')->with('success', __('messages.product_deleted_successfully'));
     }
 
     public function edit($id): View
     {
-        $product = Product::findOrFail($id);
-        $categories = Category::all();
-        $viewData = [
-            'product' => $product,
-            'categories' => $categories,
-            'title' => 'Edit Product',
-        ];
+        $viewData = [];
+        $viewData['title'] = __('messages.edit_product');
+        $viewData['product'] = Product::findOrFail($id);
+        $viewData['categories'] = Category::all();
 
-        return view('admin.product.edit', $viewData);
+        $useModes = UseMode::where('product_id', $id)->first();
+        if ($useModes) {
+            $viewData['useMode'] = $useModes->getVideoUrl();
+        } else {
+            $viewData['useMode'] = __('messages.add_a_video');
+        }
+
+        return view('admin.product.edit')->with('viewData', $viewData);
     }
 
     public function update(Request $request, $id): RedirectResponse
     {
-
         Product::validate($request);
         $product = Product::findOrFail($id);
-        $product->name = $request->input('name');
-        $product->price = $request->input('price');
-        $product->stock = $request->input('stock');
-        $product->category_id = $request->input('category_id');
-        $product->state = $request->input('state');
-        $product->image = 'default_image.png';
+        $product->setName($request->input('name'));
+        $product->setPrice($request->input('price'));
+        $product->setStock($request->input('stock'));
+        $product->setCategoryId($request->input('category_id'));
+        $product->setState($request->input('state'));
 
         if ($request->hasFile('image')) {
             if ($product->image && Storage::disk('public')->exists($product->image)) {
-                Storage::disk('public')->delete($product->image);
+                if ($product->image != 'images/default_image.png') {
+                    Storage::disk('public')->delete($product->image);
+                }
             }
 
             $imageName = 'images/'.$product->id.'.'.$request->file('image')->extension();
             Storage::disk('public')->put($imageName, file_get_contents($request->file('image')->getRealPath()));
-            $product->image = $imageName;
+            $product->setImage($imageName);
+        }
+
+        $video = $request->input('video');
+        if ($video) {
+            $useModes = UseMode::where('product_id', $id)->first();
+            if (! $useModes) {
+                $useModes = new UseMode;
+            }
+            $useModes->setProductId($product->getId());
+            $useModes->setVideoUrl($video);
+            $useModes->save();
         }
 
         $product->save();
 
-        return redirect()->route('admin.product.index')->with('success', 'Product updated successfully.');
+        return redirect()->route('admin.product.index')->with('success', __('messages.product_updated_successfully'));
     }
 }
