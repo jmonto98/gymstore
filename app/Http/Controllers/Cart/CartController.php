@@ -8,11 +8,13 @@ use App\Models\Order;
 use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request): View
     {
         $total = 0;
         $productsInCart = [];
@@ -32,7 +34,7 @@ class CartController extends Controller
         return view('cart.index')->with('viewData', $viewData);
     }
 
-    public function add(Request $request, $id)
+    public function add(Request $request, $id): RedirectResponse
     {
         $products = $request->session()->get('products');
         $products[$id] = $request->input('quantity');
@@ -41,14 +43,14 @@ class CartController extends Controller
         return redirect()->route('cart.index');
     }
 
-    public function delete(Request $request)
+    public function delete(Request $request): RedirectResponse
     {
         $request->session()->forget('products');
 
         return back();
     }
 
-    public function purchase(Request $request)
+    public function purchase(Request $request): RedirectResponse|View
     {
         $viewData = [];
         $viewData['title'] = __('messages.purchase');

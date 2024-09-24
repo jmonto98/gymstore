@@ -5,11 +5,12 @@ namespace App\Http\Controllers\Review;
 use App\Http\Controllers\Controller;
 use App\Models\Review;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
-    public function store(Request $request, $productId)
+    public function store(Request $request, $productId): RedirectResponse
     {
         $request->validate([
             'rating' => 'required|integer|min:1|max:5',
