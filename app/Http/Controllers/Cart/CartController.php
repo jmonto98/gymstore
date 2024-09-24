@@ -64,13 +64,11 @@ class CartController extends Controller
             $total = Product::sumPricesByQuantities($productsInCart, $productsInSession);
             $userBalance = $user->getBalance();
 
-
             if ($total > $userBalance) {
                 $viewData['header'] = __('messages.transaction_rejected');
                 $viewData['class'] = 'alert alert-danger';
-                $viewData['message'] = __('messages.your_balance') .' ($'. $userBalance . ') ' . __('messages.is_less') .' ($'. $total .')';
-            }
-            else{
+                $viewData['message'] = __('messages.your_balance').' ($'.$userBalance.') '.__('messages.is_less').' ($'.$total.')';
+            } else {
 
                 $order = new Order;
                 $order->setOrderDate(date(Carbon::now()));
@@ -81,7 +79,7 @@ class CartController extends Controller
                 $order->save();
 
                 $total = 0;
-               
+
                 foreach ($productsInCart as $product) {
                     $quantity = $productsInSession[$product->getId()];
                     $item = new Item;
@@ -104,11 +102,11 @@ class CartController extends Controller
 
                 $request->session()->forget('products');
 
-                
                 $viewData['header'] = __('messages.purchase_completed');
                 $viewData['class'] = 'alert alert-success';
-                $viewData['message'] = __('messages.congratulations_purchase_completed') .' '.$order->getId();
+                $viewData['message'] = __('messages.congratulations_purchase_completed').' '.$order->getId();
             }
+
             return view('cart.purchase')->with('viewData', $viewData);
         } else {
             return redirect()->route('cart.index');
