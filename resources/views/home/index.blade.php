@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Home Page')
+@section('title', $viewData['title'])
 
 @section('content')
 <div class="container py-4">
@@ -31,10 +31,10 @@
                 <button type="submit" class="btn bg-primary text-white">{{ __('messages.search') }}</button>
             </form>
         </div>
-        @if(isset($products) && $products->isNotEmpty())
+        @if(isset($viewData['products']) && $viewData['products']->isNotEmpty())
         <h2>{{ __('messages.products_in_this_category') }}:</h2>
         <ul>
-            @foreach($products as $product)
+            @foreach($viewData['products'] as $product)
             <li>
                 <strong>{{ $product->name }}</strong><br>
                 Description: {{ $product->description }}<br>
@@ -43,7 +43,7 @@
             </li>
             @endforeach
         </ul>
-        @elseif(isset($products))
+        @elseif(isset($viewData['products']))
         <p>{{ __('messages.no_products_were_found_in_this_category') }}.</p>
         @endif
     </div>
@@ -57,16 +57,11 @@
         @foreach ($viewData['topProducts'] as $item)
             <div class="col-md-4 col-lg-3 mb-2">
                 <div class="card">
-                    <a href="{{ route('product.show', $item->product->id) }}">
+                    <a href="{{ route('product.show', $item->product->id) }}">  
                         <img src="{{ asset('storage/' . $item->product->image) }}" class="card-img-top" width="300" height="300">
                     </a>
                     <div class="card-body text-center">
-<<<<<<< HEAD
-                        <a href="{{ route('product.show', $item->product->id) }}" class="btn bg-primary text-white">
-                            <h5>{{ $item->product->name }}</h5>
-=======
-                        <a href="{{ route('product.show', $item->product->id) }}"  class="btn bg-primary text-white">{{ $item->product->name }}
->>>>>>> 3a6ff3ef4199f523063fe4ce615e5525eb110734
+                        <a href="{{ route('product.show', $item->product->id) }}" class="btn bg-primary text-white">{{ $item->product->name }}
                         </a>
                     </div>
                 </div>
