@@ -4,9 +4,9 @@
 @section('content')
 <section class='container py-4'>
     @if(session('success'))
-        <div class='alert alert-success'>
-            {{ session('success') }}
-        </div>
+    <div class='alert alert-success'>
+        {{ session('success') }}
+    </div>
     @endif
 
     <div class='card mb-4'>
@@ -16,13 +16,13 @@
 
         <div class='card-body'>
             @if($errors->any())
-                <div class='alert alert-danger'>
-                    <ul class='mb-0'>
-                        @foreach($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
+            <div class='alert alert-danger'>
+                <ul class='mb-0'>
+                    @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
             @endif
             <form method='POST' action='{{ route('home.search') }}'>
                 @csrf
@@ -49,14 +49,16 @@
 
     <div class='card mb-4'>
         <div class='card-header bg-primary text-white'>
-            <h4 class='mb-0'><center>{{ __('messages.Top_Sales') }}</center></h4>  
+            <h4 class='mb-0'>
+                <center>{{ __('messages.Top_Sales') }}</center>
+            </h4>
         </div>
         <div class='card-body'>
             <div class='row'>
-            @foreach ($viewData['topProducts'] as $item)
+                @foreach ($viewData['topProducts'] as $item)
                 <div class='col-md-4 col-lg-3 mb-2'>
                     <div class='card'>
-                        <a href='{{ route('product.show', $item->product->id) }}'>  
+                        <a href='{{ route('product.show', $item->product->id) }}'>
                             <img src='{{ asset('storage/' . $item->product->image) }}' class='card-img-top' width='300' height='300'>
                         </a>
                         <div class='card-body text-center'>
@@ -64,14 +66,16 @@
                         </div>
                     </div>
                 </div>
-            @endforeach
+                @endforeach
             </div>
         </div>
     </div>
 
     <div class='card mb-4'>
         <div class='card-header bg-primary text-white'>
-            <h4 class='mb-0'><center>{{ __('messages.categories') }}</center></h4>
+            <h4 class='mb-0'>
+                <center>{{ __('messages.categories') }}</center>
+            </h4>
         </div>
         <div class='card-body'>
             <div class='row'>
@@ -81,7 +85,7 @@
                         <img src='{{ asset('storage/' . $category->getImage()) }}' class='card-img-top' width='300' height='300'>
                         <div class='card-body text-center'>
                             <a href='{{ route('home.search', ['name'=> $category->getName()]) }}' class='btn bg-primary text-white'>
-                            {{ $category->getName() }}
+                                {{ $category->getName() }}
                             </a>
                         </div>
                     </div>
