@@ -14,7 +14,7 @@ class ProductController extends Controller
         $viewData = [];
         $viewData['title'] = __('messages.products');
         $viewData['subtitle'] = __('messages.list_of_products');
-        $viewData['products'] = Product::all();
+        $viewData['products'] = Product::where('state', 'active')->get();
 
         return view('product.index')->with('viewData', $viewData);
     }

@@ -48,8 +48,8 @@
                 <div class='mb-3'>
                     <label for='state' class='form-label'>{{ __('messages.state') }}:</label>
                     <select id='state' name='state' class='form-select' required>
-                        <option value='active' {{ old('state') == 'active' ? 'selected' : '' }}>Active</option>
-                        <option value='inactive' {{ old('state') == 'inactive' ? 'selected' : '' }}>Inactive</option>
+                        <option value='active' {{ $viewData['product']->getState() == 'active' ? 'selected' : '' }}>{{__('messages.active')}}</option>
+                        <option value='inactive' {{ $viewData['product']->getState() == 'inactive' ? 'selected' : '' }}>{{__('messages.inactive')}}</option>
                     </select>
                 </div>
             </div>
