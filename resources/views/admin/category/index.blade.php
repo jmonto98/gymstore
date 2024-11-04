@@ -22,7 +22,7 @@
                 </div>
             @endif
 
-            <form method='POST' action='{{ route('category.store') }}' enctype='multipart/form-data'> <!-- Añadir enctype -->
+            <form method='POST' action='{{ route('admin.category.store') }}' enctype='multipart/form-data'> <!-- Añadir enctype -->
                 @csrf
                 <div class='row mb-3'>
                     <div class='col-md-6'>
@@ -64,7 +64,7 @@
                             <td>{{ $category->getId() }}</td>
                             <td>{{ $category->getName() }}</td>
                             <td>
-                                <a class='btn btn-primary' href='{{ route('category.edit', ['id' => $category->getId()]) }}'>
+                                <a class='btn btn-primary' href='{{ route('admin.category.edit', ['id' => $category->getId()]) }}'>
                                     <i class='bi-pencil'></i>
                                 </a>
                             </td>

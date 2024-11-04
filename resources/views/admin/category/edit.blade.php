@@ -13,7 +13,7 @@
                 @endforeach
             </ul>
         @endif
-        <form method='POST' action='{{ route('category.update', ['id'=> $viewData['category']->getId()]) }}' enctype='multipart/form-data'>
+        <form method='POST' action='{{ route('admin.category.update', ['id'=> $viewData['category']->getId()]) }}' enctype='multipart/form-data'>
             @csrf
             @method('PUT')
             <div class='row'>

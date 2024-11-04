@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\UseMode;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
@@ -21,7 +21,7 @@ class AdminUseModeController extends Controller
             'videoUrl' => $request->input('videoUrl'),
         ]);
 
-        return redirect()->route('useMode.home.index')->with('success', 'Video was successfully added to the product.');
+        return redirect()->route('admin.useMode.home.index')->with('success', 'Video was successfully added to the product.');
     }
 
     public function edit($id): View
@@ -31,7 +31,7 @@ class AdminUseModeController extends Controller
         $viewData['useMode'] = UseMode::findOrFail($id);
         $viewData['products'] = Product::all();
 
-        return view('useMode.edit')->with('viewData', $viewData);
+        return view('admin.useMode.edit')->with('viewData', $viewData);
     }
 
     public function update(Request $request, $id): RedirectResponse
@@ -43,13 +43,13 @@ class AdminUseModeController extends Controller
         $useMode->videoUrl = $request->input('videoUrl');
         $useMode->save();
 
-        return redirect()->route('useMode.home.index')->with('success', 'Video was successfully updated.');
+        return redirect()->route('admin.useMode.home.index')->with('success', 'Video was successfully updated.');
     }
 
     public function delete($id): RedirectResponse
     {
         UseMode::destroy($id);
 
-        return redirect()->route('useMode.home.index')->with('success', 'Video was successfully deleted.');
+        return redirect()->route('admin.useMode.home.index')->with('success', 'Video was successfully deleted.');
     }
 }

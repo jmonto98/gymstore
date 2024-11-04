@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Category;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
@@ -18,18 +18,17 @@ class AdminCategoryController extends Controller
         $categories = Category::all();
         $viewData['categories'] = $categories;
 
-        return view('category.index')->with('viewData', $viewData);
+        return view('admin.category.index')->with('viewData', $viewData);
     }
 
     public function store(Request $request): RedirectResponse
     {
         Category::validate($request);
 
-        $imagePath = $request->file('image')->store('categories', 'public'); // Almacena la imagen en la carpeta 'categories'
-
+        $imagePath = $request->file('image')->store('categories', 'public');
         Category::create($request->only(['name', 'description']) + ['image' => $imagePath]);
 
-        return redirect()->route('category.index')->with('success', 'Category was successfully created');
+        return redirect()->route('admin.category.index')->with('success', 'Category was successfully created');
     }
 
     public function edit($id): View
@@ -38,7 +37,7 @@ class AdminCategoryController extends Controller
         $viewData['title'] = __('messages.edit_category');
         $viewData['category'] = Category::findOrFail($id);
 
-        return view('category.edit')->with('viewData', $viewData);
+        return view('admin.category.edit')->with('viewData', $viewData);
     }
 
     public function update(Request $request, $id): RedirectResponse
@@ -54,13 +53,13 @@ class AdminCategoryController extends Controller
 
             $imagePath = 'categories/'.$category->id.'.'.$request->file('image')->extension();
             Storage::disk('public')->put($imagePath, file_get_contents($request->file('image')->getRealPath()));
-            $category->setImage($imagePath); // Actualiza el campo de imagen
+            $category->setImage($imagePath);
         }
 
         $category->setName($request->input('name'));
         $category->setDescription($request->input('description'));
         $category->save();
 
-        return redirect()->route('category.index');
+        return redirect()->route('admin.category.index');
     }
 }

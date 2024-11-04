@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -18,7 +18,7 @@ class UserHomeController extends Controller
         $viewData['subtitle'] = __('messages.list_of_users');
         $viewData['users'] = User::all();
 
-        return view('user.index')->with('viewData', $viewData);
+        return view('admin.user.index')->with('viewData', $viewData);
     }
 
     public function edit($id): View
@@ -27,7 +27,7 @@ class UserHomeController extends Controller
         $viewData['user'] = User::findOrFail($id);
         $viewData['title'] = __('messages.edit_user');
 
-        return view('user.edit')->with('viewData', $viewData);
+        return view('admin.user.edit')->with('viewData', $viewData);
     }
 
     public function create(Request $request): RedirectResponse

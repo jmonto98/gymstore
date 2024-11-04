@@ -30,15 +30,15 @@ Route::middleware([AdminAuthMiddleware::class])->group(function () {
     Route::get('/admin/products/{id}/edit', 'App\Http\Controllers\Admin\AdminProductController@edit')->name('admin.product.edit');
     Route::put('/admin/products/{id}/update', 'App\Http\Controllers\Admin\AdminProductController@update')->name('admin.product.update');
 
-    Route::get('/categories', 'App\Http\Controllers\Category\AdminCategoryController@index')->name('category.index');
-    Route::get('/categories/{id}/edit', 'App\Http\Controllers\Category\AdminCategoryController@edit')->name('category.edit');
-    Route::put('/categories/{id}', 'App\Http\Controllers\Category\AdminCategoryController@update')->name('category.update');
-    Route::post('/categories/store', 'App\Http\Controllers\Category\AdminCategoryController@store')->name('category.store');
+    Route::get('/admin/categories', 'App\Http\Controllers\Admin\AdminCategoryController@index')->name('admin.category.index');
+    Route::get('/admin/categories/{id}/edit', 'App\Http\Controllers\Admin\AdminCategoryController@edit')->name('admin.category.edit');
+    Route::put('/admin/categories/{id}', 'App\Http\Controllers\Admin\AdminCategoryController@update')->name('admin.category.update');
+    Route::post('/admin/categories/store', 'App\Http\Controllers\Admin\AdminCategoryController@store')->name('admin.category.store');
 
-    Route::get('/user', 'App\Http\Controllers\User\UserHomeController@index')->name('admin.user.index');
-    Route::post('/user/create', 'App\Http\Controllers\User\UserHomeController@create')->name('user.create');
-    Route::get('/user/edit/{id}', 'App\Http\Controllers\User\UserHomeController@edit')->name('user.edit');
-    Route::put('/user/update/{id}', 'App\Http\Controllers\User\UserHomeController@update')->name('user.update');
+    Route::get('/admin/user', 'App\Http\Controllers\Admin\UserHomeController@index')->name('admin.user.index');
+    Route::post('/admin/user/create', 'App\Http\Controllers\Admin\UserHomeController@create')->name('admin.user.create');
+    Route::get('/admin/user/edit/{id}', 'App\Http\Controllers\Admin\UserHomeController@edit')->name('admin.user.edit');
+    Route::put('/admin/user/update/{id}', 'App\Http\Controllers\Admin\UserHomeController@update')->name('admin.user.update');
 });
 
 require __DIR__.'/auth.php';
