@@ -39,6 +39,7 @@ Route::middleware([AdminAuthMiddleware::class])->group(function () {
     Route::post('/admin/user/create', 'App\Http\Controllers\Admin\UserHomeController@create')->name('admin.user.create');
     Route::get('/admin/user/edit/{id}', 'App\Http\Controllers\Admin\UserHomeController@edit')->name('admin.user.edit');
     Route::put('/admin/user/update/{id}', 'App\Http\Controllers\Admin\UserHomeController@update')->name('admin.user.update');
+    Route::get('/admin/order', 'App\Http\Controllers\Admin\AdminOrderController@index')->name('admin.order.index');
 });
 
 require __DIR__.'/auth.php';

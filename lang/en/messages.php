@@ -107,4 +107,10 @@ return [
     'video_url' => 'Video URL',
     'welcome_to_gymstore' => 'Welcome to GymStore',
     'your_balance' => 'Your balance',
+    'order' => 'Orders',
+    'list_of_orders' => 'List of Order',
+    'modify_order' => 'Modify Orders',
+    'manage_orders' => 'Manage Orders',
+    'total_order' => 'Total Order',
+    'user_id' => 'User ID',
 ];

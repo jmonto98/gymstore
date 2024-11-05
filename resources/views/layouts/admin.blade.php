@@ -31,6 +31,9 @@
                         <li class='nav-item'>
                             <a class='nav-link text-white' href='{{ route('admin.user.index') }}'>{{ __('messages.users') }}</a>
                         </li>
+                        <li class='nav-item'>
+                            <a class='nav-link text-white' href='{{ route('admin.order.index') }}'>{{ __('messages.order') }}</a>
+                        </li>
                     </ul>
                     <hr>
                     <div class='px-3'>
