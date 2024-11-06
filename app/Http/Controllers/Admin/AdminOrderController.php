@@ -14,6 +14,9 @@ class AdminOrderController extends Controller
         $viewData['title'] = __('messages.order');
         $viewData['subtitle'] = __('messages.list_of_orders');
         $viewData['orders'] = Order::with('user')->get();
+        $orders = Order::all();
+        $uniqueStatuses = $orders->pluck('status')->unique();
+        $viewData['statuses'] = $uniqueStatuses;
 
         return view('admin.order.index')->with('viewData', $viewData);
     }

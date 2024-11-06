@@ -113,4 +113,5 @@ return [
     'manage_orders' => 'Manage Orders',
     'total_order' => 'Total Order',
     'user_id' => 'User ID',
+    'show' => 'Show',
 ];
