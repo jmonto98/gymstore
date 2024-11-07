@@ -38,7 +38,7 @@
                             <td>{{ $order->getstatus() }}</td>
                             
                             <td>
-                                <a class='btn btn-primary' href='{{ route('admin.category.edit', ['id' => $order->getId()]) }}'>
+                                <a class='btn btn-primary' href='{{ route('admin.order.show', ['id' => $order->getId()]) }}'>
                                     <i class='bi-pencil'></i>
                                 </a>
                             </td>
