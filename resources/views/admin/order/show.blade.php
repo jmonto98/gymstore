@@ -31,9 +31,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                @foreach ($viewData['order_details'] as $detail)
+                @foreach ($viewData['order'] as $detail)
                     <tr>
-                    <td>{{ $detail->getId() }}</td>
+                    <td></td>
                     </tr>
                 @endforeach
                 </tbody>
