@@ -35,8 +35,7 @@
                             <td>{{ $order->user->getId()}}</td>
                             <td>{{ $order->user->getLastName().' '. $order->user->getName() }}</td>
                             <td>{{ $order->getTotalOrder() }}</td>
-                            <td>{{ $order->getstatus() }}</td>
-                            
+                            <td>{{ $order->getstatus() }}</td>                            
                             <td>
                                 <a class='btn btn-primary' href='{{ route('admin.order.show', ['id' => $order->getId()]) }}'>
                                     <i class='bi-pencil'></i>

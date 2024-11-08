@@ -15,6 +15,13 @@
     <div class='card mt-4'>
         <div class='card-body'>
             <table class='table table-bordered table-striped'>
+            @if($errors->any())
+            <ul class='alert alert-danger list-unstyled'>
+                @foreach($errors->all() as $error)
+                <li>- {{ $error }}</li>
+                @endforeach
+            </ul>
+            @endif
                 <thead>
                     <tr>
                         <th scope='col'>{{ __('messages.order_id') }}</th>
@@ -24,9 +31,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                @foreach ($viewData['orders'] as $order)
+                @foreach ($viewData['order_details'] as $detail)
                     <tr>
-                        
+                    <td>{{ $detail->getId() }}</td>
                     </tr>
                 @endforeach
                 </tbody>

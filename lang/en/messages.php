@@ -116,5 +116,5 @@ return [
     'show' => 'Show',
     'show_details' => 'Show Details',
     'show_order' => 'Show Order',
-    'order_id'=>'Order Id'
+    'order_id' => 'Order Id',
 ];
