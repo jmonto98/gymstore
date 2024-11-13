@@ -114,7 +114,11 @@ return [
     'total_order' => 'Total Order',
     'user_id' => 'User ID',
     'show' => 'Show',
-    'show_details' => 'Show Details',
+    'show_details' => 'Show Details Order # ',
     'show_order' => 'Show Order',
     'order_id' => 'Order Id',
+    'unit_price' => 'Unit Price',
+    'total_items' => 'Total Price Items',
+    'total_order' => 'Total Order',
+
 ];
