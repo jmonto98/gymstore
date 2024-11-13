@@ -78,3 +78,5 @@ This project is a web application for managing an online store for gym equipment
 ## License
 
 This project is licensed under the MIT License - see the LICENSE.md file
+
+php artisan install:api
