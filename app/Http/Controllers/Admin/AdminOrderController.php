@@ -25,9 +25,9 @@ class AdminOrderController extends Controller
         $viewData = [];
         $viewData['title'] = __('messages.order');
         $viewData['subtitle'] = __('messages.show_order');
-        $order= Order::with(['items.product']) -> where ('id', $id)-> first();
+        $order = Order::with(['items.product'])->where('id', $id)->first();
 
-        if (!$order) {
+        if (! $order) {
             return redirect()->back()->with('error', 'Order not found');
         }
 
@@ -39,12 +39,8 @@ class AdminOrderController extends Controller
             ];
         });
 
-        $viewData ['orderDetails']= $orderDetails;
-        $viewData ['order']=$order;
-
-        
-
-
+        $viewData['orderDetails'] = $orderDetails;
+        $viewData['order'] = $order;
 
         // $viewData['orders'] = Order::findOrFail($id)->get();
         // $viewData['product'] = Product::all();
