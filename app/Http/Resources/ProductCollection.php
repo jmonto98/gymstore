@@ -13,7 +13,7 @@ class ProductCollection extends ResourceCollection
             'data' => $this->collection,
             'additionalData' => [
                 'storeName' => 'Mega Store',
-                'storeProductsLink' => config('app.url') . '/products',
+                'storeProductsLink' => config('app.url').'/products',
             ],
         ];
     }
