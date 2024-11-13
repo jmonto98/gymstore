@@ -34,5 +34,8 @@ return [
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
     ],
-
+    'exercisedb' => [
+        'key' => env('EXERCISEDB_API_KEY', ''),
+        'url' => env('EXERCISEDB_API_URL', 'https://exercisedb.p.rapidapi.com'),
+    ],
 ];
