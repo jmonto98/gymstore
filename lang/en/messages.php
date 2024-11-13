@@ -84,6 +84,7 @@ return [
     'save' => 'Save',
     'search_by_category' => 'Search by Category',
     'search_results_for' => 'Search results for:',
+    'search_results_for_category' => 'Search results for category',
     'search' => 'Search',
     'select_a_category' => 'Select a Category',
     'select_rol' => 'Select Role',
