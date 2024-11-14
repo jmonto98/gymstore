@@ -15,7 +15,7 @@ class AdminCategoryController extends Controller
     {
         $viewData = [];
         $viewData['title'] = __('messages.manage_categories');
-        $categories = Category::all();
+        $categories = Category::all()->sortBy('name');
         $viewData['categories'] = $categories;
 
         return view('admin.category.index')->with('viewData', $viewData);

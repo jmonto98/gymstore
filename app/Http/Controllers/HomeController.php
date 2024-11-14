@@ -16,7 +16,7 @@ class HomeController extends Controller
         $viewData = [];
         $viewData['title'] = __('messages.about_us');
         $viewData['subtitle'] = __('messages.about_us');
-        $viewData['categories'] = Category::all();
+        $viewData['categories'] = Category::all()->sortBy('name');
 
         $topProducts = Item::select('product_id', DB::raw('SUM(quantity) as total_quantity'))
             ->groupBy('product_id')

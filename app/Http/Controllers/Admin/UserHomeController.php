@@ -16,7 +16,7 @@ class UserHomeController extends Controller
         $viewData = [];
         $viewData['title'] = __('messages.users');
         $viewData['subtitle'] = __('messages.list_of_users');
-        $viewData['users'] = User::all();
+        $viewData['users'] = User::all()->sortBy('name');
 
         return view('admin.user.index')->with('viewData', $viewData);
     }

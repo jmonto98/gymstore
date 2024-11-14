@@ -17,7 +17,7 @@ class AdminProductController extends Controller
     {
         $viewData = [];
         $viewData['title'] = __('messages.product_management');
-        $viewData['products'] = Product::all();
+        $viewData['products'] = Product::all()->sortBy('name');
         $viewData['categories'] = Category::all();
 
         return view('admin.product.index')->with('viewData', $viewData);
