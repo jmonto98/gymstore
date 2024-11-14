@@ -62,7 +62,7 @@ This project is a web application for managing an online store for gym equipment
 9. To populate the database with initial data, connect to MySQL and run the script:
    ```
    mysql -u your_username -p gymstoredb 
-   source scripts/populate_models.sql
+   source path_of_the_script/populate_models.sql
    ```
 
 ## Running the Application

@@ -42,7 +42,7 @@ class AdminProductController extends Controller
         $useModes->save();
 
         if ($request->hasFile('image')) {
-            $imageName = 'images/'.$newProduct->id.'.'.$request->file('image')->extension();
+            $imageName = 'images/' . $newProduct->id . '.' . $request->file('image')->extension();
             Storage::disk('public')->put($imageName, file_get_contents($request->file('image')->getRealPath()));
             $newProduct->setImage($imageName);
             $newProduct->save();
@@ -99,7 +99,7 @@ class AdminProductController extends Controller
                 }
             }
 
-            $imageName = 'images/'.$product->id.'.'.$request->file('image')->extension();
+            $imageName = 'images/' . $product->id . '.' . $request->file('image')->extension();
             Storage::disk('public')->put($imageName, file_get_contents($request->file('image')->getRealPath()));
             $product->setImage($imageName);
         }
