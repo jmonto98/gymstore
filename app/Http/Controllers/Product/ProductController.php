@@ -3,11 +3,9 @@
 namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller;
-use App\Models\Order;
 use App\Models\Product;
 use App\Models\UseMode;
 use App\Services\ExerciseDBService;
-use Illuminate\Database\Eloquent\HigherOrderBuilderProxy;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
@@ -19,7 +17,7 @@ class ProductController extends Controller
         $viewData = [];
         $viewData['title'] = __('messages.products');
         $viewData['subtitle'] = __('messages.list_of_products');
-        $viewData['products'] = Product::where('state', 'active')->orderBy('name') ->get();
+        $viewData['products'] = Product::where('state', 'active')->orderBy('name')->get();
 
         return view('product.index')->with('viewData', $viewData);
     }
