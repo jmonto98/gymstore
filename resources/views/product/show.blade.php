@@ -131,7 +131,7 @@
 
 @if(isset($viewData['suggestedExercises']) && count($viewData['suggestedExercises']) > 0)
   <hr>
-  <h3>{{ __('Suggested Exercises') }}</h3>
+  <h3>{{ __('messages.suggested_exercises') }}</h3>
 
   <div class="row">
     @foreach($viewData['suggestedExercises'] as $exercise)
@@ -178,7 +178,7 @@
   </div>
 @else
   <div class="alert alert-info">
-    No exercises found for this equipment type. Try searching with a different term.
+    {{ __('messages.no_exercises_found') }}
   </div>
 @endif
 

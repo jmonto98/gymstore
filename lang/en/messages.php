@@ -120,6 +120,6 @@ return [
     'order_id' => 'Order Id',
     'unit_price' => 'Unit Price',
     'total_items' => 'Total Price Items',
-    'total_order' => 'Total Order',
-
+    'suggested_exercises' => 'Suggested Exercises',
+    'no_exercises_found' => 'No exercises found for this equipment type. Try searching with a different term.',
 ];
