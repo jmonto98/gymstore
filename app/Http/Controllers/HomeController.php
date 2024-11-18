@@ -14,8 +14,8 @@ class HomeController extends Controller
     public function index(Request $request): View
     {
         $viewData = [];
-        $viewData['title'] = __('messages.about_us');
-        $viewData['subtitle'] = __('messages.about_us');
+        $viewData['title'] = __('messages.home');
+        $viewData['subtitle'] = __('messages.home');
         $viewData['categories'] = Category::all()->sortBy('name');
 
         $topProducts = Item::select('product_id', DB::raw('SUM(quantity) as total_quantity'))
