@@ -18,7 +18,6 @@ class Review extends Model
      * $this->attributes['created_at'] - timestamp - contains the creation date of the review
      * $this->attributes['updated_at'] - timestamp - contains the updating date of the review
      */
-    
     protected $fillable = [
         'rating', 'comment', 'approved', 'user_id', 'product_id',
     ];

@@ -17,7 +17,6 @@ class Item extends Model
      * $this->attributes['created_at'] - timestamp - contains the creation date of the item
      * $this->attributes['updated_at'] - timestamp - contains the last update date of the item
      */
-
     protected $fillable = [
         'price', 'quantity', 'order_id', 'product_id',
     ];

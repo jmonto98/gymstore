@@ -8,7 +8,7 @@
   </div>
   <div class='card-body'>
     <div class='{{ $viewData['class'] }}' role='alert'>
-     <b>{{ $viewData['message'] }}</b>
+      <b>{{ $viewData['message'] }}</b>
     </div>
   </div>
 </section>

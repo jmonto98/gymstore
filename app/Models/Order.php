@@ -20,7 +20,6 @@ class Order extends Model
      * $this->attributes['created_at'] - timestamp - contains the creation date of the order
      * $this->attributes['updated_at'] - timestamp - contains the last update date of the order
      */
-    
     protected $fillable = [
         'orderDate', 'status', 'totalOrder', 'cusPayment', 'user_id',
     ];

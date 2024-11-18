@@ -23,7 +23,6 @@ class Product extends Model
      * $this->attributes['created_at'] - timestamp - contains the creation date of the product
      * $this->attributes['updated_at'] - timestamp - contains the last update date of the product
      */
-    
     protected $fillable = [
         'name', 'price', 'stock', 'image', 'sumReviews', 'totalReviews', 'category_id', 'state',
     ];

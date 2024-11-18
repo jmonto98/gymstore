@@ -4,14 +4,19 @@ namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
-use App\Models\UseMode;
 use App\Services\ExerciseDBService;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
 
 class ProductController extends Controller
 {
+    private function extractYouTubeId(string $url): ?string
+    {
+        preg_match('/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]+)/', $url, $matches);
+
+        return $matches[1] ?? null;
+    }
+
     public function index(): View
     {
         $viewData = [];
@@ -26,6 +31,13 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
 
+        $useMode = $product->useModes()->first();
+
+        $videoId = null;
+        if ($useMode && $useMode->videoUrl) {
+            $videoId = $this->extractYouTubeId($useMode->videoUrl);
+        }
+
         $exerciseService = new ExerciseDBService;
         $exercises = $exerciseService->findExercisesByEquipment($product->getName());
 
@@ -34,23 +46,13 @@ class ProductController extends Controller
             'subtitle' => __('messages.product_details'),
             'product' => $product,
             'suggestedExercises' => [],
+            'videoId' => $videoId,
         ];
 
         if (! empty($exercises)) {
-            $viewData['suggestedExercises'] = array_slice($exercises, 0, 10); // Limitamos a 10 ejercicios
-
-            Log::info('Exercises found:', [
-                'count' => count($viewData['suggestedExercises']),
-                'product_name' => $product->getName(),
-            ]);
-        } else {
-            Log::warning('No exercises found for product:', [
-                'product_name' => $product->getName(),
-            ]);
+            $viewData['suggestedExercises'] = array_slice($exercises, 0, 10);
         }
 
-        $useMode = UseMode::where('product_id', $product->id)->first();
-        $viewData['useMode'] = $useMode;
         $viewData['reviews'] = $product->reviews()->orderBy('created_at', 'desc')->take(5)->get();
 
         return view('product.show')->with('viewData', $viewData);

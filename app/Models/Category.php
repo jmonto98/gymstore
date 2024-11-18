@@ -16,7 +16,6 @@ class Category extends Model
      * $this->attributes['updated_at'] - timestamp - contains the last update date of the category
      * $this->attributes['image'] - string - contains the category image
      */
-    
     protected $fillable = [
         'name',
         'description',
@@ -76,7 +75,6 @@ class Category extends Model
     {
         return $this->attributes['created_at'];
     }
-
 
     public function getUpdatedAt(): mixed
     {

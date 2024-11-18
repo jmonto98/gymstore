@@ -5,7 +5,6 @@
 <section class='container'>
   <div class='row'>
     <div class='col-lg-8 mx-auto'>
-      <!-- <h2 class='text-center mb-4'>Contact Us</h2> -->
       <p class='lead'>
         {{ __('messages.contact_us_message') }}
       </p>
