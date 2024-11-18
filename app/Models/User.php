@@ -2,16 +2,11 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
-
     /**
      * USER ATTRIBUTES
      * $this->attributes['id'] - int - contains the primary key of the user
@@ -24,17 +19,20 @@ class User extends Authenticatable
      * $this->attributes['rol'] - string - contains the user's role (e.g., 'admin', 'user')
      * $this->attributes['state'] - string - contains the user's state (e.g., 'active', 'inactive')
      * $this->attributes['balance'] - float - contains the user's balance
+     * $this->attributes['created_at'] - timestamp - contains the creation date of the user
+     * $this->attributes['updated_at'] - timestamp - contains the last update date of the user
      */
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
+    
     protected $fillable = [
         'name', 'lastName', 'address', 'email', 'username', 'password', 'rol', 'state', 'balance',
     ];
 
-    public static function validate($request)
+    public static function validate($request): void
     {
         $request->validate([
             'name' => 'required|string',

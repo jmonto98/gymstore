@@ -2,19 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Product extends Model
 {
-    use HasFactory;
-
     /**
      * PRODUCT ATTRIBUTES
      * $this->attributes['id'] - int - contains the product primary key (id)
      * $this->attributes['name'] - string - contains the product name
+     * $this->attributes['description'] - string - contains the product description
      * $this->attributes['price'] - int - contains the product price
      * $this->attributes['stock'] - int - contains the product stock
      * $this->attributes['image'] - string - contains the product image
@@ -22,12 +20,15 @@ class Product extends Model
      * $this->attributes['totalReviews'] - int - contains the total number of reviews of the product
      * $this->attributes['category_id'] - int - contains the foreign key of the associated category
      * $this->attributes['state'] - string - contains the product state (e.g., 'active', 'inactive')
+     * $this->attributes['created_at'] - timestamp - contains the creation date of the product
+     * $this->attributes['updated_at'] - timestamp - contains the last update date of the product
      */
+    
     protected $fillable = [
         'name', 'price', 'stock', 'image', 'sumReviews', 'totalReviews', 'category_id', 'state',
     ];
 
-    public static function validate($request)
+    public static function validate($request): void
     {
         $request->validate([
 

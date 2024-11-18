@@ -2,14 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Category extends Model
 {
-    use HasFactory;
-
     /**
      * CATEGORY ATTRIBUTES
      * $this->attributes['id'] - int - contains the category primary key (id)
@@ -19,6 +16,7 @@ class Category extends Model
      * $this->attributes['updated_at'] - timestamp - contains the last update date of the category
      * $this->attributes['image'] - string - contains the category image
      */
+    
     protected $fillable = [
         'name',
         'description',
@@ -79,18 +77,9 @@ class Category extends Model
         return $this->attributes['created_at'];
     }
 
-    public function setCreatedAt(mixed $createdAt): void
-    {
-        $this->attributes['created_at'] = $createdAt;
-    }
 
     public function getUpdatedAt(): mixed
     {
         return $this->attributes['updated_at'];
-    }
-
-    public function setUpdatedAt(mixed $updatedAt): void
-    {
-        $this->attributes['updated_at'] = $updatedAt;
     }
 }

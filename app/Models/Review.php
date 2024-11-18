@@ -2,14 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Review extends Model
 {
-    use HasFactory;
-
     /**
      * REVIEW ATTRIBUTES
      * $this->attributes['id'] - int - contains the review primary key (id)
@@ -19,12 +16,14 @@ class Review extends Model
      * $this->attributes['user_id'] - int - contains the foreign key of the associated user
      * $this->attributes['product_id'] - int - contains the foreign key of the associated product
      * $this->attributes['created_at'] - timestamp - contains the creation date of the review
+     * $this->attributes['updated_at'] - timestamp - contains the updating date of the review
      */
+    
     protected $fillable = [
         'rating', 'comment', 'approved', 'user_id', 'product_id',
     ];
 
-    public static function validate($request)
+    public static function validate($request): void
     {
         $request->validate([
             'rating' => 'required|numeric|gt:0',

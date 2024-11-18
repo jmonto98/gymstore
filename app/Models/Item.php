@@ -2,14 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Item extends Model
 {
-    use HasFactory;
-
     /**
      * ITEM ATTRIBUTES
      * $this->attributes['id'] - int - contains the item primary key (id)
@@ -17,12 +14,15 @@ class Item extends Model
      * $this->attributes['quantity'] - int - contains the item quantity
      * $this->attributes['order_id'] - int - contains the foreign key of the associated order
      * $this->attributes['product_id'] - int - contains the foreign key of the associated product
+     * $this->attributes['created_at'] - timestamp - contains the creation date of the item
+     * $this->attributes['updated_at'] - timestamp - contains the last update date of the item
      */
+
     protected $fillable = [
         'price', 'quantity', 'order_id', 'product_id',
     ];
 
-    public static function validate($request)
+    public static function validate($request): void
     {
         $request->validate([
             'price' => 'required|numeric|gt:0',

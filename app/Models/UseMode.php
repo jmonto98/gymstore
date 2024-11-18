@@ -2,14 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class UseMode extends Model
 {
-    use HasFactory;
-
     /**
      * USE MODE ATTRIBUTES
      * $this->attributes['id'] - int - contains the use mode primary key (id)
@@ -18,12 +15,13 @@ class UseMode extends Model
      * $this->attributes['created_at'] - timestamp - contains the creation date of the use mode
      * $this->attributes['updated_at'] - timestamp - contains the last update date of the use mode
      */
+    
     protected $fillable = [
         'videoUrl',
         'product_id',
     ];
 
-    public static function validate($request)
+    public static function validate($request): void
     {
         $request->validate([
             'videoUrl' => 'required|url',
