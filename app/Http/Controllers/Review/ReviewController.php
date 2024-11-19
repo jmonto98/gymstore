@@ -12,10 +12,8 @@ class ReviewController extends Controller
 {
     public function store(Request $request, $productId): RedirectResponse
     {
-        $request->validate([
-            'rating' => 'required|integer|min:1|max:5',
-            'comment' => 'required|string',
-        ]);
+
+        Review::validate($request);
 
         Review::create([
             'user_id' => Auth::id(),
