@@ -30,7 +30,7 @@ class ProductController extends Controller
     public function show(int $id): View|RedirectResponse
     {
         $product = Product::findOrFail($id);
-
+        $ratingData = $product->getAverageRatingData();
         $useMode = $product->useModes()->first();
 
         $videoId = null;
@@ -45,6 +45,8 @@ class ProductController extends Controller
             'title' => $product->getName(),
             'subtitle' => __('messages.product_details'),
             'product' => $product,
+            'ratingData' => $ratingData,
+            'reviews' => $product->reviews,
             'suggestedExercises' => [],
             'videoId' => $videoId,
         ];

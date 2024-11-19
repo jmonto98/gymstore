@@ -43,7 +43,7 @@ class UseMode extends Model
     {
         $this->product = $product;
     }
-    
+
     public function getVideoUrl(): string
     {
         return $this->attributes['videoUrl'];

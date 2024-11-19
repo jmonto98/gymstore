@@ -36,7 +36,7 @@ class Item extends Model
     {
         return $this->belongsTo(Order::class);
     }
-    
+
     public function getOrder(): Order
     {
         return $this->order;
@@ -61,7 +61,6 @@ class Item extends Model
     {
         $this->product = $product;
     }
-
 
     public function getPrice(): int
     {

@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Support\Facades\Date;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Date;
 
 class Order extends Model
 {
@@ -50,7 +50,6 @@ class Order extends Model
     {
         $this->user = $user;
     }
-
 
     public function items(): HasMany
     {

@@ -25,7 +25,14 @@ class Product extends Model
      * $this->attributes['updated_at'] - timestamp - contains the last update date of the product
      */
     protected $fillable = [
-        'name', 'price', 'stock', 'image', 'sumReviews', 'totalReviews', 'category_id', 'state',
+        'name',
+        'price',
+        'stock',
+        'image',
+        'sumReviews',
+        'totalReviews',
+        'category_id',
+        'state',
     ];
 
     public static function validate(Request $request): void
@@ -41,6 +48,19 @@ class Product extends Model
         ]);
     }
 
+    public function getAverageRatingData()
+    {
+        $averageRating = round($this->reviews->avg('rating'), 1);
+        $fullStars = floor($averageRating);
+        $halfStar = $averageRating - $fullStars >= 0.5;
+
+        return [
+            'averageRating' => $averageRating,
+            'fullStars' => $fullStars,
+            'halfStar' => $halfStar,
+            'totalReviews' => $this->reviews->count()
+        ];
+    }
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
@@ -55,7 +75,6 @@ class Product extends Model
     {
         $this->category = $category;
     }
-
 
     public function useModes(): HasMany
     {
