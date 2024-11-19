@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Http\Request;
 
 class UseMode extends Model
 {
@@ -20,7 +21,7 @@ class UseMode extends Model
         'product_id',
     ];
 
-    public static function validate($request): void
+    public static function validate(Request $request): void
     {
         $request->validate([
             'videoUrl' => 'required|url',

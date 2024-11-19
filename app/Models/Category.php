@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Http\Request;
 
 class Category extends Model
 {
@@ -22,7 +23,7 @@ class Category extends Model
         'image',
     ];
 
-    public static function validate($request): void
+    public static function validate(Request $request): void
     {
         $request->validate([
             'name' => 'required|max:255',

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Http\Request;
 
 class Review extends Model
 {
@@ -22,7 +23,7 @@ class Review extends Model
         'rating', 'comment', 'approved', 'user_id', 'product_id',
     ];
 
-    public static function validate($request): void
+    public static function validate(Request $request): void
     {
         $request->validate([
             'rating' => 'required|numeric|gt:0',

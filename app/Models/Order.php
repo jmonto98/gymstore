@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Date;
+use Illuminate\Http\Request;
 
 class Order extends Model
 {
@@ -24,7 +25,7 @@ class Order extends Model
         'orderDate', 'status', 'totalOrder', 'cusPayment', 'user_id',
     ];
 
-    public static function validate($request): void
+    public static function validate(Request $request): void
     {
         $request->validate([
 

@@ -27,7 +27,7 @@ class ProductController extends Controller
         return view('product.index')->with('viewData', $viewData);
     }
 
-    public function show($id): View|RedirectResponse
+    public function show(int $id): View|RedirectResponse
     {
         $product = Product::findOrFail($id);
 
