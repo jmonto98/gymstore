@@ -122,7 +122,7 @@ return [
     'total_items' => 'Total Price Items',
     'suggested_exercises' => 'Suggested Exercises',
     'no_exercises_found' => 'No exercises found for this equipment type. Try searching with a different term.',
-    'partner' => 'Partners',
+    'partner' => 'Partners products',
     'partner_title' => 'Our Partners',
     'partner_subtitle' => 'Check out our partner stores',
 ];
