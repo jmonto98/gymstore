@@ -25,6 +25,11 @@
       <div class='collapse navbar-collapse' id='navbarCircleIcons'>
         <ul class='navbar-nav ms-auto'>
           <li class='nav-item'>
+            <a class='nav-link' href='{{ route('partner.index') }}'><span
+                class='bg-secondary text-white rounded-circle p-2'><i class='fas fa-handshake'></i></span>
+                {{ __('messages.partner') }}</a>
+          </li>
+          <li class='nav-item'>
             <a class='nav-link' href='{{ route('product.index') }}'><span
                 class='bg-success text-white rounded-circle p-2'><i class='fas fa-box'></i></span>
               {{ __('messages.products') }}</a>
@@ -53,7 +58,7 @@
       <li class='nav-item'>
       <a class='nav-link'><span class='bg-info text-white rounded-circle p-2'><i class='fas fa-coins'></i></span>
         {{ Auth::user()->getBalance() }}</a>
-      </li>
+      </li>'
       <li class='nav-item'>
       <form id='logout' action='{{ route('logout') }}' method='POST'>
         @csrf
