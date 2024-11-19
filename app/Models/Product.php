@@ -46,6 +46,17 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function getCategory(): Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(Category $category): void
+    {
+        $this->category = $category;
+    }
+
+
     public function useModes(): HasMany
     {
         return $this->hasMany(UseMode::class);

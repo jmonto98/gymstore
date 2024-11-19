@@ -39,8 +39,8 @@ class AdminUseModeController extends Controller
         UseMode::validate($request);
 
         $useMode = UseMode::findOrFail($id);
-        $useMode->product_id = $request->input('product_id');
-        $useMode->videoUrl = $request->input('videoUrl');
+        $useMode->setProductId($request->input('product_id'));
+        $useMode->setVideoUrl($request->input('videoUrl'));
         $useMode->save();
 
         return redirect()->route('admin.useMode.home.index')->with('success', 'Video was successfully updated.');

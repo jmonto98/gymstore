@@ -34,6 +34,16 @@ class UseMode extends Model
         return $this->belongsTo(Product::class);
     }
 
+    public function getProduct(): Product
+    {
+        return $this->product;
+    }
+
+    public function setProduct(Product $product): void
+    {
+        $this->product = $product;
+    }
+    
     public function getVideoUrl(): string
     {
         return $this->attributes['videoUrl'];
