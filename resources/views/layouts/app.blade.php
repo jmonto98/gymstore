@@ -45,36 +45,36 @@
               {{ __('messages.about') }}</a>
           </li>
           @guest
-        <li class='nav-item'>
-        <a class='nav-link' href='{{ route('login') }}'><span class='bg-info text-white rounded-circle p-2'><i
-            class='fas fa-sign-in-alt'></i></span> {{ __('messages.login') }}</a>
-        </li>
-        <li class='nav-item'>
-        <a class='nav-link' href='{{ route('register') }}'><span
-          class='bg-secondary text-white rounded-circle p-2'><i class='fas fa-user-plus'></i></span>
-          {{ __('messages.register') }}</a>
-        </li>
-      @else
-      <li class='nav-item'>
-      <a class='nav-link'><span class='bg-info text-white rounded-circle p-2'><i class='fas fa-coins'></i></span>
-        {{ Auth::user()->getBalance() }}</a>
-      </li>'
-      <li class='nav-item'>
-      <form id='logout' action='{{ route('logout') }}' method='POST'>
-        @csrf
-        <a role='button' class='nav-link' onclick="document.getElementById('logout').submit();"><span
-          class='bg-danger text-white rounded-circle p-2'><i class='fas fa-sign-out-alt'></i></span>
-        {{ __('messages.logout') }}</a>
-      </form>
-      </li>
-      @if(Auth::check() && Auth::user()->getRol() == 'Admin')
-      <li class='nav-item'>
-      <a class='nav-link' href='{{ route('admin.home.index') }}'><span
-      class='bg-dark text-white rounded-circle p-2'><i class='fas fa-user-shield'></i></span>
-      {{ __('messages.admin_panel') }}</a>
-      </li>
-    @endif
-    @endguest
+          <li class='nav-item'>
+            <a class='nav-link' href='{{ route('login') }}'><span class='bg-info text-white rounded-circle p-2'><i
+                  class='fas fa-sign-in-alt'></i></span> {{ __('messages.login') }}</a>
+          </li>
+          <li class='nav-item'>
+            <a class='nav-link' href='{{ route('register') }}'><span
+                class='bg-secondary text-white rounded-circle p-2'><i class='fas fa-user-plus'></i></span>
+              {{ __('messages.register') }}</a>
+          </li>
+          @else
+          <li class='nav-item'>
+            <a class='nav-link'><span class='bg-info text-white rounded-circle p-2'><i class='fas fa-coins'></i></span>
+              {{ Auth::user()->getBalance() }}</a>
+          </li>
+          <li class='nav-item'>
+            <form id='logout' action='{{ route('logout') }}' method='POST'>
+              @csrf
+              <a role='button' class='nav-link' onclick="document.getElementById('logout').submit();"><span
+                  class='bg-danger text-white rounded-circle p-2'><i class='fas fa-sign-out-alt'></i></span>
+                {{ __('messages.logout') }}</a>
+            </form>
+          </li>
+          @if(Auth::check() && Auth::user()->getRol() == 'Admin')
+          <li class='nav-item'>
+            <a class='nav-link' href='{{ route('admin.home.index') }}'><span
+                class='bg-dark text-white rounded-circle p-2'><i class='fas fa-user-shield'></i></span>
+              {{ __('messages.admin_panel') }}</a>
+          </li>
+          @endif
+          @endguest
         </ul>
       </div>
     </div>

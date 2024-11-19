@@ -10,6 +10,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
+use App\Utils\ImageHandler;
 
 class AdminProductController extends Controller
 {
@@ -42,8 +43,7 @@ class AdminProductController extends Controller
         $useModes->save();
 
         if ($request->hasFile('image')) {
-            $imageName = 'images/'.$newProduct->id.'.'.$request->file('image')->extension();
-            Storage::disk('public')->put($imageName, file_get_contents($request->file('image')->getRealPath()));
+            $imageName = ImageHandler::storeImage('products', $newProduct->getId(), $request->file('image'));
             $newProduct->setImage($imageName);
             $newProduct->save();
         }
@@ -57,7 +57,7 @@ class AdminProductController extends Controller
 
         // Eliminar imagen si existe
         if ($product->image && Storage::disk('public')->exists($product->image)) {
-            Storage::disk('public')->delete($product->image);
+            ImageHandler::deleteImage($product->image);
         }
 
         $product->delete();
@@ -94,13 +94,12 @@ class AdminProductController extends Controller
 
         if ($request->hasFile('image')) {
             if ($product->image && Storage::disk('public')->exists($product->image)) {
-                if ($product->image != 'images/default_image.png') {
+                if ($product->image != 'products/default_image.png') {
                     Storage::disk('public')->delete($product->image);
                 }
             }
 
-            $imageName = 'images/'.$product->id.'.'.$request->file('image')->extension();
-            Storage::disk('public')->put($imageName, file_get_contents($request->file('image')->getRealPath()));
+            $imageName = ImageHandler::storeImage('products', $product->getId(), $request->file('image'));
             $product->setImage($imageName);
         }
 

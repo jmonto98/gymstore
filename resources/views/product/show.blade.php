@@ -129,17 +129,15 @@
 
   <div class="row">
     @foreach($viewData['suggestedExercises'] as $exercise)
-      <div class="col-md-4 mb-4">
-        <div class="card h-100 shadow-sm">
-          @if(isset($exercise['gifUrl']) && is_string($exercise['gifUrl']))
-            <div style="height: 200px; overflow: hidden;">
-              <img src="{{ $exercise['gifUrl'] }}" 
-                   class="card-img-top" 
-                   style="object-fit: cover; height: 100%;"
-                   alt="{{ is_string($exercise['name'] ?? '') ? $exercise['name'] : __('messages.exercise_name_unavailable') }}" 
-                   onerror="this.src='{{ asset('images/default-exercise.jpg') }}'">
-            </div>
-          @endif
+    <div class="col-md-4 mb-4">
+    <div class="card h-100">
+      @if(isset($exercise['gifUrl']) && is_string($exercise['gifUrl']))
+      <div style="height: 200px; overflow: hidden;">
+      <img src="{{ $exercise['gifUrl'] }}" class="card-img-top h-100 w-100" style="object-fit: cover;"
+      alt="{{ $exercise['name'] ?? 'Exercise demonstration' }}"
+      onerror=this.src='{{ asset('images/default-exercise.jpg') }}'>
+      </div>
+    @endif
 
           <div class="card-body">
             <h5 class="card-title text-center">

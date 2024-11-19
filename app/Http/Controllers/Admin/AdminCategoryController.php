@@ -8,6 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
+use App\Utils\ImageHandler;
 
 class AdminCategoryController extends Controller
 {
@@ -51,7 +52,8 @@ class AdminCategoryController extends Controller
                 Storage::disk('public')->delete($category->image);
             }
 
-            $imagePath = 'categories/'.$category->id.'.'.$request->file('image')->extension();
+            $imagePath = ImageHandler::storeImage('categories', $category->getId(), $request->file('image'));
+            //$imagePath = 'categories/'.$category->id.'.'.$request->file('image')->extension();
             Storage::disk('public')->put($imagePath, file_get_contents($request->file('image')->getRealPath()));
             $category->setImage($imagePath);
         }
