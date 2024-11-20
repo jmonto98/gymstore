@@ -9,7 +9,7 @@ class ImageHandler
 {
     public static function storeImage(string $modelType, int $id, UploadedFile $image): string
     {
-        $imageName = $modelType . '/' . $id . '.' . $image->extension();
+        $imageName = $modelType.'/'.$id.'.'.$image->extension();
         Storage::disk('public')->put(
             $imageName,
             file_get_contents($image->getRealPath())
@@ -20,6 +20,6 @@ class ImageHandler
 
     public static function deleteImage($image): void
     {
-            Storage::disk('public')->delete($image);
+        Storage::disk('public')->delete($image);
     }
 }
