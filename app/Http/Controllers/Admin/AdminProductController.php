@@ -6,11 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\UseMode;
+use App\Utils\ImageHandler;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
-use App\Utils\ImageHandler;
 
 class AdminProductController extends Controller
 {

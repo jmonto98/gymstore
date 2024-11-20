@@ -58,9 +58,10 @@ class Product extends Model
             'averageRating' => $averageRating,
             'fullStars' => $fullStars,
             'halfStar' => $halfStar,
-            'totalReviews' => $this->reviews->count()
+            'totalReviews' => $this->reviews->count(),
         ];
     }
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
