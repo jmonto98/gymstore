@@ -122,4 +122,7 @@ return [
     'total_items' => 'Precio Total de los Artículos',
     'suggested_exercises' => 'Ejercicios Sugeridos',
     'no_exercises_found' => 'No se encontraron ejercicios para este tipo de equipo. Intenta buscar con otro término.',
+    'spanish' => 'Español',
+    'english' => 'Inglés',
+    'choose_language' => 'Elija Idioma',
 ];

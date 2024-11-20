@@ -127,4 +127,7 @@ return [
     'partner_subtitle' => 'Check out our partner stores',
     'no_video_available' => 'No video available for this product.',
     'no_instructions' => 'No instructions',
+    'spanish' => 'Spanish',
+    'english' => 'English',
+    'choose_language' => 'Choose Language',
 ];

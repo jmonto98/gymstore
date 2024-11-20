@@ -12,8 +12,6 @@
   <div class='card mb-4'>
     <div class='card-header bg-primary text-white'>
       <h4 class='mb-0'>{{ __('messages.search_by_category') }}</h4>
-      <p>Idioma actual: {{ App::getLocale() }}</p>
-
     </div>
 
     <div class='card-body'>

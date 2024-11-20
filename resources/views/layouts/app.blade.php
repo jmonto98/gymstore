@@ -77,10 +77,34 @@
           @endguest
         </ul>
 
-        <div>
-          <a href="{{ route('set-language', ['lang' => 'en']) }}">English</a>
-          <a href="{{ route('set-language', ['lang' => 'es']) }}">Español</a>
-        </div>
+        <form
+              id="langform"
+              action="{{ route("language.change") }}"
+              method="get"
+              class="d-flex align-items-center justify-content-center"
+            >
+              <select
+                id="small"
+                class="w- block rounded-lg border border-gray-300 bg-gray-50 p-2 text-sm text-gray-900 focus:border-brightPink focus:ring-brightPink"
+                name="lang"
+                id="lang"
+                onchange="this.form.submit()"
+              >
+                <option disabled>{{ __("messages.choose_language") }}</option>
+                <option
+                  value="es"
+                  @if (session('locale') == 'es') selected @endif
+                >
+                  {{ __("messages.spanish") }}
+                </option>
+                <option
+                  value="en"
+                  @if (session('locale') == 'en') selected @endif
+                >
+                  {{ __("messages.english") }}
+                </option>
+              </select>
+            </form>
 
       </div>
     </div>

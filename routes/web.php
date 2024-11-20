@@ -1,10 +1,10 @@
 <?php
 
 use App\Http\Middleware\AdminAuthMiddleware;
-use App\Http\Controllers\Api\Partner\PartnerController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Session;
 
 
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home.index');
@@ -22,14 +22,7 @@ Route::get('/cart', 'App\Http\Controllers\Cart\CartController@index')->name('car
 Route::get('/cart/delete', 'App\Http\Controllers\Cart\CartController@delete')->name('cart.delete');
 Route::post('/cart/add/{id}', 'App\Http\Controllers\Cart\CartController@add')->name('cart.add');
 
-Route::get('/set-language/{lang}', function ($lang) {
-    if (in_array($lang, ['en', 'es'])) {
-        App::setlocale($lang); // Cambia el idioma directamente
-    }
-
-    return redirect()->back();
-})->name('set-language');
-
+Route::get('/language/change', "App\Http\Controllers\LanguageController@change")->name('language.change');
 
 Route::middleware('auth')->group(function () {
     Route::get('/cart/purchase', 'App\Http\Controllers\Cart\CartController@purchase')->name('cart.purchase');
