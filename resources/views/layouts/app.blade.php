@@ -27,7 +27,7 @@
           <li class='nav-item'>
             <a class='nav-link' href='{{ route('partner.index') }}'><span
                 class='bg-secondary text-white rounded-circle p-2'><i class='fas fa-handshake'></i></span>
-                {{ __('messages.partner') }}</a>
+              {{ __('messages.partner') }}</a>
           </li>
           <li class='nav-item'>
             <a class='nav-link' href='{{ route('product.index') }}'><span
@@ -76,6 +76,12 @@
           @endif
           @endguest
         </ul>
+
+        <div>
+          <a href="{{ route('set-language', ['lang' => 'en']) }}">English</a>
+          <a href="{{ route('set-language', ['lang' => 'es']) }}">Español</a>
+        </div>
+
       </div>
     </div>
   </nav>
