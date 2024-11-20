@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\AdminAuthMiddleware;
+use App\Http\Controllers\Api\Partner\PartnerController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -10,7 +11,7 @@ Route::post('/search', 'App\Http\Controllers\HomeController@search')->name('home
 Route::get('/contact', 'App\Http\Controllers\HomeController@contact')->name('home.contact');
 Route::get('/about', 'App\Http\Controllers\HomeController@about')->name('home.about');
 
-Route::get('api/partner', 'App\Http\Controllers\Partner\PartnerController@index')->name('partner.index');
+Route::get('api/partner', 'App\Http\Controllers\Api\Partner\PartnerController@index')->name('partner.index');
 
 Route::get('/products', 'App\Http\Controllers\Product\ProductController@index')->name('product.index');
 Route::get('/products/{id}', 'App\Http\Controllers\Product\ProductController@show')->name('product.show');
